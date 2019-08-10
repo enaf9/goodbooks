@@ -32,7 +32,7 @@ img {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background: ${props => props.theme.colors.background.lightOrange};
+  background: ${props => props.theme.colors.background.lightGrey};
   color: ${props => props.theme.colors.text.darkGrey};
 }
 
