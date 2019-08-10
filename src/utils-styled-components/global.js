@@ -17,6 +17,8 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
+  background: ${props => props.theme.colors.background.lightOrange};
+  color: ${props => props.theme.colors.text.darkGrey};
 }
 
 ol, ul {
