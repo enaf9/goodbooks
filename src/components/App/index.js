@@ -1,8 +1,8 @@
 import React from "react";
 
-import GlobalStyle from "../utils-styled-components/global";
+import GlobalStyle from "../../utils-styled-components/global";
 import { ThemeProvider } from "styled-components";
-import theme from "../utils-styled-components/themes";
+import theme from "../../utils-styled-components/themes";
 
 function App() {
   return (
