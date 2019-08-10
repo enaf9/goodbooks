@@ -40,3 +40,5 @@ h1, h3 {
 }
 
 `;
+
+export default GlobalStyle;
