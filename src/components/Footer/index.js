@@ -19,8 +19,8 @@ const Footer = () => {
       <Logo />
       <SmallText>&copy;2019 goodbooks.cz</SmallText>
       <Links>
-        <NavLink bottom="10px">Knihy</NavLink>
-        <NavLink bottom="10px">Autoři</NavLink>
+        <NavLink>Knihy</NavLink>
+        <NavLink>Autoři</NavLink>
         <NavLink>Uživatelé</NavLink>
       </Links>
       <Wrapper>

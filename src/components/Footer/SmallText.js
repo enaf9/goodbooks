@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SmallText = styled.small`
   display: block;
-  margin-top: 5px;
+  padding-top: 2px;
 `;
 
 export default SmallText;
