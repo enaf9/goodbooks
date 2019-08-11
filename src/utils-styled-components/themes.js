@@ -28,7 +28,9 @@ const theme = {
     tablet: "min-width: 768px",
     desktop: "min-width: 1024px"
   },
-  fontSizes: {}
+  fontSizes: {
+    large: "24px"
+  }
 };
 
 export default theme;
