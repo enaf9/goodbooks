@@ -22,11 +22,11 @@ const theme = {
       blue: "#5F98CD",
       grey: "#DBDBDB",
       lightGrey: "#F4F5F5"
-    },
-    mediaQueries: {
-      tablet: "min-width: 768px",
-      desktop: "min-width: 1024px"
     }
+  },
+  mediaQueries: {
+    tablet: "min-width: 768px",
+    desktop: "min-width: 1024px"
   },
   fontSizes: {}
 };

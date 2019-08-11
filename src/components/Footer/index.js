@@ -9,24 +9,34 @@ import { ReactComponent as Facebook } from "../../images/facebook.svg";
 //styled components imports
 import StyledFooter from "./StyledFooter";
 import SmallText from "./SmallText";
-import Links from "./Links";
+import NavLinks from "./NavLinks";
 import NavLink from "./NavLink";
 import Wrapper from "./Wrapper";
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <Logo />
-      <SmallText>&copy;2019 goodbooks.cz</SmallText>
-      <Links>
-        <NavLink>Knihy</NavLink>
-        <NavLink>Autoři</NavLink>
-        <NavLink>Uživatelé</NavLink>
-      </Links>
+      <div>
+        <NavLink to="/">
+          <Logo />
+        </NavLink>
+        <SmallText>&copy;2019 goodbooks.cz</SmallText>
+      </div>
+      <NavLinks>
+        <NavLink to="/books">Knihy</NavLink>
+        <NavLink to="/authors">Autoři</NavLink>
+        <NavLink to="/users">Uživatelé</NavLink>
+      </NavLinks>
       <Wrapper>
-        <Facebook />
-        <Instagram />
-        <Twitter />
+        <a href="https://www.facebook.com" target="_blank">
+          <Facebook />
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+          <Instagram />
+        </a>
+        <a href="https://www.twitter.com" target="_blank">
+          <Twitter />
+        </a>
       </Wrapper>
     </StyledFooter>
   );
