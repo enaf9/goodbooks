@@ -11,7 +11,6 @@ import Content from "./Content";
 //components imports
 import Navbar from "../Navbar/index";
 import Footer from "../Footer/index";
-import AuthorItem from "../AuthorItem/index";
 
 const App = () => {
   return (
@@ -20,7 +19,6 @@ const App = () => {
         <GlobalStyle />
         <Content>
           <Navbar />
-          <AuthorItem />
         </Content>
         <Footer />
       </BrowserRouter>

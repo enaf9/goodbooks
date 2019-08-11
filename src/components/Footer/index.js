@@ -28,13 +28,25 @@ const Footer = () => {
         <NavLink to="/users">Uživatelé</NavLink>
       </NavLinks>
       <Wrapper>
-        <a href="https://www.facebook.com" target="_blank">
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Facebook />
         </a>
-        <a href="https://www.instagram.com" target="_blank">
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Instagram />
         </a>
-        <a href="https://www.twitter.com" target="_blank">
+        <a
+          href="https://www.twitter.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Twitter />
         </a>
       </Wrapper>
