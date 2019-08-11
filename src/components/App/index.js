@@ -13,6 +13,7 @@ import Wrapper from "./Wrapper";
 import Navbar from "../Navbar/index";
 import Footer from "../Footer/index";
 import MainPage from "../pages/MainPage/index";
+import MenuOverlay from "../overlays/MenuOverlay/index";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <GlobalStyle />
         <Content>
           <Navbar />
+          <MenuOverlay />
           <Wrapper>
             <Switch>
               <Route exact path="/" component={MainPage} />
