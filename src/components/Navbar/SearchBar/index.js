@@ -9,20 +9,20 @@ const SearchBar = () => {
   const [active, setActive] = useState(false);
 
   const handleClick = () => {
-    setActive(true);
+    setActive(!active);
   };
 
   return (
-    <Wrapper onClick={handleClick}>
+    <Wrapper>
       {active ? (
         <>
           <Input placeholder="Hledej" active />
-          <SearchIcon active />
+          <SearchIcon active onClick={handleClick} />
         </>
       ) : (
         <>
           <Input placeholder="Hledej" />
-          <SearchIcon />
+          <SearchIcon onClick={handleClick} />
         </>
       )}
     </Wrapper>
