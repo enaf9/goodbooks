@@ -30,6 +30,9 @@ const theme = {
   },
   fontSizes: {
     large: "24px"
+  },
+  lineHeights: {
+    large: "29px"
   }
 };
 
