@@ -2,9 +2,9 @@ import React from "react";
 
 //svg imports
 import { ReactComponent as Logo } from "../../images/logo.svg";
-import { ReactComponent as Instagram } from "../../images/Instagram.svg";
-import { ReactComponent as Twitter } from "../../images/Twitter.svg";
-import { ReactComponent as Facebook } from "../../images/Facebook.svg";
+import { ReactComponent as Instagram } from "../../images/instagram.svg";
+import { ReactComponent as Twitter } from "../../images/twitter.svg";
+import { ReactComponent as Facebook } from "../../images/facebook.svg";
 
 //styled components imports
 import StyledFooter from "./StyledFooter";
