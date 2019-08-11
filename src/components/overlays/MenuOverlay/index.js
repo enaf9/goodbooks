@@ -1,15 +1,30 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import NavLink from "./NavLink/index";
 
 const MenuOverlay = () => {
+  const isLogged = useSelector(state => state.loggedReducer);
+
   return (
     <>
-      <NavLink text="Knihy" url="/books" />
-      <NavLink text="Autoři" url="/authors" />
-      <NavLink text="Uživatelé" url="/users" />
-      <NavLink text="Přihlášení" url="/login" />
-      <NavLink text="Registrace" url="/registration" />
+      {isLogged ? (
+        <>
+          <NavLink text="Knihy" url="/books" />
+          <NavLink text="Autoři" url="/authors" />
+          <NavLink text="Uživatelé" url="/users" />
+          <NavLink text="Můj Profil" url="/my-profile" />
+          <NavLink text="Odhlášení" url="/logout" />
+        </>
+      ) : (
+        <>
+          <NavLink text="Knihy" url="/books" />
+          <NavLink text="Autoři" url="/authors" />
+          <NavLink text="Uživatelé" url="/users" />
+          <NavLink text="Přihlášení" url="/login" />
+          <NavLink text="Registrace" url="/registration" />
+        </>
+      )}
     </>
   );
 };
