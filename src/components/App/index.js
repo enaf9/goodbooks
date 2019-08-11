@@ -11,6 +11,7 @@ import Content from "./Content";
 //components imports
 import Navbar from "../Navbar/index";
 import Footer from "../Footer/index";
+import MenuOverlay from "../overlays/MenuOverlay/index";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <GlobalStyle />
         <Content>
           <Navbar />
+          <MenuOverlay />
         </Content>
         <Footer />
       </BrowserRouter>
