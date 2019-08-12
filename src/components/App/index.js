@@ -26,7 +26,7 @@ const App = () => {
         <GlobalStyle />
         <Content>
           <Navbar />
-          {isMenuOpen ? <MenuOverlay /> : ""}
+          {isMenuOpen ? <MenuOverlay active /> : <MenuOverlay />}
 
           <Wrapper>
             <Switch>
