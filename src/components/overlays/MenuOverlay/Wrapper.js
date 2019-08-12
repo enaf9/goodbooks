@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
 const active = css`
-  opacity: 1;
   z-index: 2;
   height: 100vh;
+  transition: height 0.5s ease-out;
 `;
 
 const Wrapper = styled.div`
@@ -13,8 +13,8 @@ const Wrapper = styled.div`
   z-index: -2;
   width: 100%;
   background: ${props => props.theme.colors.background.lightGrey};
-  transition: height 1s, opacity 0.5s;
-  opacity: 0;
+  transition: height 0.5s ease-out, z-index 0.7s ease-in;
+  overflow: hidden;
   ${props => (props.active ? active : "")};
 `;
 
