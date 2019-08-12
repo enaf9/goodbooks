@@ -3,11 +3,14 @@ import { useSelector } from "react-redux";
 
 import NavLink from "./NavLink/index";
 
+//styled components imports
+import Wrapper from "./Wrapper";
+
 const MenuOverlay = () => {
   const isLogged = useSelector(state => state.loggedReducer);
 
   return (
-    <>
+    <Wrapper>
       {isLogged ? (
         <>
           <NavLink text="Knihy" url="/books" />
@@ -25,7 +28,7 @@ const MenuOverlay = () => {
           <NavLink text="Registrace" url="/registration" />
         </>
       )}
-    </>
+    </Wrapper>
   );
 };
 

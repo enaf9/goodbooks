@@ -5,6 +5,8 @@ import GlobalStyle from "../../utils-styled-components/global";
 import { ThemeProvider } from "styled-components";
 import theme from "../../utils-styled-components/themes";
 
+import { useSelector } from "react-redux";
+
 //styled components imports
 import Content from "./Content";
 import Wrapper from "./Wrapper";
@@ -16,13 +18,16 @@ import MainPage from "../pages/MainPage/index";
 import MenuOverlay from "../overlays/MenuOverlay/index";
 
 const App = () => {
+  const isMenuOpen = useSelector(state => state.menuReducer);
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <GlobalStyle />
         <Content>
           <Navbar />
-          <MenuOverlay />
+          {isMenuOpen ? <MenuOverlay /> : ""}
+
           <Wrapper>
             <Switch>
               <Route exact path="/" component={MainPage} />
