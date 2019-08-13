@@ -18,7 +18,7 @@ const SearchBar = () => {
     if (isUserMenuItemHidden) {
       setTimeout(() => {
         dispatch(toggleUserMenuItem());
-      }, 710);
+      }, 700);
     } else {
       dispatch(toggleUserMenuItem());
     }

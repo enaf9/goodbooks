@@ -14,7 +14,6 @@ const Navbar = () => {
   const isUserMenuItemHidden = useSelector(state => state.userMenuItemReducer);
 
   const renderUserMenuItem = () => {
-    console.log(isUserMenuItemHidden);
     if (isUserMenuItemHidden) {
       return null;
     } else if (isLogged) {
@@ -25,7 +24,10 @@ const Navbar = () => {
   };
 
   return (
-    <StyledNavbar isLogged={isLogged}>
+    <StyledNavbar
+      isLogged={isLogged}
+      isUserMenuItemHidden={isUserMenuItemHidden}
+    >
       <StyledLogo />
       {renderUserMenuItem()}
       <SearchBar />
