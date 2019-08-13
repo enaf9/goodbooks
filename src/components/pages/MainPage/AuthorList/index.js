@@ -12,6 +12,9 @@ const AuthorList = () => {
       <AuthorItem />
       <AuthorItem />
       <AuthorItem />
+      <AuthorItem />
+      <AuthorItem />
+      <AuthorItem />
     </StyledAuthorList>
   );
 };
