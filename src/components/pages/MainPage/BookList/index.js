@@ -7,8 +7,12 @@ import StyledBookList from "./StyledBookList";
 import BookItem from "../../../BookItem/index";
 
 const BookList = () => {
+  const handleMouseOver = () => {
+    console.log("ABC");
+  };
+
   return (
-    <StyledBookList>
+    <StyledBookList onMouseOver={handleMouseOver}>
       <BookItem />
       <BookItem />
       <BookItem />

@@ -3,6 +3,7 @@ import { Search } from "styled-icons/feather/Search";
 
 const active = css`
   right: calc(100% - 34px);
+  grid-column-end: 4;
 `;
 
 const SearchIcon = styled(Search)`
