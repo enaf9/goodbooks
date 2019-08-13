@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 const StyledBookList = styled.div`
   margin: 20px -30px;
-  display: flex;
-  > * {
-    margin-left: 15px;
-  }
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 15px;
 
   @media (${props => props.theme.mediaQueries.desktop}) {
-    display: grid;
+    margin-right: 140px;
     grid-template-columns: repeat(6, 1fr);
+    grid-auto-flow: column dense;
     justify-content: space-between;
   }
 `;
