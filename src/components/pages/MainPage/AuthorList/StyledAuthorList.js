@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 const StyledAuthorList = styled.div`
-  margin: 20px -15px;
-  display: flex;
-  > * {
-    margin-left: 15px;
-  }
+  margin: 20px 0;
+  display: grid;
+  grid-column-gap: 15px;
+  grid-row-gap: 40px;
+  grid-auto-flow: column;
 
   @media (${props => props.theme.mediaQueries.desktop}) {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fill, 150px);
     justify-content: space-between;
   }
 `;

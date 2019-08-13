@@ -16,6 +16,8 @@ const BookList = () => {
       <BookItem />
       <BookItem />
       <BookItem />
+      <BookItem />
+      <BookItem />
     </StyledBookList>
   );
 };
