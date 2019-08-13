@@ -6,7 +6,7 @@ const StyledNavbar = styled.nav`
   display: grid;
   grid-template-columns: ${props =>
     props.isUserMenuItemHidden
-      ? "209px auto 56px"
+      ? "76px auto 56px"
       : props.isLogged
       ? "209px auto 40px 56px"
       : "209px auto 56px"};

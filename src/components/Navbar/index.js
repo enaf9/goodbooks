@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 //styled components imports
 import StyledNavbar from "./StyledNavbar";
 import StyledLogo from "./StyledLogo";
+import StyledLogoIcon from "./StyledLogoIcon";
 
 import UserMenuItem from "./UserMenuItem/index";
 import SearchBar from "./SearchBar/index";
@@ -28,14 +29,20 @@ const Navbar = () => {
     }
   };
 
+  const renderLogo = () => {
+    if (isUserMenuItemHidden) {
+      return <StyledLogoIcon />;
+    } else {
+      return <StyledLogo />;
+    }
+  };
+
   return (
     <StyledNavbar
       isLogged={isLogged}
       isUserMenuItemHidden={isUserMenuItemHidden}
     >
-      <Link to="/">
-        <StyledLogo />
-      </Link>
+      <Link to="/">{renderLogo()}</Link>
       {renderUserMenuItem()}
       <SearchBar />
       <MenuIcon />
