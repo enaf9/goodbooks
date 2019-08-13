@@ -23,7 +23,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <GlobalStyle />
+        {isMenuOpen ? <GlobalStyle noScroll /> : <GlobalStyle />}
+
         <Content>
           <Navbar />
           {isMenuOpen ? <MenuOverlay active /> : <MenuOverlay />}

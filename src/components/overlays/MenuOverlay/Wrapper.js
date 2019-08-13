@@ -8,13 +8,14 @@ const active = css`
 
 const Wrapper = styled.div`
   position: fixed;
-  top: 58px;
+  top: 48px;
   height: 0vh;
   z-index: -2;
   width: 100%;
   background: ${props => props.theme.colors.background.lightGrey};
   transition: height 0.5s ease-out, z-index 0.7s ease-in;
   overflow: hidden;
+  padding-top: 10px;
   ${props => (props.active ? active : "")};
 `;
 

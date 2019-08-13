@@ -34,7 +34,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   background: ${props => props.theme.colors.background.lightGrey};
   color: ${props => props.theme.colors.text.darkGrey};
-  line-height: 19.1px
+  line-height: 19.1px;
+  overflow: ${props => (props.noScroll ? "hidden" : "visible")}
 }
 
 h1, h3 {
