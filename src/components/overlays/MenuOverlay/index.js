@@ -6,11 +6,12 @@ import NavLink from "./NavLink/index";
 //styled components imports
 import Wrapper from "./Wrapper";
 
-const MenuOverlay = () => {
+const MenuOverlay = props => {
+  const isActive = props.active ? true : false;
   const isLogged = useSelector(state => state.loggedReducer);
 
   return (
-    <Wrapper>
+    <Wrapper active={isActive}>
       {isLogged ? (
         <>
           <NavLink text="Knihy" url="/books" />
