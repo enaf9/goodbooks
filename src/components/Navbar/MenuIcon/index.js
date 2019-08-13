@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import toggleMenu from "../../../store/actions/menuActions";
 
 //styled components imports
@@ -7,17 +8,16 @@ import Wrapper from "./Wrapper";
 import Line from "./Line";
 
 const MenuIcon = () => {
-  const [active, setActive] = useState(false);
   const dispatch = useDispatch();
+  const menuActive = useSelector(state => state.menuReducer);
 
   const handleClick = () => {
-    setActive(!active);
     dispatch(toggleMenu());
   };
 
   return (
     <Wrapper onClick={handleClick}>
-      {active ? (
+      {menuActive ? (
         <>
           <Line first active />
           <Line second active />

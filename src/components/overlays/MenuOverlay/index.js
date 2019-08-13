@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { closeMenu } from "../../../store/actions/menuActions";
 
 import NavLink from "./NavLink/index";
 
@@ -9,9 +11,14 @@ import Wrapper from "./Wrapper";
 const MenuOverlay = props => {
   const isActive = props.active ? true : false;
   const isLogged = useSelector(state => state.loggedReducer);
+  const dispatch = useDispatch();
+
+  const closeMenuOverlay = () => {
+    dispatch(closeMenu());
+  };
 
   return (
-    <Wrapper active={isActive}>
+    <Wrapper active={isActive} onClick={closeMenuOverlay}>
       {isLogged ? (
         <>
           <NavLink text="Knihy" url="/books" />

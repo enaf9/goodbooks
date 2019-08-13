@@ -4,4 +4,10 @@ const toggleMenu = () => {
   };
 };
 
+export const closeMenu = () => {
+  return {
+    type: "CLOSE_MENU"
+  };
+};
+
 export default toggleMenu;
