@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 //styled components imports
 import StyledNavbar from "./StyledNavbar";
@@ -17,7 +18,11 @@ const Navbar = () => {
     if (isUserMenuItemHidden) {
       return null;
     } else if (isLogged) {
-      return <UserMenuItem />;
+      return (
+        <Link to="/my-profile">
+          <UserMenuItem />
+        </Link>
+      );
     } else {
       return null;
     }
@@ -28,7 +33,9 @@ const Navbar = () => {
       isLogged={isLogged}
       isUserMenuItemHidden={isUserMenuItemHidden}
     >
-      <StyledLogo />
+      <Link to="/">
+        <StyledLogo />
+      </Link>
       {renderUserMenuItem()}
       <SearchBar />
       <MenuIcon />
