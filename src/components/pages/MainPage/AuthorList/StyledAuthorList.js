@@ -2,10 +2,18 @@ import styled from "styled-components";
 
 const StyledAuthorList = styled.div`
   margin: 20px 0;
+  width: calc(100% + 30px);
   display: grid;
   grid-column-gap: 15px;
   grid-row-gap: 40px;
   grid-auto-flow: column;
+  overflow: hidden;
+  overflow-x: scroll;
+  padding-bottom: 10px;
+
+  @media (${props => props.theme.mediaQueries.tablet}) {
+    width: calc(100% + 70px);
+  }
 
   @media (${props => props.theme.mediaQueries.desktop}) {
     grid-auto-flow: row;
