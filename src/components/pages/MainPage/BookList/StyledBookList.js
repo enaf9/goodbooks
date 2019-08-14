@@ -10,6 +10,9 @@ const StyledBookList = styled.div`
   overflow: hidden;
   overflow-x: scroll;
   padding-bottom: 10px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media (${props => props.theme.mediaQueries.tablet}) {
     width: calc(100% + 70px);
