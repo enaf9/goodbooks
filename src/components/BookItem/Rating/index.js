@@ -1,5 +1,7 @@
 import React from "react";
 import StarIcon from "../../../shared-stlyed-components/StarIcon";
+
+//styled components imports
 import StyledRating from "./StyledRating";
 
 const Rating = () => {

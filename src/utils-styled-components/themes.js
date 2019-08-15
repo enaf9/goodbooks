@@ -29,7 +29,9 @@ const theme = {
     desktop: "min-width: 1024px"
   },
   fontSizes: {
-    large: "24px"
+    large: "24px",
+    medium: "20px",
+    small: "14px"
   },
   lineHeights: {
     large: "29px"
