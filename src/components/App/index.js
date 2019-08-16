@@ -16,7 +16,6 @@ import Navbar from "../Navbar/index";
 import Footer from "../Footer/index";
 import MainPage from "../pages/MainPage/index";
 import MenuOverlay from "../overlays/MenuOverlay/index";
-import SearchInput from "../SearchInput";
 
 const App = () => {
   const isMenuOpen = useSelector(state => state.menuReducer);
