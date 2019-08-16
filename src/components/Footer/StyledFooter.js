@@ -11,7 +11,6 @@ const StyledFooter = styled.footer`
     grid-column-gap: 50px;
     margin: 0 auto;
     padding: 15px 30px 20px;
-    max-width: 1240px;
   }
 `;
 
