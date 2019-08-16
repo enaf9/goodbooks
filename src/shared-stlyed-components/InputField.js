@@ -7,6 +7,10 @@ const InputField = styled.input`
   border-radius: 10px;
   padding: 0 16px;
   color: ${props => props.theme.colors.text.darkGrey};
+  background: ${props =>
+    props.white
+      ? props.theme.colors.background.white
+      : props.theme.colors.complementary.lightGrey};
   font-size: 16px;
   line-height: 19px;
   margin-top: ${props => (props.top ? props.top : 0)};

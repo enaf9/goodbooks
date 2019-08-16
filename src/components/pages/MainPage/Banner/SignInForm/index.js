@@ -16,8 +16,8 @@ const SignInForm = () => {
         Přihlaš se a objev svoji novou <strong>oblíbenou knížku</strong>
       </Text>
       <form>
-        <InputField type="text" placeholder="Email" bottom="15px" />
-        <InputField type="text" placeholder="Heslo" />
+        <InputField white type="text" placeholder="Email" bottom="15px" />
+        <InputField white type="text" placeholder="Heslo" />
         <SignInButton blue> Přihlásit</SignInButton>
       </form>
       <small>
