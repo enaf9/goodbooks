@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Media from "react-media";
 
 //styled components imports
 import StyledNavbar from "./StyledNavbar";
@@ -10,6 +11,7 @@ import StyledLogoIcon from "./StyledLogoIcon";
 import UserMenuItem from "./UserMenuItem/index";
 import SearchBar from "./SearchBar/index";
 import MenuIcon from "./MenuIcon/index";
+import NavLinks from "./NavLinks/index";
 
 const Navbar = () => {
   const isLogged = useSelector(state => state.loggedReducer);
@@ -38,15 +40,27 @@ const Navbar = () => {
   };
 
   return (
-    <StyledNavbar
-      isLogged={isLogged}
-      isUserMenuItemHidden={isUserMenuItemHidden}
-    >
-      <Link to="/">{renderLogo()}</Link>
-      {renderUserMenuItem()}
-      <SearchBar />
-      <MenuIcon />
-    </StyledNavbar>
+    <Media query="(min-width: 768px)">
+      {matches =>
+        matches ? (
+          <StyledNavbar desktop>
+            <Link to="/">{renderLogo()}</Link>
+            <NavLinks />
+            <SearchBar />
+          </StyledNavbar>
+        ) : (
+          <StyledNavbar
+            isLogged={isLogged}
+            isUserMenuItemHidden={isUserMenuItemHidden}
+          >
+            <Link to="/">{renderLogo()}</Link>
+            {renderUserMenuItem()}
+            <SearchBar />
+            <MenuIcon />
+          </StyledNavbar>
+        )
+      }
+    </Media>
   );
 };
 
