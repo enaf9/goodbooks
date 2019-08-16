@@ -8,7 +8,7 @@ import Wrapper from "./Wrapper";
 import Input from "./Input";
 import SearchIcon from "./SearchIcon";
 
-const SearchBar = () => {
+const SearchBar = props => {
   const [active, setActive] = useState(false);
   const isUserMenuItemHidden = useSelector(state => state.userMenuItemReducer);
   const dispatch = useDispatch();
