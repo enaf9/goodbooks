@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledSelect = styled.select`
+  width: 100%;
   position: relative;
   -webkit-appearance: none;
   -moz-appearance: none;
