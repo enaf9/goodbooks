@@ -2,7 +2,7 @@ import React from "react";
 import CreatableSelect from "react-select/creatable";
 
 //styled components imports
-import ArrowIcon from "./ArrowIcon";
+import ArrowIcon from "../../shared-stlyed-components/ArrowIcon";
 
 const SelectInput = props => {
   const optionValues = [

@@ -16,7 +16,13 @@ const StyledNavbar = styled.nav`
   vertical-align: middle;
   display: grid;
   grid-template-columns: ${props =>
-    props.isUserMenuItemHidden
+    props.desktop
+      ? props.isUserMenuItemHidden
+        ? "209px auto"
+        : props.isLogged
+        ? "209px auto 24px"
+        : "209px auto 24px"
+      : props.isUserMenuItemHidden
       ? "76px auto 56px"
       : props.isLogged
       ? "209px auto 40px 56px"

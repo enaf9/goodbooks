@@ -39,8 +39,8 @@ const Navbar = () => {
     }
   };
 
-  const renderLogo = () => {
-    if (isUserMenuItemHidden) {
+  const renderLogo = desktop => {
+    if (isUserMenuItemHidden && !desktop) {
       return <StyledLogoIcon />;
     } else {
       return <StyledLogo />;
@@ -48,11 +48,15 @@ const Navbar = () => {
   };
 
   return (
-    <Media query="(min-width: 768px)">
+    <Media query="(min-width: 960px)">
       {matches =>
         matches ? (
-          <StyledNavbar desktop>
-            <Link to="/">{renderLogo()}</Link>
+          <StyledNavbar
+            isLogged={isLogged}
+            isUserMenuItemHidden={isUserMenuItemHidden}
+            desktop
+          >
+            <Link to="/">{renderLogo(true)}</Link>
             {renderNavLinks()}
             <SearchBar />
           </StyledNavbar>
