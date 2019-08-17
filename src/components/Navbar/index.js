@@ -12,13 +12,16 @@ import UserMenuItem from "./UserMenuItem/index";
 import SearchBar from "./SearchBar/index";
 import MenuIcon from "./MenuIcon/index";
 import NavLinks from "./NavLinks/index";
+import UserDropdown from "./UserDropdown/index";
 
 const Navbar = () => {
   const isLogged = useSelector(state => state.loggedReducer);
-  const isUserMenuItemHidden = useSelector(state => state.userMenuItemReducer);
+  const isMenuSearchBarReducer = useSelector(
+    state => state.menuSearchBarReducer
+  );
 
   const renderNavLinks = () => {
-    if (isUserMenuItemHidden) {
+    if (isMenuSearchBarReducer) {
       return null;
     } else {
       return <NavLinks />;
@@ -26,7 +29,7 @@ const Navbar = () => {
   };
 
   const renderUserMenuItem = () => {
-    if (isUserMenuItemHidden) {
+    if (isMenuSearchBarReducer) {
       return null;
     } else if (isLogged) {
       return (
@@ -40,10 +43,23 @@ const Navbar = () => {
   };
 
   const renderLogo = desktop => {
-    if (isUserMenuItemHidden && !desktop) {
+    if (isMenuSearchBarReducer && !desktop) {
       return <StyledLogoIcon />;
     } else {
       return <StyledLogo />;
+    }
+  };
+
+  const renderUser = () => {
+    if (isLogged) {
+      return (
+        <>
+          <UserMenuItem />
+          <UserDropdown username="beachboy96" />
+        </>
+      );
+    } else {
+      return null;
     }
   };
 
@@ -53,17 +69,18 @@ const Navbar = () => {
         matches ? (
           <StyledNavbar
             isLogged={isLogged}
-            isUserMenuItemHidden={isUserMenuItemHidden}
+            isMenuSearchBarReducer={isMenuSearchBarReducer}
             desktop
           >
             <Link to="/">{renderLogo(true)}</Link>
             {renderNavLinks()}
             <SearchBar />
+            {renderUser()}
           </StyledNavbar>
         ) : (
           <StyledNavbar
             isLogged={isLogged}
-            isUserMenuItemHidden={isUserMenuItemHidden}
+            isMenuSearchBarReducer={isMenuSearchBarReducer}
           >
             <Link to="/">{renderLogo()}</Link>
             {renderUserMenuItem()}

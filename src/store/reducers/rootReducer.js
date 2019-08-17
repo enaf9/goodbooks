@@ -2,12 +2,12 @@ import { combineReducers } from "redux";
 
 import loggedReducer from "./loggedReducer";
 import menuReducer from "./menuReducer";
-import userMenuItemReducer from "./userMenuItemReducer";
+import menuSearchBarReducer from "./menuSearchBarReducer";
 
 const rootReducer = combineReducers({
   loggedReducer,
   menuReducer,
-  userMenuItemReducer
+  menuSearchBarReducer
 });
 
 export default rootReducer;

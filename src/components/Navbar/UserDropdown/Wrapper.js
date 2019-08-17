@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 24px;
-  height: 24px;
-  margin: 0 16px;
-  cursor: pointer;
-  display: inline-block;
+  margin-left: 10px;
+  justify-self: end;
 `;
 
 export default Wrapper;

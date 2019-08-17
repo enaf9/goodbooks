@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import toggleUserMenuItem from "../../../store/actions/userMenuItemActions";
+import toggleSearchBar from "../../../store/actions/menuSearchBarActions";
 
 //styled components imports
 import Wrapper from "./Wrapper";
@@ -10,17 +10,19 @@ import SearchIcon from "./SearchIcon";
 
 const SearchBar = props => {
   const [active, setActive] = useState(false);
-  const isUserMenuItemHidden = useSelector(state => state.userMenuItemReducer);
+  const isMenuSearchBarReducer = useSelector(
+    state => state.menuSearchBarReducer
+  );
   const dispatch = useDispatch();
 
   const handleClick = () => {
     setActive(!active);
-    if (isUserMenuItemHidden) {
+    if (isMenuSearchBarReducer) {
       setTimeout(() => {
-        dispatch(toggleUserMenuItem());
+        dispatch(toggleSearchBar());
       }, 700);
     } else {
-      dispatch(toggleUserMenuItem());
+      dispatch(toggleSearchBar());
     }
   };
 

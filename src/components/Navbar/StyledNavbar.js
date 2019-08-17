@@ -6,6 +6,7 @@ const desktop = css`
   }
   @media (min-width: 1240px) {
     margin: 0px auto;
+    height: 56px;
   }
 
   max-width: 1180px;
@@ -17,15 +18,17 @@ const StyledNavbar = styled.nav`
   display: grid;
   grid-template-columns: ${props =>
     props.desktop
-      ? props.isUserMenuItemHidden
-        ? "209px auto"
+      ? props.isLogged && props.isMenuSearchBarReducer
+        ? "1fr auto auto auto"
         : props.isLogged
-        ? "209px auto 24px"
+        ? "209px 1fr 24px 54px auto;"
+        : props.isMenuSearchBarReducer
+        ? "209px auto"
         : "209px auto 24px"
-      : props.isUserMenuItemHidden
+      : props.isMenuSearchBarReducer
       ? "76px auto 56px"
       : props.isLogged
-      ? "209px auto 40px 56px"
+      ? "1fr auto 40px 56px"
       : "209px auto 56px"};
   align-items: center;
   ${props => (props.desktop ? desktop : "")};
