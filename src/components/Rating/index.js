@@ -1,5 +1,5 @@
 import React from "react";
-import StarIcon from "../../shared-stlyed-components/StarIcon";
+import StarIcon from "../../shared-styled-components/StarIcon";
 
 //styled components imports
 import StyledRating from "./StyledRating";

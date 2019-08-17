@@ -7,7 +7,7 @@ import SignInButton from "./SignInButton";
 import NavLink from "./NavLink";
 
 // components imports
-import InputField from "../../../../../shared-stlyed-components/InputField";
+import InputField from "../../../../../shared-styled-components/InputField";
 
 const SignInForm = () => {
   return (
