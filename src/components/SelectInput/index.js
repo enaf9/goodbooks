@@ -1,40 +1,38 @@
 import React from "react";
-
-//styled components imports
-import Wrapper from "./Wrapper";
-import ArrowIcon from "./ArrowIcon";
-import StyledSelect from "./StyledSelect";
 import CreatableSelect from "react-select/creatable";
 
+//styled components imports
+import ArrowIcon from "./ArrowIcon";
+
 const SelectInput = props => {
+  const optionValues = [
+    { value: "newest", label: "Nejnovějších" },
+    { value: "oldest", label: "Nejstarších" },
+    { value: "name", label: "Názvu" },
+    { value: "bestRating", label: "Nejlepší hodnocení" },
+    { value: "worstRating", label: "Nejhorší hodnocení" },
+    { value: "views", label: "Počtu zobrazení" }
+  ];
+
   return (
-    // <Wrapper width={props.width}>
-    //   <ArrowIcon size="24" />
-    //   <StyledSelect>
-    //     <option value="0">Nejnovějších</option>
-    //     <option value="1">Nejstarších</option>
-    //     <option value="2">Názvu</option>
-    //     <option value="3">Nejlepší hodnocení</option>
-    //     <option value="4">Nejhorší hodnocení</option>
-    //     <option value="5">Počtu zobrazení</option>
-    //   </StyledSelect>
-    // </Wrapper>
     <>
       <CreatableSelect
+        options={optionValues}
+        defaultValue={optionValues[0]}
         theme={theme => ({
           ...theme,
           borderRadius: 10,
           colors: {
             ...theme.colors,
-            neutral0: "#F4F5F5"
-            // primary: "white",
-            // neutral20: "white",
-            // neutral30: "white",
-            // primary50: "#F1F4F9",
-            // neutral10: "#F1F4F9",
-            // dangerLight: "#F1F4F9"
+            neutral0: "#F4F5F5",
+            neutral20: "transparent"
           }
         })}
+        components={{
+          DropdownIndicator: ArrowIcon,
+          ClearIndicator: null,
+          IndicatorSeparator: null
+        }}
       />
     </>
   );

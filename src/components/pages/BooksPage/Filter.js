@@ -9,7 +9,7 @@ const Filter = styled.div`
   align-items: center;
 
   @media (${props => props.theme.mediaQueries.tablet}) {
-    width: 319px;
+    width: 315px;
     margin: 0;
   }
 `;

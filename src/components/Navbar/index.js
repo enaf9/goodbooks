@@ -17,6 +17,14 @@ const Navbar = () => {
   const isLogged = useSelector(state => state.loggedReducer);
   const isUserMenuItemHidden = useSelector(state => state.userMenuItemReducer);
 
+  const renderNavLinks = () => {
+    if (isUserMenuItemHidden) {
+      return null;
+    } else {
+      return <NavLinks />;
+    }
+  };
+
   const renderUserMenuItem = () => {
     if (isUserMenuItemHidden) {
       return null;
@@ -45,7 +53,7 @@ const Navbar = () => {
         matches ? (
           <StyledNavbar desktop>
             <Link to="/">{renderLogo()}</Link>
-            <NavLinks />
+            {renderNavLinks()}
             <SearchBar />
           </StyledNavbar>
         ) : (
