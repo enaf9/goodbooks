@@ -17,14 +17,14 @@ const Rating = props => {
         size={props.large ? "large" : props.small ? "small" : "medium"}
         show={props.average}
       >
-        5.0
+        {props.average}
       </RatingText>
       <RatingText
         size={props.large ? "large" : props.small ? "small" : "medium"}
         show={props.count}
         count
       >
-        (123)
+        {"(" + props.count + ")"}
       </RatingText>
     </StyledRating>
   );
