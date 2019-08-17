@@ -54,7 +54,9 @@ const Navbar = () => {
     if (isLogged) {
       return (
         <>
-          <UserMenuItem />
+          <Link to="/my-profile">
+            <UserMenuItem />
+          </Link>
           <UserDropdown username="beachboy96" />
         </>
       );
