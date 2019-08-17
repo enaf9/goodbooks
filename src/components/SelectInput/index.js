@@ -25,7 +25,8 @@ const SelectInput = props => {
           colors: {
             ...theme.colors,
             neutral0: "#F4F5F5",
-            neutral20: "transparent"
+            neutral20: "transparent",
+            neutral30: "transparent"
           }
         })}
         components={{
