@@ -17,6 +17,7 @@ import Footer from "../Footer/index";
 import MainPage from "../pages/MainPage/index";
 import MenuOverlay from "../overlays/MenuOverlay/index";
 import BooksPage from "../pages/BooksPage/index";
+import BookPage from "../pages/BookPage/index";
 
 const App = () => {
   const isMenuOpen = useSelector(state => state.menuReducer);
@@ -33,6 +34,7 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={MainPage} />
               <Route path="/books" component={BooksPage} />
+              <Route path="/book/:id" component={BookPage} />
             </Switch>
           </Wrapper>
         </Content>
