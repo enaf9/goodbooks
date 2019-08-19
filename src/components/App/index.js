@@ -19,6 +19,7 @@ import MenuOverlay from "../overlays/MenuOverlay/index";
 import BooksPage from "../pages/BooksPage/index";
 import BookPage from "../pages/BookPage/index";
 import AuthorsPage from "../pages/AuthorsPage/index";
+import UsersPage from "../pages/UsersPage/index";
 
 const App = () => {
   const isMenuOpen = useSelector(state => state.menuReducer);
@@ -36,6 +37,7 @@ const App = () => {
               <Route exact path="/" component={MainPage} />
               <Route path="/books" component={BooksPage} />
               <Route path="/authors" component={AuthorsPage} />
+              <Route path="/users" component={UsersPage} />
               <Route path="/book/:id" component={BookPage} />
             </Switch>
           </Wrapper>

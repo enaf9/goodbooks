@@ -1,20 +1,21 @@
 import React from "react";
+import AuthorImage from "../../../../images/Authors/38550.jpg";
 
 //styled components imports
 import StyledAuthorList from "./StyledAuthorList";
 
 //components imports
-import AuthorCard from "../../../AuthorCard/index";
+import UserCard from "../../../UserCard/index";
 
-const BookList = () => {
+const AuthorList = () => {
   return (
     <StyledAuthorList>
-      <AuthorCard />
-      <AuthorCard />
-      <AuthorCard />
-      <AuthorCard />
+      <UserCard name="Brandon Sanderson" img={AuthorImage} />
+      <UserCard name="Brandon Sanderson" img={AuthorImage} />
+      <UserCard name="Brandon Sanderson" img={AuthorImage} />
+      <UserCard name="Brandon Sanderson" img={AuthorImage} />
     </StyledAuthorList>
   );
 };
 
-export default BookList;
+export default AuthorList;
