@@ -26,7 +26,6 @@ const BooksPage = () => {
 
   const handleClick = () => {
     setFilterOpen(!filterIsOpen);
-    console.log(filterIsOpen);
   };
 
   return (

@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 const Filter = styled.div`
   margin-top: 16px;
-  width: 309px;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 24px;
   grid-column-gap: 10px;
   align-items: center;
 
