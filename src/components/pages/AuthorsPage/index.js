@@ -8,7 +8,7 @@ import Wrapper from "./Wrapper";
 //components imports
 import SearchInput from "../../SearchInput/index";
 import SelectInput from "../../SelectInput/index";
-import AuthorList from "./AuthorList/index";
+import AuthorList from "../../AuthorList/index";
 
 const AuthorsPage = () => {
   const optionValues = [

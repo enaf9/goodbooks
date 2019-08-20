@@ -10,7 +10,7 @@ import FilterIcon from "./FilterIcon";
 //components imports
 import SearchInput from "../../SearchInput/index";
 import SelectInput from "../../SelectInput/index";
-import BookList from "./BookList/index";
+import BookList from "../../BookList/index";
 import FilterForm from "./FilterForm/index";
 
 const BooksPage = () => {
