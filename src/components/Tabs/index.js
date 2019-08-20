@@ -6,14 +6,10 @@ import Wrapper from "./Wrapper";
 //components import
 import Tab from "./Tab";
 
-const Tabs = () => {
-  return (
-    <Wrapper>
-      <Tab name="Knihy" to="/results/books" active />
-      <Tab name="Autoři" to="/results/authors" />
-      <Tab name="Uživatelé" to="/results/users" />
-    </Wrapper>
-  );
+const Tabs = props => {
+  const tabs = props.tabs.map(tab => <Tab name={tab.name} to={tab.to} />);
+
+  return <Wrapper length={props.tabs.length}>{tabs}</Wrapper>;
 };
 
 export default Tabs;

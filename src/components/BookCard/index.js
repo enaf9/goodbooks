@@ -21,7 +21,11 @@ const BookCard = props => {
         <Text>Brandon Sanderson</Text>
         <Text>2010</Text>
         <Wrapper>
-          <Rating size="16" small average />
+          {props.big ? (
+            <Rating size="16" big average="5" />
+          ) : (
+            <Rating size="16" small average="5" />
+          )}
         </Wrapper>
       </Info>
     </StyledBookCard>

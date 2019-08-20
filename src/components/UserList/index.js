@@ -4,8 +4,8 @@ import React from "react";
 import StyledUserList from "./StyledUserList";
 
 //components imports
-import UserCard from "../../../UserCard/index";
-import UserImage from "../../../../images/Users/beachboy.jpg";
+import UserCard from "../UserCard/index";
+import UserImage from "../../images/Users/beachboy.jpg";
 
 const UserList = () => {
   return (
