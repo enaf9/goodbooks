@@ -10,7 +10,7 @@ import Wrapper from "./Wrapper";
 
 const BookItem = () => {
   return (
-    <StyledBookItem>
+    <StyledBookItem to="/book/1">
       <Wrapper>
         <Rating />
         <Image src="https://www.databazeknih.cz/images_books/11_/114615/big_archiv-bourne-zare-cesta-kralu-iRU-114615.jpg" />
