@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import BookDetailCard from "./BookDetailCard/index";
 import Tabs from "../../Tabs";
+import BookInfoBox from "./BookInfoBox/index";
 
 //styled components imports
 import Description from "./Description";
@@ -38,7 +39,7 @@ const BookPage = () => {
       );
       break;
     case 1:
-      content = <></>;
+      content = <BookInfoBox />;
       break;
     case 2:
       content = <></>;
