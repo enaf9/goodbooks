@@ -1,8 +1,10 @@
 import React from "react";
 import BookImage from "../../../../images/Books/big_archiv-bourne-zare-cesta-kralu-iRU-114615.jpg";
 import Rating from "../../../Rating/index";
+import Media from "react-media";
 
 //styled components imports
+import Wrapper from "./Wrapper";
 import BookName from "./BookName";
 import Container from "./Container";
 import Image from "./Image";
@@ -12,12 +14,17 @@ import Released from "./Released";
 import Series from "./Series";
 import GreyText from "./GreyText";
 
+import BookStatusBar from "./BookStatusBar/index";
+
 const BookDetailCard = () => {
   return (
-    <>
+    <Wrapper>
       <BookName>Cesta králů</BookName>
       <Container>
-        <Image src={BookImage} />
+        <div>
+          <Image src={BookImage} />
+          <BookStatusBar />
+        </div>
         <div>
           <AuthorName>Brandon Sanderson</AuthorName>
           <BookGenres>fantasy | romány</BookGenres>
@@ -27,10 +34,18 @@ const BookDetailCard = () => {
           <Series>
             Série: <GreyText>Archiv Bouřné záře (1.)</GreyText>
           </Series>
-          <Rating size="16" average="3.0" count="53245" small />
+          <Media query="(min-width: 768px)">
+            {matches =>
+              matches ? (
+                <Rating size="24" average="4.7" count="53245" medium />
+              ) : (
+                <Rating size="16" average="4.7" count="53245" small />
+              )
+            }
+          </Media>
         </div>
       </Container>
-    </>
+    </Wrapper>
   );
 };
 

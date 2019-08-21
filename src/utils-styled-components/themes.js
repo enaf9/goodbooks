@@ -31,11 +31,15 @@ const theme = {
   fontSizes: {
     large: "24px",
     medium: "20px",
-    small: "14px"
+    small: "14px",
+    h1: "48px",
+    h3: "32px"
   },
   lineHeights: {
     large: "29px",
-    medium: "23.9px"
+    medium: "23.9px",
+    h1: "57.3px",
+    h3: "38.2px"
   }
 };
 

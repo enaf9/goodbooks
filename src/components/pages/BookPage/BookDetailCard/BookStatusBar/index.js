@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
 //styled components imports
-import HeartIcon from "../../../../shared-styled-components/HeartIcon";
-import BookmarkPlusIcon from "../../../../shared-styled-components/BookmarkPlusIcon";
-import BookIcon from "../../../../shared-styled-components/BookIcon";
-import CheckIcon from "../../../../shared-styled-components/CheckIcon";
+import HeartIcon from "../../../../../shared-styled-components/HeartIcon";
+import BookmarkPlusIcon from "../../../../../shared-styled-components/BookmarkPlusIcon";
+import BookIcon from "../../../../../shared-styled-components/BookIcon";
+import CheckIcon from "../../../../../shared-styled-components/CheckIcon";
 import IconWrapper from "./IconWrapper"; //added to get target id from icon click (svg/path problem)
-
 import Wrapper from "./Wrapper";
 
 const BookStatusBar = () => {
@@ -16,13 +15,22 @@ const BookStatusBar = () => {
     bookIcon: false,
     checkIcon: false
   });
+
   const handleClick = e => {
-    console.log(e.target.id);
-    setIconsCheck({
-      ...iconsCheck,
-      [e.target.id]: !iconsCheck[e.target.id]
-    });
-    console.log(iconsCheck);
+    if (e.target.id === "heartIcon") {
+      setIconsCheck({
+        ...iconsCheck,
+        [e.target.id]: !iconsCheck[e.target.id]
+      });
+    } else {
+      setIconsCheck({
+        ...iconsCheck,
+        bookmarkIcon: false,
+        bookIcon: false,
+        checkIcon: false,
+        [e.target.id]: !iconsCheck[e.target.id]
+      });
+    }
   };
 
   return (

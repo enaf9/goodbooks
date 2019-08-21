@@ -13,7 +13,8 @@ import SelectInput from "../../SelectInput/index";
 import BookList from "../../BookList/index";
 import FilterForm from "./FilterForm/index";
 
-const BooksPage = () => {
+const BooksPage = props => {
+  console.log(props);
   const [filterIsOpen, setFilterOpen] = useState(false);
   const optionValues = [
     { value: "newest", label: "Nejnovějších" },
