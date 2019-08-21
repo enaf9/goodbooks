@@ -21,7 +21,6 @@ const Navbar = () => {
   );
 
   const renderNavLinks = () => {
-    console.log("TADY", window.location.href);
     if (isMenuSearchBarReducer) {
       return null;
     } else {

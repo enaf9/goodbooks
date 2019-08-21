@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 //styled components import
 import StyledResultPage from "./StyledResultPage";
@@ -12,15 +12,27 @@ import SearchInput from "../../SearchInput";
 import Tabs from "../../Tabs";
 import BookList from "../../BookList";
 import AuthorList from "../../AuthorList";
-import UsersList from "../../UserList";
+import UserList from "../../UserList";
 
 const SearchResultPage = () => {
-  const tabs = [
-    { name: "Knihy", to: "/results/books" },
-    { name: "Autoři", to: "/results/authors" },
-    { name: "Uživatelé", to: "/results/users" }
-  ];
+  let content;
+  const currentTab = useSelector(state => state.tabReducer);
+  const tabs = ["Knihy", "Autoři", "Uživatelé"];
 
+  switch (currentTab) {
+    case 0:
+      content = <BookList size="big" />;
+      break;
+    case 1:
+      content = <AuthorList />;
+      break;
+    case 2:
+      content = <UserList size="big" />;
+      break;
+    default:
+      content = <BookList size="big" />;
+      break;
+  }
   return (
     <StyledResultPage>
       <Title>Výsledky vyhledávání</Title>
@@ -29,14 +41,7 @@ const SearchResultPage = () => {
       </Wrapper>
       <Container>
         <Tabs tabs={tabs} />
-        <Switch>
-          <Route
-            path="/results/books"
-            render={props => <BookList size="big" />}
-          />
-          <Route path="/results/authors" component={AuthorList} />
-          <Route path="/results/users" component={UsersList} />
-        </Switch>
+        {content}
       </Container>
     </StyledResultPage>
   );

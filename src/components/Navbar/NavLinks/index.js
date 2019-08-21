@@ -5,7 +5,7 @@ import StyledNavLinks from "./StyledNavLinks";
 
 import NavLink from "./NavLink/index";
 
-const NavLinks = () => {
+const NavLinks = props => {
   return (
     <StyledNavLinks>
       <NavLink text="Knihy" to="/books" />

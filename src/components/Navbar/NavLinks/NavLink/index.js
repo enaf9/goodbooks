@@ -1,15 +1,18 @@
 import React from "react";
-import StyledNavLink from "./StyledNavLink";
+import { withRouter } from "react-router-dom";
 
 //styled components imports
 import StyledLink from "./StyledLink";
+import StyledNavLink from "./StyledNavLink";
 
 const NavLink = props => {
   return (
     <StyledNavLink>
-      <StyledLink to={props.to}>{props.text}</StyledLink>
+      <StyledLink to={props.to} active={props.location.pathname === props.to}>
+        {props.text}
+      </StyledLink>
     </StyledNavLink>
   );
 };
 
-export default NavLink;
+export default withRouter(NavLink);

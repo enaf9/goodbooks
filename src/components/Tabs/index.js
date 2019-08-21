@@ -7,7 +7,9 @@ import Wrapper from "./Wrapper";
 import Tab from "./Tab";
 
 const Tabs = props => {
-  const tabs = props.tabs.map(tab => <Tab name={tab.name} to={tab.to} />);
+  const tabs = props.tabs.map((tab, index) => (
+    <Tab name={tab} key={tab} id={index} />
+  ));
 
   return <Wrapper length={props.tabs.length}>{tabs}</Wrapper>;
 };
