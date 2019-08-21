@@ -38,6 +38,7 @@ const theme = {
   lineHeights: {
     large: "29px",
     medium: "23.9px",
+    small: "16.7px",
     h1: "57.3px",
     h3: "38.2px"
   }
