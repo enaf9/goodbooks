@@ -38,6 +38,10 @@ body {
   overflow: ${props => (props.noScroll ? "hidden" : "visible")}
 }
 
+p {
+  line-height: 26.6px;
+}
+
 h1, h3 {
   font-family: 'Hind', sans-serif;
   font-weight: 500;
