@@ -1,5 +1,5 @@
 import React from "react";
-import AuthorImage from "../../images/Authors/38550.jpg";
+import AuthorImage from "../../images/Authors/Brandon_Sanderson.jpg";
 
 //styled components imports
 import StyledAuthorList from "./StyledAuthorList";

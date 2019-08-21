@@ -1,5 +1,5 @@
 import React from "react";
-import BookImage from "../../images/Books/big_archiv-bourne-zare-cesta-kralu-iRU-114615.jpg";
+import BookImage from "../../images/Books/Cesta_kralu.jpg";
 
 //styled components imports
 import StyledBookCard from "./StyledBookCard";
