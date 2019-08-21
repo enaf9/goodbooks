@@ -27,7 +27,7 @@ const SearchResultPage = () => {
       content = <AuthorList />;
       break;
     case 2:
-      content = <UserList size="big" />;
+      content = <UserList />;
       break;
     default:
       content = <BookList size="big" />;
