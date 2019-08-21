@@ -4,6 +4,7 @@ import React from "react";
 import Wrapper from "./Wrapper";
 
 import BookInfoItem from "./BookInfoItem/index";
+import ReleasesInfo from "./ReleasesInfo";
 
 const BookInfoBox = () => {
   return (
@@ -12,6 +13,7 @@ const BookInfoBox = () => {
       <BookInfoItem property="Počet stran:" value="912" />
       <BookInfoItem property="Překlad:" value="Milena Poláčková" />
       <BookInfoItem property="ISBN:" value="978-80-7197-427-7" />
+      <ReleasesInfo />
     </Wrapper>
   );
 };
