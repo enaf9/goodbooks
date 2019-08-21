@@ -5,6 +5,7 @@ const FilterIcon = styled(Sliders)`
   transform: rotate(90deg);
   stroke-width: 2px;
   color: ${props => props.theme.colors.text.darkGrey};
+  cursor: pointer;
 `;
 
 export default FilterIcon;

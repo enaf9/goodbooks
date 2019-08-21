@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, withRouter } from "react-router-dom";
 
 import GlobalStyle from "../../utils-styled-components/global";
 import { ThemeProvider } from "styled-components";
@@ -20,7 +20,7 @@ import BooksPage from "../pages/BooksPage/index";
 import BookPage from "../pages/BookPage/index";
 import AuthorsPage from "../pages/AuthorsPage/index";
 import UsersPage from "../pages/UsersPage/index";
-import SearchResultPage from "../pages/SearchResultPage/index";
+import SearchResultsPage from "../pages/SearchResultsPage/index";
 
 const App = () => {
   const isMenuOpen = useSelector(state => state.menuReducer);
@@ -39,7 +39,7 @@ const App = () => {
               <Route path="/books" component={BooksPage} />
               <Route path="/authors" component={AuthorsPage} />
               <Route path="/users" component={UsersPage} />
-              <Route path="/results" component={SearchResultPage} />
+              <Route path="/results" component={SearchResultsPage} />
               <Route path="/book/:id" component={BookPage} />
             </Switch>
           </Wrapper>

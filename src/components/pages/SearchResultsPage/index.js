@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 //styled components import
-import StyledResultPage from "./StyledResultPage";
+import StyledResultsPage from "./StyledResultsPage";
 import Title from "./Title";
 import Container from "./Container";
 import Wrapper from "./Wrapper";
@@ -14,7 +14,7 @@ import BookList from "../../BookList";
 import AuthorList from "../../AuthorList";
 import UserList from "../../UserList";
 
-const SearchResultPage = () => {
+const SearchResultsPage = () => {
   let content;
   const currentTab = useSelector(state => state.tabReducer);
   const tabs = ["Knihy", "Autoři", "Uživatelé"];
@@ -33,8 +33,9 @@ const SearchResultPage = () => {
       content = <BookList size="big" />;
       break;
   }
+
   return (
-    <StyledResultPage>
+    <StyledResultsPage>
       <Title>Výsledky vyhledávání</Title>
       <Wrapper>
         <SearchInput />
@@ -43,8 +44,8 @@ const SearchResultPage = () => {
         <Tabs tabs={tabs} />
         {content}
       </Container>
-    </StyledResultPage>
+    </StyledResultsPage>
   );
 };
 
-export default SearchResultPage;
+export default SearchResultsPage;
