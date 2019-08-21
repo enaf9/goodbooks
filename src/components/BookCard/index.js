@@ -14,7 +14,7 @@ import Rating from "../Rating/index";
 
 const BookCard = props => {
   return (
-    <StyledBookCard big={props.big}>
+    <StyledBookCard big={props.big} to="/book/1">
       <Image src={BookImage} big={props.big} />
       <Info>
         <Title>Cesta Králů</Title>
