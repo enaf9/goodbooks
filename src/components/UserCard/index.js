@@ -7,9 +7,9 @@ import Name from "./Name";
 
 const UserCard = props => {
   return (
-    <StyledUserCard>
-      <Image src={props.img} />
-      <Name>{props.name}</Name>
+    <StyledUserCard center={props.center}>
+      <Image src={props.img} big={props.big} />
+      <Name big={props.big}>{props.name}</Name>
     </StyledUserCard>
   );
 };

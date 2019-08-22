@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
-const StyledAUserCard = styled.div`
+const StyledUserCard = styled.div`
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: auto 1fr;
   grid-column-gap: 15px;
   align-items: center;
+  max-width: 320px;
+  margin: ${props => (props.center ? "0 auto" : "0")};
 `;
 
-export default StyledAUserCard;
+export default StyledUserCard;

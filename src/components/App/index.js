@@ -21,6 +21,7 @@ import BookPage from "../pages/BookPage/index";
 import AuthorsPage from "../pages/AuthorsPage/index";
 import UsersPage from "../pages/UsersPage/index";
 import SearchResultsPage from "../pages/SearchResultsPage/index";
+import AuthorPage from "../pages/AuthorPage/index";
 
 const App = () => {
   const isMenuOpen = useSelector(state => state.menuReducer);
@@ -41,6 +42,7 @@ const App = () => {
               <Route path="/users" component={UsersPage} />
               <Route path="/results" component={SearchResultsPage} />
               <Route path="/book/:id" component={BookPage} />
+              <Route path="/author/:id" component={AuthorPage} />
             </Switch>
           </Wrapper>
         </Content>
