@@ -16,11 +16,21 @@ const ReviewRating = () => {
 
   const handleClick = (e, callback) => {
     if (e.target.id === "thumbsUp") {
+      iconsCheck.thumbsUp && !iconsCheck.thumbsDown
+        ? setValue(value - 1)
+        : iconsCheck.thumbsDown
+        ? setValue(value + 2)
+        : setValue(value + 1);
       setIconsCheck({
         thumbsDown: false,
         thumbsUp: !iconsCheck.thumbsUp
       });
     } else {
+      iconsCheck.thumbsDown && !iconsCheck.thumbsUp
+        ? setValue(value + 1)
+        : iconsCheck.thumbsUp
+        ? setValue(value - 2)
+        : setValue(value - 1);
       setIconsCheck({
         thumbsUp: false,
         thumbsDown: !iconsCheck.thumbsDown
