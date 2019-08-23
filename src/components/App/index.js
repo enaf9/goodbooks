@@ -22,6 +22,7 @@ import AuthorsPage from "../pages/AuthorsPage/index";
 import UsersPage from "../pages/UsersPage/index";
 import SearchResultsPage from "../pages/SearchResultsPage/index";
 import AuthorPage from "../pages/AuthorPage/index";
+import SignInOverlay from "../overlays/SignInOverlay";
 
 const App = () => {
   const isMenuOpen = useSelector(state => state.menuReducer);
@@ -35,6 +36,7 @@ const App = () => {
           <Navbar />
           {isMenuOpen ? <MenuOverlay active /> : <MenuOverlay />}
           <Wrapper>
+            <SignInOverlay />
             <Switch>
               <Route exact path="/" component={MainPage} />
               <Route path="/books" component={BooksPage} />

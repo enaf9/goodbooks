@@ -33,7 +33,8 @@ const theme = {
     medium: "20px",
     small: "14px",
     h1: "48px",
-    h3: "32px"
+    h3: "32px",
+    h4: "24px"
   },
   lineHeights: {
     large: "29px",

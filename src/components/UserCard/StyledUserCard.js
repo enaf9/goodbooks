@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const big = css`
+  grid-template-columns: 1fr;
+  justify-items: center;
+`;
 
 const StyledUserCard = styled.div`
   display: grid;
@@ -7,6 +12,10 @@ const StyledUserCard = styled.div`
   align-items: center;
   max-width: 320px;
   margin: ${props => (props.center ? "0 auto" : "0")};
+
+  @media (${props => props.theme.mediaQueries.tablet}) {
+    ${props => (props.big ? big : "")}
+  }
 `;
 
 export default StyledUserCard;
