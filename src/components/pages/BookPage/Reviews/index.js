@@ -1,6 +1,7 @@
 import React from "react";
 
 import Review from "../../../Review/index";
+import RatingCard from "../../../RatingCard/index";
 
 //styled components imports
 import AddButton from "./AddButton";
@@ -12,6 +13,7 @@ const Reviews = () => {
       <AddButton>PŘIDAT+</AddButton>
       <SelectInput />
       <Review />
+      <RatingCard />
     </>
   );
 };
