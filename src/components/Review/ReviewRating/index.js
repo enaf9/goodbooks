@@ -14,7 +14,7 @@ const ReviewRating = () => {
     thumbsDown: false
   });
 
-  const handleClick = (e, callback) => {
+  const handleClick = e => {
     if (e.target.id === "thumbsUp") {
       iconsCheck.thumbsUp && !iconsCheck.thumbsDown
         ? setValue(value - 1)
