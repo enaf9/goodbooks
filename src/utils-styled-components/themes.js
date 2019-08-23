@@ -32,6 +32,7 @@ const theme = {
     large: "24px",
     medium: "20px",
     small: "14px",
+    extraSmall: "12px",
     h1: "48px",
     h3: "32px",
     h4: "24px"
@@ -40,6 +41,7 @@ const theme = {
     large: "29px",
     medium: "23.9px",
     small: "16.7px",
+    extraSmall: "14.3px",
     h1: "57.3px",
     h3: "38.2px"
   }
