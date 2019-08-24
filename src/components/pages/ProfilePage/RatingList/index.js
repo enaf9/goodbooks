@@ -6,9 +6,9 @@ import Wrapper from "./Wrapper";
 import Content from "./Content";
 
 //components imports
-import Review from "../../../Review";
+import RatingCard from "../../../RatingCard";
 
-const ReviewList = () => {
+const RatingList = () => {
   const optionValues = [
     { value: "mostUsefull", label: "Nejužitečnejší" },
     { value: "newest", label: "Nejnovějších" },
@@ -20,13 +20,13 @@ const ReviewList = () => {
         <SelectInput options={optionValues} defaultValue={optionValues[0]} />
       </Wrapper>
       <Content>
-        <Review />
-        <Review />
-        <Review />
-        <Review />
+        <RatingCard />
+        <RatingCard />
+        <RatingCard />
+        <RatingCard />
       </Content>
     </>
   );
 };
 
-export default ReviewList;
+export default RatingList;
