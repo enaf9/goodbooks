@@ -12,6 +12,7 @@ import UserCard from "../../UserCard/index";
 import Tabs from "../../Tabs/index";
 import BookSections from "./BookSections";
 import ReviewList from "./ReviewList";
+import RatingList from "./RatingList";
 
 const ProfilePage = () => {
   let content;
@@ -25,7 +26,7 @@ const ProfilePage = () => {
       content = <ReviewList />;
       break;
     case 2:
-      content = <></>;
+      content = <RatingList />;
       break;
     default:
       content = <BookSections />;
