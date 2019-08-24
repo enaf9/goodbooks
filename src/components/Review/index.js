@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import BookItemBox from "../BookItemBox/index";
 import Rating from "../Rating/index";
@@ -10,8 +10,17 @@ import Container from "./Container";
 import TimeText from "./TimeText";
 import Title from "./Title";
 import Text from "./Text";
+import DeleteIcon from "../../shared-styled-components/DeleteIcon";
 
 const Review = () => {
+  const [showClose, setShowClose] = useState(true);
+
+  const renderDeleteIcon = () => {
+    if (showClose) {
+      return <DeleteIcon />;
+    }
+  };
+
   return (
     <Wrapper>
       <Container>
@@ -25,6 +34,7 @@ const Review = () => {
         vynikající.
       </Text>
       <ReviewRating />
+      {renderDeleteIcon()}
     </Wrapper>
   );
 };

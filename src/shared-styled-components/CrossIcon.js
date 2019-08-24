@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { X } from "styled-icons/feather/X";
 
 const CrossIcon = styled(X)`
