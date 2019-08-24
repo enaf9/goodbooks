@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.complementary.lightGrey};
   padding: 15px;
   position: relative;
+  margin-bottom: 20px;
 `;
 
 export default Wrapper;

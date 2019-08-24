@@ -33,7 +33,7 @@ const Review = () => {
         Na začátku knihy jsem trošičku tápal, ale pak se děj rozjel a závěr byl
         vynikající.
       </Text>
-      <ReviewRating />
+      <ReviewRating review />
       {renderDeleteIcon()}
     </Wrapper>
   );
