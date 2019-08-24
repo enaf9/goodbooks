@@ -8,15 +8,15 @@ import Title from "./Title";
 import Author from "./Author";
 import Wrapper from "./Wrapper";
 
-const BookItem = () => {
+const BookItem = props => {
   return (
     <StyledBookItem to="/book/1">
       <Wrapper>
         <Rating />
-        <Image src="https://www.databazeknih.cz/images_books/11_/114615/big_archiv-bourne-zare-cesta-kralu-iRU-114615.jpg" />
+        <Image src={props.coverImage} />
       </Wrapper>
-      <Title>Cesta králů</Title>
-      <Author>Brandon Sanderson</Author>
+      <Title>{props.title}</Title>
+      <Author>{props.author}</Author>
     </StyledBookItem>
   );
 };
