@@ -16,6 +16,8 @@ const booksReducer = (
     }
   ],
   action
-) => {};
+) => {
+  return state;
+};
 
 export default booksReducer;
