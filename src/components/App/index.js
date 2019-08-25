@@ -23,6 +23,7 @@ import UsersPage from "../pages/UsersPage/index";
 import SearchResultsPage from "../pages/SearchResultsPage/index";
 import AuthorPage from "../pages/AuthorPage/index";
 import ProfilePage from "../pages/ProfilePage/index";
+import AllBooksPage from "../pages/AllBooksPage/index";
 import SignInOverlay from "../overlays/SignInOverlay";
 
 const App = () => {
@@ -47,6 +48,11 @@ const App = () => {
               <Route path="/book/:id" component={BookPage} />
               <Route path="/author/:id" component={AuthorPage} />
               <Route path="/user/:id" component={ProfilePage} />
+              <Route path="/my-profile" component={ProfilePage} />
+              <Route
+                path="/all-books/:user/:section"
+                component={AllBooksPage}
+              />
             </Switch>
           </Wrapper>
         </Content>

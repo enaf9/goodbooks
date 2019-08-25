@@ -5,19 +5,41 @@ import StyledBookList from "./StyledBookList";
 
 //components imports
 import BookItem from "../../../../../BookItem";
+import IconsBar from "./IconsBar";
 
 const BookList = props => {
+  const ownProfile = window.location.pathname.includes("my-profile");
+
   return (
     <StyledBookList>
-      <BookItem />
-      <BookItem />
-      <BookItem />
-      <BookItem />
-      <BookItem />
-      <BookItem />
-      <BookItem />
-      <BookItem />
-      <BookItem />
+      <div>
+        <BookItem />
+        {ownProfile ? <IconsBar section={props.section} /> : null}
+      </div>
+      <div>
+        <BookItem />
+        {ownProfile ? <IconsBar section={props.section} /> : null}
+      </div>
+      <div>
+        <BookItem />
+        {ownProfile ? <IconsBar section={props.section} /> : null}
+      </div>
+      <div>
+        <BookItem />
+        {ownProfile ? <IconsBar section={props.section} /> : null}
+      </div>
+      <div>
+        <BookItem />
+        {ownProfile ? <IconsBar section={props.section} /> : null}
+      </div>
+      <div>
+        <BookItem />
+        {ownProfile ? <IconsBar section={props.section} /> : null}
+      </div>
+      <div>
+        <BookItem />
+        {ownProfile ? <IconsBar section={props.section} /> : null}
+      </div>
     </StyledBookList>
   );
 };

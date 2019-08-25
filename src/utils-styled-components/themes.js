@@ -3,7 +3,8 @@ const theme = {
     background: {
       lightGrey: "#FBFBFB",
       white: "#FFFFFF",
-      lightOrange: "#FBEEE4"
+      lightOrange: "#FBEEE4",
+      shade: "rgb(0, 0, 0, 0.15)"
     },
     text: {
       darkGrey: "#333333",
