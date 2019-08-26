@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import { showPopUp } from "../../store/actions/deletePopUpActions";
+
 import BookItemBox from "../BookItemBox/index";
 import Rating from "../Rating/index";
 
@@ -7,12 +10,21 @@ import Rating from "../Rating/index";
 import Wrapper from "./Wrapper";
 import DeleteIcon from "../../shared-styled-components/DeleteIcon";
 
+//components imports
+import DeletePopUp from "../pop-ups/DeletePopUp";
+
 const RatingCard = () => {
   const [showClose, setShowClose] = useState(true);
+  const showDeleteMessage = useSelector(state => state.deletePopUpReducer);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(showPopUp());
+  };
 
   const renderDeleteIcon = () => {
     if (showClose) {
-      return <DeleteIcon />;
+      return <DeleteIcon onClick={handleClick} />;
     }
   };
 
@@ -21,6 +33,7 @@ const RatingCard = () => {
       <BookItemBox />
       <Rating size="16px" />
       {renderDeleteIcon()}
+      {showDeleteMessage && <DeletePopUp />}
     </Wrapper>
   );
 };

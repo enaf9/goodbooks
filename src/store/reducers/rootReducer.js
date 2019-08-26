@@ -6,6 +6,7 @@ import menuReducer from "./menuReducer";
 import menuSearchBarReducer from "./menuSearchBarReducer";
 import tabReducer from "./tabReducer";
 import signFormReducer from "./signFormReducer";
+import deletePopUpReducer from "./deletePopUpReducer";
 
 const rootReducer = combineReducers({
   booksReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   menuReducer,
   menuSearchBarReducer,
   tabReducer,
-  signFormReducer
+  signFormReducer,
+  deletePopUpReducer
 });
 
 export default rootReducer;
