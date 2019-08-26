@@ -1,21 +1,40 @@
 import React from "react";
+
+import setTabActive from "../../../store/actions/tabActions";
+
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../../../store/actions/menuActions";
+import { toggleForm } from "../../../store/actions/signFormActions";
 
 import NavLink from "./NavLink/index";
 
 //styled components imports
 import Wrapper from "./Wrapper";
+import SignInOverlay from "../SignInOverlay";
 
 const MenuOverlay = props => {
   const isActive = props.active ? true : false;
   const isLogged = useSelector(state => state.loggedReducer);
+  const signOverlayIsOpen = useSelector(state => state.signFormReducer);
+
   const dispatch = useDispatch();
 
   const closeMenuOverlay = () => {
     dispatch(closeMenu());
   };
+
+  async function openSignOverlay(e) {
+    console.log(e.target.id);
+
+    let promise = new Promise((resolve, reject) => {
+      dispatch(setTabActive(e.target.id));
+      resolve();
+    });
+    await promise;
+
+    dispatch(toggleForm());
+  }
 
   return (
     <Wrapper active={isActive} onClick={closeMenuOverlay}>
@@ -32,10 +51,11 @@ const MenuOverlay = props => {
           <NavLink text="Knihy" url="/books" />
           <NavLink text="Autoři" url="/authors" />
           <NavLink text="Uživatelé" url="/users" />
-          <NavLink text="Přihlášení" url="/login" />
-          <NavLink text="Registrace" url="/registration" />
+          <NavLink text="Přihlášení" showOverlay={openSignOverlay} id="0" />
+          <NavLink text="Registrace" showOverlay={openSignOverlay} id="1" />
         </>
       )}
+      <SignInOverlay isOpen={signOverlayIsOpen} />
     </Wrapper>
   );
 };

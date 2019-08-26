@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { closeForm } from "../../../store/actions/signFormActions";
 
 //styled components imports
+import Background from "./Background";
 import StyledOverlay from "./StyledOverlay";
 import CloseIcon from "./CloseIcon";
 import StyledLogo from "./StyledLogo";
@@ -24,7 +25,7 @@ const SignInOverlay = () => {
     dispatch(closeForm());
   };
 
-  switch (currentTab) {
+  switch (Number(currentTab)) {
     case 0:
       content = <SignInForm />;
       break;
@@ -37,12 +38,15 @@ const SignInOverlay = () => {
   }
 
   return (
-    <StyledOverlay isOpen={overlayIsOpen}>
-      <CloseIcon size="24" onClick={closeOverlay} />
-      <StyledLogo />
-      <Tabs tabs={tabs} />
-      {content}
-    </StyledOverlay>
+    <>
+      <Background isOpen={overlayIsOpen} onClick={closeOverlay} />
+      <StyledOverlay isOpen={overlayIsOpen}>
+        <CloseIcon size="24" onClick={closeOverlay} />
+        <StyledLogo />
+        <Tabs tabs={tabs} />
+        {content}
+      </StyledOverlay>
+    </>
   );
 };
 

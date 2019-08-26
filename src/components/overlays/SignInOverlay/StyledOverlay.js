@@ -6,13 +6,13 @@ const isOpen = css`
   @media (${props => props.theme.mediaQueries.tablet}) {
     height: auto;
     width: 475px;
-    left: calc(100vw / 2 - 475px / 2);
-    top: calc(100vh / 2 - 100% / 2);
+    left: calc((100vw - 475px) / 2);
+    top: calc((100vh - 90%) / 2);
   }
 `;
 
 const StyledOverlay = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 0px;
   overflow: hidden;
@@ -20,7 +20,7 @@ const StyledOverlay = styled.div`
   top: 0;
   left: 0;
   transition: height 0.7s ease-in-out;
-
+  z-index: 20;
   ${props => (props.isOpen ? isOpen : "")};
 `;
 

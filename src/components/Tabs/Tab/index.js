@@ -18,7 +18,7 @@ const Tab = props => {
 
   return (
     <StyledTab onClick={handleClick}>
-      {currentTab === props.id ? (
+      {Number(currentTab) === props.id ? (
         <>
           <Name active>{props.name}</Name>
           <UnderLine active />

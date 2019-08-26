@@ -24,6 +24,8 @@ import SearchResultsPage from "../pages/SearchResultsPage/index";
 import AuthorPage from "../pages/AuthorPage/index";
 import ProfilePage from "../pages/ProfilePage/index";
 import AllBooksPage from "../pages/AllBooksPage/index";
+import SignInPage from "../pages/SignInPage/index";
+import SignUpPage from "../pages/SignUpPage/index";
 import SignInOverlay from "../overlays/SignInOverlay";
 
 const App = () => {
@@ -53,6 +55,8 @@ const App = () => {
                 path="/all-books/:user/:section"
                 component={AllBooksPage}
               />
+              <Route path="/login" component={SignInPage} />
+              <Route path="/registration" component={SignUpPage} />
             </Switch>
           </Wrapper>
         </Content>
