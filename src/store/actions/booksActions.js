@@ -6,15 +6,23 @@ const addBook = book => {
 
 const getBooks = () => {
   return (dispatch, getState) => {
-    let books = [];
-    db.collection("books")
-      .get()
-      .then(snapshot => {
-        snapshot.docs.map(doc => {
-          books.push(doc.data());
+    let promis = new Promise((resolve, reject) => {
+      let books = [];
+      db.collection("books")
+        .get()
+        .then(snapshot => {
+          snapshot.docs.map(doc => {
+            books.push(doc.data());
+          });
+
+          dispatch({ type: "GET_BOOKS", books });
+          resolve(books);
+        })
+        .catch(error => {
+          console.log(error);
         });
-        console.log(dispatch({ type: "GET_BOOKS", books }));
-      });
+    });
+    return promis;
   };
 };
 

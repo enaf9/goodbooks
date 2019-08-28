@@ -34,6 +34,12 @@ const MainPage = () => {
     // getBooks();
     // dispatch(getBooks());
     // setBooksLoaded(true);
+
+    const test = async () => {
+      await dispatch(getBooks());
+      setBooksLoaded(true);
+    };
+    test();
   }, []);
 
   const renderBookList = () => {
