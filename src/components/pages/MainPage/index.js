@@ -22,24 +22,9 @@ const MainPage = () => {
   const dispatch = useDispatch();
   const [booksLoaded, setBooksLoaded] = useState(false);
 
-  useEffect(() => {
-    // const getBooks = async () => {
-    //   const snapshot = await db.collection("books").get();
-    //   const books = snapshot.docs;
-    //   for (let book of books) {
-    //     dispatch(addBook(book.data()));
-    //   }
-    //   setBooksLoaded(true);
-    // };
-    // getBooks();
-    // dispatch(getBooks());
-    // setBooksLoaded(true);
-
-    const test = async () => {
-      await dispatch(getBooks());
-      setBooksLoaded(true);
-    };
-    test();
+  useEffect(async () => {
+    await dispatch(getBooks());
+    setBooksLoaded(true);
   }, []);
 
   const renderBookList = () => {
