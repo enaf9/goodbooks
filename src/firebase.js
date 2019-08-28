@@ -1,9 +1,10 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/auth";
 
 //Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyDOc1Ss9ZYNCji-8xllQ-LJ1H47hwtuvbo",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "goodbooks-37a92.firebaseapp.com",
   databaseURL: "https://goodbooks-37a92.firebaseio.com",
   projectId: "goodbooks-37a92",
@@ -13,5 +14,8 @@ var firebaseConfig = {
 };
 //initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+export const db = firebase.firestore();
+export const auth = firebase.auth();
 
 export default firebase;

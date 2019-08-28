@@ -14,8 +14,8 @@ import BookList from "./BookList/index";
 import AuthorList from "./AuthorList/index";
 import Banner from "./Banner/index";
 
-import firebase from "../../../firebase";
-import { addBook } from "../../../store/actions/booksActions";
+import { db } from "../../../firebase";
+import { addBook, getBooks } from "../../../store/actions/booksActions";
 import { ReactComponent as Loading } from "../../../images/loading.svg";
 
 const MainPage = () => {
@@ -23,16 +23,17 @@ const MainPage = () => {
   const [booksLoaded, setBooksLoaded] = useState(false);
 
   useEffect(() => {
-    const getBooks = async () => {
-      const db = firebase.firestore();
-      const snapshot = await db.collection("books").get();
-      const books = snapshot.docs;
-      for (let book of books) {
-        dispatch(addBook(book.data()));
-      }
-      setBooksLoaded(true);
-    };
-    getBooks();
+    // const getBooks = async () => {
+    //   const snapshot = await db.collection("books").get();
+    //   const books = snapshot.docs;
+    //   for (let book of books) {
+    //     dispatch(addBook(book.data()));
+    //   }
+    //   setBooksLoaded(true);
+    // };
+    // getBooks();
+    // dispatch(getBooks());
+    // setBooksLoaded(true);
   }, []);
 
   const renderBookList = () => {
@@ -46,6 +47,7 @@ const MainPage = () => {
       );
     }
   };
+
   return (
     <StyledMainPage>
       <Banner />

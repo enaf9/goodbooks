@@ -50,6 +50,15 @@ const IconsBar = props => {
         </>
       );
       break;
+    default:
+      bar = (
+        <>
+          <BookmarkPlusIcon />
+          <BookIcon />
+          <CheckIcon />
+          <DeleteIcon size="20" />
+        </>
+      );
   }
   return <Wrapper>{bar}</Wrapper>;
 };

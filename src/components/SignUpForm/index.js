@@ -1,19 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 
 //styled components imports
 import StyledForm from "./StyledForm";
 import InputField from "../../shared-styled-components/InputField";
 import StyledButton from "./StyledButton";
 
-//components imports
+import { auth, db } from "../../firebase";
 
 const SignUpForm = () => {
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmationPassword: ""
+  });
+
+  const handleChange = e => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const cred = await auth.createUserWithEmailAndPassword(
+      user.email,
+      user.password
+    );
+    console.log(cred);
+  };
+
   return (
-    <StyledForm>
-      <InputField type="text" placeholder="Uživatelské jméno" />
-      <InputField type="text" placeholder="E-mail" />
-      <InputField type="password" placeholder="Heslo" />
-      <InputField type="password" placeholder="Potvrzení hesla" />
+    <StyledForm onSubmit={handleSubmit}>
+      <InputField
+        type="text"
+        placeholder="Uživatelské jméno"
+        name="username"
+        value={user.username}
+        onChange={handleChange}
+        required
+      />
+      <InputField
+        type="text"
+        placeholder="E-mail"
+        name="email"
+        value={user.email}
+        onChange={handleChange}
+        required
+      />
+      <InputField
+        type="password"
+        placeholder="Heslo"
+        name="password"
+        value={user.password}
+        onChange={handleChange}
+        required
+      />
+      <InputField
+        type="password"
+        placeholder="Potvrzení hesla"
+        name="confirmationPassword"
+        value={user.confirmationPassword}
+        onChange={handleChange}
+        required
+      />
       <StyledButton>Registrovat</StyledButton>
     </StyledForm>
   );
