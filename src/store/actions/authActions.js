@@ -15,9 +15,9 @@ const signUp = user => {
         .doc(cred.user.uid)
         .set({ username: user.username });
 
-      dispatch({ type: "SIGN_UP", user });
+      dispatch({ type: "SIGN_UP_SUCCESS", user });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: "SIGN_UP_FAILURE", error });
     }
   };
 };
