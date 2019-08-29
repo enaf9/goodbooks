@@ -10,7 +10,8 @@ const signUp = user => {
 
       console.log(cred.user);
 
-      db.collection("users")
+      await db
+        .collection("users")
         .doc(cred.user.uid)
         .set({ username: user.username });
 
