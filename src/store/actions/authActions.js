@@ -35,4 +35,7 @@ const signIn = user => {
   };
 };
 
-export { signUp, signIn };
+const setMsg = msg => {
+  return { type: "SET_MSG", msg };
+};
+export { signUp, signIn, setMsg };

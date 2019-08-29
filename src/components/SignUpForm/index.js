@@ -6,6 +6,7 @@ import InputField from "../../shared-styled-components/InputField";
 import StyledButton from "./StyledButton";
 
 import { auth, db } from "../../firebase";
+import { setMsg } from "../../store/actions/authActions";
 
 const SignUpForm = () => {
   const [user, setUser] = useState({
@@ -14,8 +15,6 @@ const SignUpForm = () => {
     password: "",
     confirmationPassword: ""
   });
-
-  const [msg, setMsg] = useState(null);
 
   const handleChange = e => {
     setUser({
@@ -26,7 +25,7 @@ const SignUpForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-
+    let msg = "";
     try {
       const cred = await auth.createUserWithEmailAndPassword(
         user.email,
@@ -36,13 +35,12 @@ const SignUpForm = () => {
         .collection("users")
         .doc(cred.user.uid)
         .set({ username: user.username });
-
-      setMsg("Uživatel byl úspěšně zaregistrován.");
+      msg = "Uživatel byl úspěšně zaregistrován.";
+      setMsg(msg);
     } catch (error) {
-      setMsg(`Při registraci nastala chyba: ${error.msg}`);
+      msg = `Při registraci nastala chyba: ${error}`;
+      setMsg(msg);
     }
-
-    console.log(msg);
   };
 
   return (
