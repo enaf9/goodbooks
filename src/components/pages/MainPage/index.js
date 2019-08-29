@@ -14,17 +14,20 @@ import BookList from "./BookList/index";
 import AuthorList from "./AuthorList/index";
 import Banner from "./Banner/index";
 
-import { db } from "../../../firebase";
-import { addBook, getBooks } from "../../../store/actions/booksActions";
+import { getBooks } from "../../../store/actions/booksActions";
 import { ReactComponent as Loading } from "../../../images/loading.svg";
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const [booksLoaded, setBooksLoaded] = useState(false);
 
-  useEffect(async () => {
-    await dispatch(getBooks());
-    setBooksLoaded(true);
+  useEffect(() => {
+    const getBooksAndDispatch = async () => {
+      await dispatch(getBooks());
+      setBooksLoaded(true);
+    };
+
+    getBooksAndDispatch();
   }, []);
 
   const renderBookList = () => {

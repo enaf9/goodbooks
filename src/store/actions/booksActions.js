@@ -6,7 +6,7 @@ const addBook = book => {
 
 const getBooks = () => {
   return (dispatch, getState) => {
-    let promis = new Promise((resolve, reject) => {
+    let promise = new Promise((resolve, reject) => {
       let books = [];
       db.collection("books")
         .get()
@@ -22,7 +22,7 @@ const getBooks = () => {
           console.log(error);
         });
     });
-    return promis;
+    return promise;
   };
 };
 
