@@ -10,7 +10,7 @@ import StyledButton from "./StyledButton";
 const SignInForm = () => {
   return (
     <StyledForm>
-      <InputField type="text" placeholder="E-mail" />
+      <InputField type="email" placeholder="E-mail" />
       <InputField type="password" placeholder="Heslo" />
       <StyledButton>Přihlásit</StyledButton>
     </StyledForm>

@@ -1,12 +1,23 @@
 import { auth, db } from "../../firebase";
 
-const signUp = (email, password) => {
-  return (dispatch, getState) => {
-    console.log("TESSSST");
-    auth.createUserWithEmailAndPassword(email, password).then(cred => {
+const signUp = user => {
+  return async (dispatch, getState) => {
+    try {
+      let cred = await auth.createUserWithEmailAndPassword(
+        user.email,
+        user.password
+      );
+
       console.log(cred.user);
-      dispatch({ type: "SIGN_UP", user: cred.user });
-    });
+
+      db.collection("users")
+        .doc(cred.user.uid)
+        .set({ username: user.username });
+
+      dispatch({ type: "SIGN_UP", user });
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 

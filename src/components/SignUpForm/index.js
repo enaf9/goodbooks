@@ -27,7 +27,7 @@ const SignUpForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const test = await dispatch(signUp(user.email, user.password));
+    const test = await dispatch(signUp(user));
   };
 
   return (
@@ -41,7 +41,7 @@ const SignUpForm = () => {
         required
       />
       <InputField
-        type="text"
+        type="email"
         placeholder="E-mail"
         name="email"
         value={user.email}
