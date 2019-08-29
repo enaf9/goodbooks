@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 //styled components imports
 import StyledForm from "./StyledForm";
 import InputField from "../../shared-styled-components/InputField";
 import StyledButton from "./StyledButton";
 
-import { signUp } from "../../store/actions/authActions";
+import { auth, db } from "../../firebase";
 
 const SignUpForm = () => {
-  const signUpStatus = useSelector(state => state.authReducer);
-  const dispatch = useDispatch();
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
     confirmationPassword: ""
   });
+
+  const [msg, setMsg] = useState(null);
 
   const handleChange = e => {
     setUser({
@@ -28,8 +27,22 @@ const SignUpForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    await dispatch(signUp(user));
-    console.log(signUpStatus);
+    try {
+      const cred = await auth.createUserWithEmailAndPassword(
+        user.email,
+        user.password
+      );
+      await db
+        .collection("users")
+        .doc(cred.user.uid)
+        .set({ username: user.username });
+
+      setMsg("Uživatel byl úspěšně zaregistrován.");
+    } catch (error) {
+      setMsg(`Při registraci nastala chyba: ${error.msg}`);
+    }
+
+    console.log(msg);
   };
 
   return (
