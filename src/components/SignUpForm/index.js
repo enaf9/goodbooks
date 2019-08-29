@@ -39,10 +39,8 @@ const SignUpForm = () => {
 
       setMsg("Uživatel byl úspěšně zaregistrován.");
     } catch (error) {
-      setMsg(`Při registraci nastala chyba: ${error.msg}`);
+      setMsg(`Při registraci nastala chyba: ${error}`);
     }
-
-    console.log(msg);
   };
 
   return (
@@ -79,6 +77,7 @@ const SignUpForm = () => {
         onChange={handleChange}
         required
       />
+      {msg}
       <StyledButton>Registrovat</StyledButton>
     </StyledForm>
   );

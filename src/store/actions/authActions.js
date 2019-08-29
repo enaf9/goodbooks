@@ -1,7 +1,7 @@
 import { auth, db } from "../../firebase";
 
 const signUp = user => {
-  return async (dispatch, getState) => {
+  let promise =  new Promise( (dispatch, getState) => {
     try {
       let cred = await auth.createUserWithEmailAndPassword(
         user.email,
@@ -19,7 +19,8 @@ const signUp = user => {
     } catch (error) {
       dispatch({ type: "SIGN_UP_FAILURE", error });
     }
-  };
+  })
+;
 };
 
 const signIn = user => {
