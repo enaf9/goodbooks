@@ -7,7 +7,7 @@ import InputField from "../../shared-styled-components/InputField";
 import StyledButton from "./StyledButton";
 
 import { auth, db } from "../../firebase";
-import { setMsg } from "../../store/actions/authActions";
+import { setSignUpMsg } from "../../store/actions/messagesActions";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -38,10 +38,10 @@ const SignUpForm = () => {
         .doc(cred.user.uid)
         .set({ username: user.username });
       msg = "Uživatel byl úspěšně zaregistrován.";
-      dispatch(setMsg(msg));
+      dispatch(setSignUpMsg({ type: "succes", msg }));
     } catch (error) {
       msg = `Při registraci nastala chyba: ${error}`;
-      dispatch(setMsg(msg));
+      dispatch(setSignUpMsg({ type: "error", msg }));
     }
   };
 
@@ -79,7 +79,6 @@ const SignUpForm = () => {
         onChange={handleChange}
         required
       />
-      {msg}
       <StyledButton>Registrovat</StyledButton>
     </StyledForm>
   );
