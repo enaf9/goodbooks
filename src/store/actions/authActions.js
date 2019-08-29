@@ -8,14 +8,14 @@ const signUp = user => {
         user.password
       );
 
-      console.log(cred.user);
-
       await db
         .collection("users")
         .doc(cred.user.uid)
         .set({ username: user.username });
 
-      dispatch({ type: "SIGN_UP_SUCCESS", user });
+      const success = "Uživatel byl úspěšně zaregistrován.";
+
+      dispatch({ type: "SIGN_UP_SUCCESS", success });
     } catch (error) {
       dispatch({ type: "SIGN_UP_FAILURE", error });
     }
@@ -26,8 +26,9 @@ const signIn = user => {
   return async (dispatch, getState) => {
     try {
       await auth.signInUserWithEmailAndPassword(user.email, user.password);
+      const success = "Uživatel byl úspěšně zaregistrován.";
 
-      dispatch({ type: "SIGN_IN_SUCCESS", user });
+      dispatch({ type: "SIGN_IN_SUCCESS", success });
     } catch (error) {
       dispatch({ type: "SIGN_IN_FAILURE", error });
     }

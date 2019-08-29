@@ -15,9 +15,7 @@ import NavLinks from "./NavLinks/index";
 import UserDropdown from "./UserDropdown/index";
 
 const Navbar = () => {
-  // const isLogged = useSelector(state => state.loggedReducer);
-  const isLogged = useSelector(state => state.authReducer.user);
-  console.log(isLogged);
+  const isLogged = useSelector(state => state.loggedReducer);
   const isMenuSearchBarReducer = useSelector(
     state => state.menuSearchBarReducer
   );
