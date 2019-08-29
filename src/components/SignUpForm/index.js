@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //styled components imports
 import StyledForm from "./StyledForm";
@@ -9,6 +9,7 @@ import StyledButton from "./StyledButton";
 import { signUp } from "../../store/actions/authActions";
 
 const SignUpForm = () => {
+  const signUpStatus = useSelector(state => state.authReducer);
   const dispatch = useDispatch();
   const [user, setUser] = useState({
     username: "",
@@ -27,7 +28,8 @@ const SignUpForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const test = await dispatch(signUp(user));
+    await dispatch(signUp(user));
+    console.log(signUpStatus);
   };
 
   return (
