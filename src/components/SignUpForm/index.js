@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 //styled components imports
 import StyledForm from "./StyledForm";
@@ -9,6 +10,7 @@ import { auth, db } from "../../firebase";
 import { setMsg } from "../../store/actions/authActions";
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -36,10 +38,10 @@ const SignUpForm = () => {
         .doc(cred.user.uid)
         .set({ username: user.username });
       msg = "Uživatel byl úspěšně zaregistrován.";
-      setMsg(msg);
+      dispatch(setMsg(msg));
     } catch (error) {
       msg = `Při registraci nastala chyba: ${error}`;
-      setMsg(msg);
+      dispatch(setMsg(msg));
     }
   };
 
