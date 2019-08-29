@@ -4,6 +4,10 @@ const authReducer = (state = { user: null, error: null }, action) => {
       return { ...state, user: action.user };
     case "SIGN_UP_FAILURE":
       return { ...state, error: action.error };
+    case "SIGN_IN_SUCCESS":
+      return { ...state, user: action.user };
+    case "SIGN_IN_FAILURE":
+      return { ...state, error: action.error };
     default:
       return state;
   }

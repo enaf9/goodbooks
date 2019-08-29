@@ -22,4 +22,16 @@ const signUp = user => {
   };
 };
 
-export { signUp };
+const signIn = user => {
+  return async (dispatch, getState) => {
+    try {
+      await auth.signInUserWithEmailAndPassword(user.email, user.password);
+
+      dispatch({ type: "SIGN_IN_SUCCESS", user });
+    } catch (error) {
+      dispatch({ type: "SIGN_IN_FAILURE", error });
+    }
+  };
+};
+
+export { signUp, signIn };

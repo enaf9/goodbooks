@@ -11,7 +11,6 @@ import authReducer from "./authReducer";
 
 const rootReducer = combineReducers({
   booksReducer,
-  loggedReducer,
   menuReducer,
   menuSearchBarReducer,
   tabReducer,
