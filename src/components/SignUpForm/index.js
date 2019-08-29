@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 //styled components imports
 import StyledForm from "./StyledForm";
 import InputField from "../../shared-styled-components/InputField";
 import StyledButton from "./StyledButton";
 
-import { auth, db } from "../../firebase";
+import { signUp } from "../../store/actions/authActions";
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -24,11 +26,8 @@ const SignUpForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const cred = await auth.createUserWithEmailAndPassword(
-      user.email,
-      user.password
-    );
-    console.log(cred);
+
+    const test = await dispatch(signUp(user.email, user.password));
   };
 
   return (

@@ -5,7 +5,6 @@ const booksReducer = (state = [], action) => {
       newState.push(action.book);
       return newState;
     case "GET_BOOKS":
-      console.log(action.books);
       return [...state, ...action.books];
     default:
       return state;
