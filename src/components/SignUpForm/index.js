@@ -38,7 +38,7 @@ const SignUpForm = () => {
         .doc(cred.user.uid)
         .set({ username: user.username });
       msg = "Uživatel byl úspěšně zaregistrován.";
-      dispatch(setSignUpMsg({ type: "succes", msg }));
+      dispatch(setSignUpMsg({ type: "success", msg }));
     } catch (error) {
       msg = `Při registraci nastala chyba: ${error}`;
       dispatch(setSignUpMsg({ type: "error", msg }));

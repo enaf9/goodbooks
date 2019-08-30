@@ -11,4 +11,4 @@ const messageReducer = (state = { signUpMsg: {}, signInMsg: "" }, action) => {
   }
 };
 
-export default messageReducer;
+export default messagesReducer;
