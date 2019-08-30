@@ -1,4 +1,4 @@
-const messageReducer = (state = { signUpMsg: {}, signInMsg: "" }, action) => {
+const messagesReducer = (state = { signUpMsg: {}, signInMsg: "" }, action) => {
   switch (action.type) {
     case "SET_SIGN_UP_MSG":
       return { ...state, signUpMsg: action.msg };
