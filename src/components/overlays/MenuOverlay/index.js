@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../../../store/actions/menuActions";
 import { toggleForm } from "../../../store/actions/signFormActions";
+import { resetMsg } from "../../../store/actions/messagesActions";
 
 import NavLink from "./NavLink/index";
 
@@ -13,12 +14,19 @@ import NavLink from "./NavLink/index";
 import Wrapper from "./Wrapper";
 import SignInOverlay from "../SignInOverlay";
 
+import { auth } from "../../../firebase";
+
 const MenuOverlay = props => {
   const isActive = props.active ? true : false;
-  const isLogged = useSelector(state => state.loggedReducer);
+  const isLogged = useSelector(state => state.loggedReducer.isLogged);
   const signOverlayIsOpen = useSelector(state => state.signFormReducer);
 
   const dispatch = useDispatch();
+
+  const handleClick = async () => {
+    await auth.signOut();
+    dispatch(resetMsg());
+  };
 
   const closeMenuOverlay = () => {
     dispatch(closeMenu());
@@ -44,7 +52,7 @@ const MenuOverlay = props => {
           <NavLink text="Autoři" url="/authors" />
           <NavLink text="Uživatelé" url="/users" />
           <NavLink text="Můj Profil" url="/my-profile" />
-          <NavLink text="Odhlášení" url="/logout" />
+          <NavLink text="Odhlášení" url="/" signOut={handleClick} />
         </>
       ) : (
         <>

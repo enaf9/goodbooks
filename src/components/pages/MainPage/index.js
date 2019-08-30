@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Media from "react-media";
 
 //styled components imports
 import StyledMainPage from "./StyledMainPage";
@@ -13,6 +14,7 @@ import LoadingWrapper from "./LoadingWrapper";
 import BookList from "./BookList/index";
 import AuthorList from "./AuthorList/index";
 import Banner from "./Banner/index";
+import BookBanner from "./BookBanner";
 
 import { getBooks } from "../../../store/actions/booksActions";
 import { ReactComponent as Loading } from "../../../images/loading.svg";
@@ -20,6 +22,7 @@ import { ReactComponent as Loading } from "../../../images/loading.svg";
 const MainPage = () => {
   const dispatch = useDispatch();
   const [booksLoaded, setBooksLoaded] = useState(false);
+  const isLogged = useSelector(state => state.loggedReducer.isLogged);
 
   useEffect(() => {
     const getBooksAndDispatch = async () => {
@@ -42,9 +45,25 @@ const MainPage = () => {
     }
   };
 
+  const renderBanner = () => {
+    console.log(isLogged);
+
+    if (isLogged) {
+      return (
+        <Media query="(min-width: 1024px)">
+          {matches =>
+            matches ? <BookBanner areBooksLoaded={booksLoaded} /> : null
+          }
+        </Media>
+      );
+    } else {
+      return <Banner />;
+    }
+  };
+
   return (
     <StyledMainPage>
-      <Banner />
+      {renderBanner()}
       <Wrapper>
         <Title>nové knihy</Title>
         {renderBookList()}

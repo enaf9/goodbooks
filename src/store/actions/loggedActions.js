@@ -1,13 +1,19 @@
-const logIn = () => {
+const signIn = () => {
   return {
-    type: "LOG_IN"
+    type: "SIGN_IN"
   };
 };
 
-const logOut = () => {
+const signOut = () => {
   return {
-    type: "LOG_OUT"
+    type: "SIGN_OUT"
   };
 };
 
-export { logIn, logOut };
+const setStatus = () => {
+  return {
+    type: "SET_STATUS"
+  };
+};
+
+export { signIn, signOut, setStatus };

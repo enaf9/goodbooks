@@ -15,7 +15,7 @@ import NavLinks from "./NavLinks/index";
 import UserDropdown from "./UserDropdown/index";
 
 const Navbar = () => {
-  const isLogged = useSelector(state => state.loggedReducer);
+  const isLogged = useSelector(state => state.loggedReducer.isLogged);
   const isMenuSearchBarReducer = useSelector(
     state => state.menuSearchBarReducer
   );
@@ -24,7 +24,7 @@ const Navbar = () => {
     if (isMenuSearchBarReducer) {
       return null;
     } else {
-      return <NavLinks />;
+      return <NavLinks isLogged={isLogged} />;
     }
   };
 

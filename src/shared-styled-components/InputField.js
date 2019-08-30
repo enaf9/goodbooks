@@ -3,7 +3,10 @@ import styled from "styled-components";
 const InputField = styled.input`
   width: 315px;
   height: 40px;
-  border: none;
+  border: ${props =>
+    props.isError
+      ? `1px solid ${props.theme.colors.complementary.red};`
+      : "none"};
   border-radius: 10px;
   padding: 0 16px;
   color: ${props => props.theme.colors.text.darkGrey};

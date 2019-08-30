@@ -5,11 +5,12 @@ import GlobalStyle from "../../utils-styled-components/global";
 import { ThemeProvider } from "styled-components";
 import theme from "../../utils-styled-components/themes";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 //styled components imports
 import Content from "./Content";
 import Wrapper from "./Wrapper";
+import LogoWrapper from "./LogoWrapper";
 
 //components imports
 import Navbar from "../Navbar/index";
@@ -28,39 +29,74 @@ import SignInPage from "../pages/SignInPage/index";
 import SignUpPage from "../pages/SignUpPage/index";
 import SignInOverlay from "../overlays/SignInOverlay";
 
+import { ReactComponent as Loading } from "../../images/loading-app.svg";
+
+import { auth } from "../../firebase";
+
+import { signIn, signOut, setStatus } from "../../store/actions/loggedActions";
+
 const App = () => {
+  const dispatch = useDispatch();
+  const isloggedSetup = useSelector(state => state.loggedReducer.isLoggedSetup);
+
   const isMenuOpen = useSelector(state => state.menuReducer);
+
+  auth.onAuthStateChanged(user => {
+    console.log(user);
+    if (user) {
+      dispatch(signIn());
+    } else {
+      dispatch(signOut());
+    }
+    dispatch(setStatus());
+  });
+
+  const renderApp = () => {
+    console.log(isloggedSetup);
+    if (isloggedSetup) {
+      return (
+        <>
+          <Content>
+            <Navbar />
+            {isMenuOpen ? <MenuOverlay active /> : <MenuOverlay />}
+            <Wrapper>
+              <SignInOverlay />
+              <Switch>
+                <Route exact path="/" component={MainPage} />
+                <Route path="/books" component={BooksPage} />
+                <Route path="/authors" component={AuthorsPage} />
+                <Route path="/users" component={UsersPage} />
+                <Route path="/results" component={SearchResultsPage} />
+                <Route path="/book/:id" component={BookPage} />
+                <Route path="/author/:id" component={AuthorPage} />
+                <Route path="/user/:id" component={ProfilePage} />
+                <Route path="/my-profile" component={ProfilePage} />
+                <Route
+                  path="/all-books/:user/:section"
+                  component={AllBooksPage}
+                />
+                <Route path="/login" component={SignInPage} />
+                <Route path="/registration" component={SignUpPage} />
+              </Switch>
+            </Wrapper>
+          </Content>
+          <Footer />
+        </>
+      );
+    } else {
+      return (
+        <LogoWrapper>
+          <Loading />
+        </LogoWrapper>
+      );
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         {isMenuOpen ? <GlobalStyle noScroll /> : <GlobalStyle />}
-
-        <Content>
-          <Navbar />
-          {isMenuOpen ? <MenuOverlay active /> : <MenuOverlay />}
-          <Wrapper>
-            <SignInOverlay />
-            <Switch>
-              <Route exact path="/" component={MainPage} />
-              <Route path="/books" component={BooksPage} />
-              <Route path="/authors" component={AuthorsPage} />
-              <Route path="/users" component={UsersPage} />
-              <Route path="/results" component={SearchResultsPage} />
-              <Route path="/book/:id" component={BookPage} />
-              <Route path="/author/:id" component={AuthorPage} />
-              <Route path="/user/:id" component={ProfilePage} />
-              <Route path="/my-profile" component={ProfilePage} />
-              <Route
-                path="/all-books/:user/:section"
-                component={AllBooksPage}
-              />
-              <Route path="/login" component={SignInPage} />
-              <Route path="/registration" component={SignUpPage} />
-            </Switch>
-          </Wrapper>
-        </Content>
-        <Footer />
+        {renderApp()}
       </BrowserRouter>
     </ThemeProvider>
   );
