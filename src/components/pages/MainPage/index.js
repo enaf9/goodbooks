@@ -16,7 +16,11 @@ import AuthorList from "./AuthorList/index";
 import Banner from "./Banner/index";
 import BookBanner from "./BookBanner";
 
-import { getBooks } from "../../../store/actions/booksActions";
+import {
+  getBooks,
+  getNewBooks,
+  getCurrentlyPopularBooks
+} from "../../../store/actions/booksActions";
 import { getFavoriteAuthors } from "../../../store/actions/authorsActions";
 import { ReactComponent as Loading } from "../../../images/loading.svg";
 
@@ -25,10 +29,19 @@ const MainPage = () => {
   const [booksLoaded, setBooksLoaded] = useState(false);
   const [authorsLoaded, setAuthorsLoaded] = useState(false);
   const isLogged = useSelector(state => state.loggedReducer.isLogged);
+  const newBooks = useSelector(state => state.booksReducer.newBooks);
+  const currentlyPopularBooks = useSelector(
+    state => state.booksReducer.currentlyPopularBooks
+  );
 
   useEffect(() => {
     const getBooksAndDispatch = async () => {
-      await dispatch(getBooks());
+      const books = [
+        dispatch(getNewBooks()),
+        dispatch(getCurrentlyPopularBooks())
+      ];
+
+      await Promise.all(books);
       setBooksLoaded(true);
     };
 
@@ -41,9 +54,21 @@ const MainPage = () => {
     getFavoriteAuthorsAndDispatch();
   }, []);
 
-  const renderBookList = () => {
+  const renderNewBookList = () => {
     if (booksLoaded) {
-      return <BookList />;
+      return <BookList books={newBooks} />;
+    } else {
+      return (
+        <LoadingWrapper>
+          <Loading />
+        </LoadingWrapper>
+      );
+    }
+  };
+
+  const renderCurrentlyPopularBooks = () => {
+    if (booksLoaded) {
+      return <BookList books={currentlyPopularBooks} />;
     } else {
       return (
         <LoadingWrapper>
@@ -86,9 +111,9 @@ const MainPage = () => {
       {renderBanner()}
       <Wrapper>
         <Title>nové knihy</Title>
-        {renderBookList()}
+        {renderNewBookList()}
         <Title>aktuálně populární knihy</Title>
-        {renderBookList()}
+        {renderCurrentlyPopularBooks()}
         <Quote>
           „Knihy jsou pro lidi tím, čím jsou pro ptáky křídla.“
           <QuoteAuthor>- John Ruskin </QuoteAuthor>

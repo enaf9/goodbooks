@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 //styled components imports
 import StyledBookList from "./StyledBookList";
@@ -7,8 +6,8 @@ import StyledBookList from "./StyledBookList";
 //components imports
 import BookItem from "../../../BookItem/index";
 
-const BookList = () => {
-  const books = useSelector(state => state.booksReducer);
+const BookList = props => {
+  const books = props.books;
 
   return (
     <StyledBookList>
