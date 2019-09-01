@@ -8,7 +8,10 @@ import StyledNavLink from "./StyledNavLink";
 const NavLink = props => {
   return (
     <StyledNavLink>
-      <StyledLink to={props.to} active={props.location.pathname === props.to}>
+      <StyledLink
+        to={props.to}
+        active={(props.location.pathname === props.to).toString()}
+      >
         {props.text}
       </StyledLink>
     </StyledNavLink>

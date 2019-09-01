@@ -18,6 +18,7 @@ const getFavoriteAuthors = () => {
             ) {
               return { ...doc.data().author, id: doc.id };
             }
+            return null;
           });
           dispatch({ type: "GET_FAVORITE_AUTHORS", authors });
         })

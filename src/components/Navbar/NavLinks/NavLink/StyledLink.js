@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${props =>
-    props.active
+    props.active === "true"
       ? props.theme.colors.main.red
       : props.theme.colors.text.darkGrey};
 
