@@ -20,7 +20,7 @@ const BookBanner = props => {
         <Image src={book.coverImage} />
         <div>
           <Title>{book.title}</Title>
-          <Author>{book.author}</Author>
+          <Author>{book.author.name}</Author>
           <Description>
             S Hygge to nekončí. Zapojte se do revolučního tažení za štěstím!
             Autor světového bestselleru Hygge – Prostě šťastný způsob života
