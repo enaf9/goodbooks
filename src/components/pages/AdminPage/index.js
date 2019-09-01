@@ -42,12 +42,12 @@ const AdminPage = () => {
           ...book,
           [e.target.name]: e.target.value
         })
-      : e.map(value => {
+      : e.map(value =>
           setBook({
             ...book,
             [value.name]: [...[value.name], value.label]
-          });
-        });
+          })
+        );
   };
 
   const handleSelectClick = async () => {
