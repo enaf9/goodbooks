@@ -1,7 +1,7 @@
 const authorsReducer = (state = [], action) => {
   switch (action.type) {
     case "GET_FAVORITE_AUTHORS":
-      return [...action, ...action.authors];
+      return [...state, ...action.authors];
     default:
       return state;
   }
