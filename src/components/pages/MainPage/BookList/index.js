@@ -17,54 +17,54 @@ const BookList = () => {
           <BookItem
             id={book.id}
             title={book.title}
-            author={book.author}
+            author={book.author.name}
             coverImage={book.coverImage}
           />
         );
       })}
       <BookItem
         title={books[0].title}
-        author={books[0].author}
+        author={books[0].author.name}
         coverImage={books[0].coverImage}
       />
       <BookItem
         title={books[0].title}
-        author={books[0].author}
+        author={books[0].author.name}
         coverImage={books[0].coverImage}
       />
       <BookItem
         title={books[0].title}
-        author={books[0].author}
+        author={books[0].author.name}
         coverImage={books[0].coverImage}
       />
       <BookItem
         title={books[0].title}
-        author={books[0].author}
+        author={books[0].author.name}
         coverImage={books[0].coverImage}
       />
       <BookItem
         title={books[0].title}
-        author={books[0].author}
+        author={books[0].author.name}
         coverImage={books[0].coverImage}
       />
       <BookItem
         title={books[0].title}
-        author={books[0].author}
+        author={books[0].author.name}
         coverImage={books[0].coverImage}
       />
       <BookItem
         title={books[0].title}
-        author={books[0].author}
+        author={books[0].author.name}
         coverImage={books[0].coverImage}
       />
       <BookItem
         title={books[0].title}
-        author={books[0].author}
+        author={books[0].author.name}
         coverImage={books[0].coverImage}
       />
       <BookItem
         title={books[0].title}
-        author={books[0].author}
+        author={books[0].author.name}
         coverImage={books[0].coverImage}
       />
     </StyledBookList>
