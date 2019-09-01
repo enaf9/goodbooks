@@ -43,7 +43,6 @@ const App = () => {
   const isMenuOpen = useSelector(state => state.menuReducer);
 
   auth.onAuthStateChanged(user => {
-    console.log(user);
     if (user) {
       dispatch(signIn());
     } else {
@@ -53,7 +52,6 @@ const App = () => {
   });
 
   const renderApp = () => {
-    console.log(isloggedSetup);
     if (isloggedSetup) {
       return (
         <>

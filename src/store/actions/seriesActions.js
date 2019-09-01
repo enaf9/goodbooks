@@ -1,4 +1,4 @@
-import { auth, db } from "../../firebase";
+import { db } from "../../firebase";
 
 const getSeries = author => {
   return (dispatch, getState) => {

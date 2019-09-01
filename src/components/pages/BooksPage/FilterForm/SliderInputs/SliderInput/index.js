@@ -19,7 +19,9 @@ const SliderInput = props => {
       const sliderWidth = document.getElementsByName("slider")[0].offsetWidth;
       setPosition((Number(value) / 5) * (sliderWidth - 20));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <Wrapper>
       <Values>0</Values>

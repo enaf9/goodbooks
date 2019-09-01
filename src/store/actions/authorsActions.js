@@ -9,14 +9,14 @@ const getFavoriteAuthors = () => {
         .limit(20)
         .get()
         .then(snapshot => {
-          snapshot.docs.map(doc => {
+          authors = snapshot.docs.map(doc => {
             if (
               !authors.some(
                 author => author.authorId.id === doc.data().author.authorId.id
               ) &&
               authors.length <= 10
             ) {
-              return authors.push(doc.data().author);
+              return { ...doc.data().author, id: doc.id };
             }
           });
           dispatch({ type: "GET_FAVORITE_AUTHORS", authors });

@@ -17,7 +17,7 @@ import Text from "./Text";
 import DeleteIcon from "../../shared-styled-components/DeleteIcon";
 
 const Review = () => {
-  const [showClose, setShowClose] = useState(true);
+  const [showClose] = useState(true);
   const showDeleteMessage = useSelector(state => state.deletePopUpReducer);
   const dispatch = useDispatch();
 

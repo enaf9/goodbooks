@@ -5,9 +5,6 @@ import CreatableSelect from "react-select/creatable";
 import StyledArrowIcon from "./StyledArrowIcon";
 
 const SelectInput = props => {
-  const bla = () => {
-    console.log("v");
-  };
   const renderSelect = () => {
     return props.isMulti ? (
       <CreatableSelect

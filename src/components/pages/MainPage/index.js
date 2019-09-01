@@ -17,7 +17,6 @@ import Banner from "./Banner/index";
 import BookBanner from "./BookBanner";
 
 import {
-  getBooks,
   getNewBooks,
   getCurrentlyPopularBooks
 } from "../../../store/actions/booksActions";
@@ -52,7 +51,7 @@ const MainPage = () => {
 
     getBooksAndDispatch();
     getFavoriteAuthorsAndDispatch();
-  }, []);
+  }, [dispatch]);
 
   const renderNewBookList = () => {
     if (booksLoaded) {
@@ -91,8 +90,6 @@ const MainPage = () => {
   };
 
   const renderBanner = () => {
-    console.log(isLogged);
-
     if (isLogged) {
       return (
         <Media query="(min-width: 1024px)">

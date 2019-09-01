@@ -18,54 +18,10 @@ const BookList = props => {
             title={book.title}
             author={book.author.name}
             coverImage={book.coverImage}
+            key={book.id}
           />
         );
       })}
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
     </StyledBookList>
   );
 };

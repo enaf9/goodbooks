@@ -59,8 +59,18 @@ const MenuOverlay = props => {
           <NavLink text="Knihy" url="/books" />
           <NavLink text="Autoři" url="/authors" />
           <NavLink text="Uživatelé" url="/users" />
-          <NavLink text="Přihlášení" showOverlay={openSignOverlay} id="0" />
-          <NavLink text="Registrace" showOverlay={openSignOverlay} id="1" />
+          <NavLink
+            text="Přihlášení"
+            url=""
+            showOverlay={openSignOverlay}
+            id="0"
+          />
+          <NavLink
+            text="Registrace"
+            url=""
+            showOverlay={openSignOverlay}
+            id="1"
+          />
         </>
       )}
       <SignInOverlay isOpen={signOverlayIsOpen} />

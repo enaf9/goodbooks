@@ -14,7 +14,7 @@ import DeleteIcon from "../../shared-styled-components/DeleteIcon";
 import DeletePopUp from "../pop-ups/DeletePopUp";
 
 const RatingCard = () => {
-  const [showClose, setShowClose] = useState(true);
+  const [showClose] = useState(true);
   const showDeleteMessage = useSelector(state => state.deletePopUpReducer);
   const dispatch = useDispatch();
 
