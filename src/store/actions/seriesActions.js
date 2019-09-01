@@ -14,7 +14,13 @@ const getSeries = author => {
               .collection("series")
               .get()
               .then(snapshot => {
-                snapshot.docs.map(doc => series.push(doc.data()));
+                snapshot.docs.map((doc, index) =>
+                  series.push({
+                    value: index,
+                    label: doc.data().name,
+                    id: "series"
+                  })
+                );
               });
           });
           dispatch({ type: "GET_SERIES", series });
@@ -28,4 +34,8 @@ const getSeries = author => {
   };
 };
 
-export { getSeries };
+const resetSeries = () => {
+  return (dispatch, getState) => dispatch({ type: "RESET_SERIES" });
+};
+
+export { getSeries, resetSeries };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getSeries } from "../../../store/actions/seriesActions";
+import { getSeries, resetSeries } from "../../../store/actions/seriesActions";
 
 import SelectInput from "../../SelectInput";
 
@@ -15,7 +15,8 @@ const AdminPage = () => {
   const dispatch = useDispatch();
   const genresOptions = useSelector(state => state.genresReducer);
   const seriesOptions = useSelector(state => state.seriesReducer);
-  console.log(seriesOptions);
+
+  const [loadSelectOptions, setLoadSelectOptions] = useState(false);
   const [book, setBook] = useState({
     author: "",
     title: "",
@@ -32,6 +33,10 @@ const AdminPage = () => {
   });
 
   const handleChange = e => {
+    if (e.target.name === "author") {
+      setLoadSelectOptions(false);
+      dispatch(resetSeries());
+    }
     e.target
       ? setBook({
           ...book,
@@ -46,8 +51,9 @@ const AdminPage = () => {
   };
 
   const handleSelectClick = async () => {
-    if (book.author) {
+    if (book.author && !loadSelectOptions) {
       await dispatch(getSeries(book.author));
+      setLoadSelectOptions(true);
     }
   };
 
@@ -109,7 +115,7 @@ const AdminPage = () => {
         <SelectInput
           type="text"
           name="series"
-          // options={seriesOptions}
+          options={seriesOptions}
           placeholder="Série"
           value={book.series}
           setValue={handleChange}
