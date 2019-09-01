@@ -94,6 +94,7 @@ const MainPage = () => {
           <QuoteAuthor>- John Ruskin </QuoteAuthor>
         </Quote>
         <Title>oblíbení autoři</Title>
+        {renderAuthorList()}
       </Wrapper>
     </StyledMainPage>
   );
