@@ -8,21 +8,21 @@ const getSeries = author => {
         .where("name", "==", author)
         .get()
         .then(snapshot => {
-          series = snapshot.docs.map(doc =>
-            db
+          snapshot.docs.map(doc => {
+            return db
               .collection("authors")
               .doc(doc.id)
               .collection("series")
               .get()
               .then(snapshot => {
-                snapshot.docs.map((doc, index) => ({
+                series = snapshot.docs.map((doc, index) => ({
                   value: index,
                   label: doc.data().name,
                   id: "series"
                 }));
-              })
-          );
-          dispatch({ type: "GET_SERIES", series });
+                dispatch({ type: "GET_SERIES", series });
+              });
+          });
           resolve(series);
         })
         .catch(error => {

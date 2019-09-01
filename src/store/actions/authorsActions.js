@@ -1,6 +1,7 @@
 import { db } from "../../firebase";
 
 const getFavoriteAuthors = () => {
+  console.log("VOLA");
   return (dispatch, getState) => {
     let promise = new Promise((resolve, reject) => {
       let authors = [];

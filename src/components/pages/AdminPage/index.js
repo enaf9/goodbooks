@@ -34,21 +34,33 @@ const AdminPage = () => {
 
   const handleChange = e => {
     if (e.target.name === "author") {
-      setLoadSelectOptions(false);
       dispatch(resetSeries());
+      setLoadSelectOptions(false);
+      setBook({
+        ...book,
+        [e.target.name]: e.target.value,
+        series: ""
+      });
+      console.log(book);
     }
-    e.target
-      ? setBook({
-          ...book,
-          [e.target.name]: e.target.value
-        })
-      : e.map(value =>
-          setBook({
-            ...book,
-            [value.name]: [...[value.name], value.label]
-          })
-        );
+    console.log("bb");
+
+    setBook({
+      ...book,
+      [e.target.name]: e.target.value
+    });
   };
+
+  const handleSelectChange = option => {
+    option &&
+      option.map(value =>
+        setBook({
+          ...book,
+          [value.name]: [...[value.name], value.label]
+        })
+      );
+  };
+  console.log(book);
 
   const handleSelectClick = async () => {
     if (book.author && !loadSelectOptions) {
@@ -110,7 +122,7 @@ const AdminPage = () => {
           placeholder="Žánr"
           options={genresOptions}
           value={book.genres}
-          setValue={handleChange}
+          setValue={handleSelectChange}
         />
         <SelectInput
           type="text"
@@ -118,7 +130,7 @@ const AdminPage = () => {
           options={seriesOptions}
           placeholder="Série"
           value={book.series}
-          setValue={handleChange}
+          setValue={handleSelectChange}
           loadValues={handleSelectClick}
         />
         <InputField

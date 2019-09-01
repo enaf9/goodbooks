@@ -5,6 +5,7 @@ const addBook = book => {
 };
 
 const getBooks = () => {
+  console.log("VOLA BOOS");
   return (dispatch, getState) => {
     let promise = new Promise((resolve, reject) => {
       let books = [];
