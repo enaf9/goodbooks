@@ -36,7 +36,16 @@ const SignUpForm = () => {
       await db
         .collection("users")
         .doc(cred.user.uid)
-        .set({ username: user.username });
+        .set({
+          username: user.username,
+          image: null,
+          favoritesBooks: [],
+          toReadBooks: [],
+          currentlyReadingBooks: [],
+          readBooks: [],
+          likedReviews: [],
+          dislikedReviews: []
+        });
       msg = "Uživatel byl úspěšně zaregistrován.";
       dispatch(setSignUpMsg({ type: "success", msg }));
     } catch (error) {

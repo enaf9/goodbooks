@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 
 import booksReducer from "./booksReducer";
+import authorsReducer from "./authorsReducer";
 import loggedReducer from "./loggedReducer";
 import menuReducer from "./menuReducer";
 import menuSearchBarReducer from "./menuSearchBarReducer";
@@ -11,6 +12,7 @@ import messageReducer from "./messagesReducer";
 
 const rootReducer = combineReducers({
   booksReducer,
+  authorsReducer,
   loggedReducer,
   menuReducer,
   menuSearchBarReducer,

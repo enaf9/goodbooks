@@ -17,11 +17,13 @@ import Banner from "./Banner/index";
 import BookBanner from "./BookBanner";
 
 import { getBooks } from "../../../store/actions/booksActions";
+import { getFavoriteAuthors } from "../../../store/actions/authorsActions";
 import { ReactComponent as Loading } from "../../../images/loading.svg";
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const [booksLoaded, setBooksLoaded] = useState(false);
+  const [authorsLoaded, setAuthorsLoaded] = useState(false);
   const isLogged = useSelector(state => state.loggedReducer.isLogged);
 
   useEffect(() => {
@@ -30,12 +32,30 @@ const MainPage = () => {
       setBooksLoaded(true);
     };
 
+    const getFavoriteAuthorsAndDispatch = async () => {
+      await dispatch(getFavoriteAuthors());
+      setAuthorsLoaded(true);
+    };
+
     getBooksAndDispatch();
+    getFavoriteAuthorsAndDispatch();
   }, []);
 
   const renderBookList = () => {
     if (booksLoaded) {
       return <BookList />;
+    } else {
+      return (
+        <LoadingWrapper>
+          <Loading />
+        </LoadingWrapper>
+      );
+    }
+  };
+
+  const renderAuthorList = () => {
+    if (authorsLoaded) {
+      return <AuthorList />;
     } else {
       return (
         <LoadingWrapper>
@@ -74,7 +94,6 @@ const MainPage = () => {
           <QuoteAuthor>- John Ruskin </QuoteAuthor>
         </Quote>
         <Title>oblíbení autoři</Title>
-        <AuthorList />
       </Wrapper>
     </StyledMainPage>
   );
