@@ -9,6 +9,8 @@ import tabReducer from "./tabReducer";
 import signFormReducer from "./signFormReducer";
 import deletePopUpReducer from "./deletePopUpReducer";
 import messageReducer from "./messagesReducer";
+import genresReducer from "./genresReducer";
+import seriesReducer from "./seriesReducer";
 
 const rootReducer = combineReducers({
   booksReducer,
@@ -19,7 +21,9 @@ const rootReducer = combineReducers({
   tabReducer,
   signFormReducer,
   deletePopUpReducer,
-  messageReducer
+  messageReducer,
+  genresReducer,
+  seriesReducer
 });
 
 export default rootReducer;

@@ -5,8 +5,34 @@ import CreatableSelect from "react-select/creatable";
 import StyledArrowIcon from "./StyledArrowIcon";
 
 const SelectInput = props => {
-  return (
-    <>
+  const bla = () => {
+    console.log("v");
+  };
+  const renderSelect = () => {
+    return props.isMulti ? (
+      <CreatableSelect
+        isMulti
+        options={props.options}
+        defaultValue={props.defaultValue}
+        placeholder={props.placeholder}
+        theme={theme => ({
+          ...theme,
+          borderRadius: 10,
+          colors: {
+            ...theme.colors,
+            neutral0: "#F4F5F5",
+            neutral20: "transparent",
+            neutral30: "transparent"
+          }
+        })}
+        onChange={props.setValue}
+        components={{
+          DropdownIndicator: StyledArrowIcon,
+          ClearIndicator: null,
+          IndicatorSeparator: null
+        }}
+      />
+    ) : (
       <CreatableSelect
         options={props.options}
         defaultValue={props.defaultValue}
@@ -26,9 +52,11 @@ const SelectInput = props => {
           ClearIndicator: null,
           IndicatorSeparator: null
         }}
+        onMenuOpen={props.loadValues}
       />
-    </>
-  );
+    );
+  };
+  return <>{renderSelect()}</>;
 };
 
 export default SelectInput;
