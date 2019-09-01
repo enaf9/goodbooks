@@ -11,8 +11,8 @@ const getBooks = () => {
       db.collection("books")
         .get()
         .then(snapshot => {
-          snapshot.docs.map(doc => {
-            books.push(doc.data());
+          books = snapshot.docs.map(doc => {
+            return doc.data();
           });
 
           dispatch({ type: "GET_BOOKS", books });
@@ -35,8 +35,8 @@ const getNewBooks = () => {
         .limit(10)
         .get()
         .then(snapshot => {
-          snapshot.docs.map(doc => {
-            books.push(doc.data());
+          books = snapshot.docs.map(doc => {
+            return doc.data();
           });
           dispatch({ type: "GET_NEW_BOOKS", books });
           resolve(books);
@@ -62,8 +62,8 @@ const getCurrentlyPopularBooks = () => {
         .limit(10)
         .get()
         .then(snapshot => {
-          snapshot.docs.map(doc => {
-            books.push(doc.data());
+          books = snapshot.docs.map(doc => {
+            return doc.data();
           });
 
           dispatch({ type: "GET_CURRENTLY_POPULAR_BOOKS", books });

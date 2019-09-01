@@ -12,16 +12,9 @@ const AuthorList = () => {
 
   return (
     <StyledAuthorList>
-      {console.log("tady", authors)}
       {authors.map(author => {
         return <AuthorItem />;
       })}
-      <AuthorItem />
-      <AuthorItem />
-      <AuthorItem />
-      <AuthorItem />
-      <AuthorItem />
-      <AuthorItem />
     </StyledAuthorList>
   );
 };

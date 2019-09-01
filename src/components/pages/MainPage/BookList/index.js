@@ -12,6 +12,7 @@ const BookList = props => {
   return (
     <StyledBookList>
       {books.map(book => {
+        console.log(book.uid);
         return (
           <BookItem
             id={book.id}
@@ -21,51 +22,6 @@ const BookList = props => {
           />
         );
       })}
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
-      <BookItem
-        title={books[0].title}
-        author={books[0].author.name}
-        coverImage={books[0].coverImage}
-      />
     </StyledBookList>
   );
 };
