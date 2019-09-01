@@ -10,7 +10,7 @@ import Wrapper from "./Wrapper";
 
 const BookItem = props => {
   return (
-    <StyledBookItem to="/book/1">
+    <StyledBookItem to={`/book/${props.id}`}>
       <Wrapper>
         <Rating />
         <Image src={props.coverImage} />

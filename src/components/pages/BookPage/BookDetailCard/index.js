@@ -1,5 +1,4 @@
 import React from "react";
-import BookImage from "../../../../images/Books/Cesta_kralu.jpg";
 import Rating from "../../../Rating/index";
 import Media from "react-media";
 
@@ -16,28 +15,41 @@ import GreyText from "./GreyText";
 
 import BookStatusBar from "./BookStatusBar/index";
 
-const BookDetailCard = () => {
+const BookDetailCard = props => {
   return (
     <Wrapper>
-      <BookName>Cesta králů</BookName>
+      <BookName>{props.title}</BookName>
       <Container>
         <div>
-          <Image src={BookImage} />
+          <Image src={props.image} />
           <BookStatusBar />
         </div>
         <div>
-          <AuthorName>Brandon Sanderson</AuthorName>
+          <AuthorName>{props.author.name}</AuthorName>
           <BookGenres>fantasy | romány</BookGenres>
           <Released>
-            Vydáno: <GreyText>2012, Talpress</GreyText>
+            Vydáno:
+            <GreyText>
+              {` ${props.release.releaseDate.toDate().getFullYear()}, ${
+                props.release.publisher
+              }`}
+            </GreyText>
           </Released>
           <Series>
-            Série: <GreyText>Archiv Bouřné záře (1.)</GreyText>
+            Série:
+            <GreyText>
+              {` ${props.series.title} (${props.series.sequence}.)`}{" "}
+            </GreyText>
           </Series>
           <Media query="(min-width: 768px)">
             {matches =>
               matches ? (
-                <Rating size="24" average="4.7" count="53245" medium />
+                <Rating
+                  size="24"
+                  average={props.avgRating}
+                  count={props.ratingCount.toString()}
+                  medium
+                />
               ) : (
                 <Rating size="16" average="4.7" count="53245" small />
               )

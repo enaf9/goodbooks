@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import BookDetailCard from "./BookDetailCard/index";
@@ -8,36 +8,34 @@ import Reviews from "./Reviews/index";
 
 //styled components imports
 import Description from "./Description";
+import LogoWrapper from "./LogoWrapper";
 
-const BookPage = () => {
+import { db } from "../../../firebase";
+import { ReactComponent as Logo } from "../../../images/loading.svg";
+
+const BookPage = props => {
   let content;
   const currentTab = useSelector(state => state.tabReducer);
+  const [book, setBook] = useState({});
+  const [bookLoaded, setBookLoaded] = useState(false);
+
+  useEffect(() => {
+    const getBook = async () => {
+      let snapshot = await db
+        .collection("books")
+        .doc(props.match.params.id)
+        .get();
+      setBook(snapshot.data());
+      setBookLoaded(true);
+    };
+    getBook();
+  }, []);
+
   const tabs = ["Popis", "Info", "Recenze"];
 
   switch (currentTab) {
     case 0:
-      content = (
-        <Description>
-          První kniha plánovaného desetidílného cyklu je vstupní bránou do světa
-          Rošáru. Rošár je kamenná země zmítaná bouřemi, jimž se přizpůsobila
-          příroda (rostliny rostou z kamene a v bouřích se zatahují do země,
-          zvířata se ukrývají do ulit a tvrdých schránek) i lidé (města se staví
-          podle přesných schémat v místech mezi skalami). Při bouřích se
-          uvolňuje zvláštní energie, bouřná záře, kterou je možné nabít
-          polodrahokamy a ty potom využít třeba k pohonu fabriálů (důmyslných
-          zařízení, která lidem zjednodušují život). Předurčení jedinci dokáží
-          pomocí bouřné záře znásobit své síly a získat mimořádné schopnosti.
-          Tento svět čelí dvěma hrozbám: periodickým obdobím katastrofálních
-          spouští, z nichž ta nejhorší a poslední má teprve přijít, a odvěkému
-          nepříteli, pustonošům, proti němuž lidstvo v dávné minulosti bránily
-          rytířské řády paprsku, než záhadně zmizely ze země. Lidem po nich
-          zůstaly jenom střepkordy a střepláty, mystické zbraně, které mění
-          obyčejné lidi v neporazitelné válečníky. Není jich mnoho a platí se za
-          ně královstvími. V tomto světě se odvíjejí na pozadí poněkud absurdní
-          války aletů proti paršendům osudy tří hlavních hrdinů, zprvu
-          samostatně, postupně se v náznacích začínají prolínat.
-        </Description>
-      );
+      content = <Description>{book.description}</Description>;
       break;
     case 1:
       content = <BookInfoBox />;
@@ -46,36 +44,31 @@ const BookPage = () => {
       content = <Reviews />;
       break;
     default:
-      content = (
-        <Description>
-          První kniha plánovaného desetidílného cyklu je vstupní bránou do světa
-          Rošáru. Rošár je kamenná země zmítaná bouřemi, jimž se přizpůsobila
-          příroda (rostliny rostou z kamene a v bouřích se zatahují do země,
-          zvířata se ukrývají do ulit a tvrdých schránek) i lidé (města se staví
-          podle přesných schémat v místech mezi skalami). Při bouřích se
-          uvolňuje zvláštní energie, bouřná záře, kterou je možné nabít
-          polodrahokamy a ty potom využít třeba k pohonu fabriálů (důmyslných
-          zařízení, která lidem zjednodušují život). Předurčení jedinci dokáží
-          pomocí bouřné záře znásobit své síly a získat mimořádné schopnosti.
-          Tento svět čelí dvěma hrozbám: periodickým obdobím katastrofálních
-          spouští, z nichž ta nejhorší a poslední má teprve přijít, a odvěkému
-          nepříteli, pustonošům, proti němuž lidstvo v dávné minulosti bránily
-          rytířské řády paprsku, než záhadně zmizely ze země. Lidem po nich
-          zůstaly jenom střepkordy a střepláty, mystické zbraně, které mění
-          obyčejné lidi v neporazitelné válečníky. Není jich mnoho a platí se za
-          ně královstvími. V tomto světě se odvíjejí na pozadí poněkud absurdní
-          války aletů proti paršendům osudy tří hlavních hrdinů, zprvu
-          samostatně, postupně se v náznacích začínají prolínat.
-        </Description>
-      );
+      content = <Description>{book.description}</Description>;
       break;
   }
 
   return (
     <>
-      <BookDetailCard />
-      <Tabs tabs={tabs} />
-      {content}
+      {bookLoaded ? (
+        <>
+          <BookDetailCard
+            image={book.coverImage}
+            title={book.title}
+            author={book.author}
+            release={book.release}
+            series={book.series}
+            avgRating={book.avgRating}
+            ratingCount={book.ratingCount}
+          />
+          <Tabs tabs={tabs} />
+          {content}
+        </>
+      ) : (
+        <LogoWrapper>
+          <Logo />
+        </LogoWrapper>
+      )}
     </>
   );
 };

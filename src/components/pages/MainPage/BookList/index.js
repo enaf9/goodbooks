@@ -7,11 +7,9 @@ import StyledBookList from "./StyledBookList";
 import BookItem from "../../../BookItem/index";
 
 const BookList = props => {
-  const books = props.books;
-
   return (
     <StyledBookList>
-      {books.map(book => {
+      {props.books.map(book => {
         return (
           <BookItem
             id={book.id}
