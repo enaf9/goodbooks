@@ -19,8 +19,9 @@ const getFavoriteAuthors = () => {
         })
         .then(() => {
           console.log(books);
-          books.map(book => {
-            db.collection("authors")
+          let promises = books.map(book => {
+            return db
+              .collection("authors")
               .where("name", "==", book.author)
               .get()
               .then(snapshot => {
@@ -32,8 +33,11 @@ const getFavoriteAuthors = () => {
                 console.log(error);
               });
           });
-          dispatch({ type: "GET_FAVORITE_AUTHORS", authors });
-          resolve(authors);
+          console.log(authors);
+          Promise.all(promises).then(() => {
+            dispatch({ type: "GET_FAVORITE_AUTHORS", authors });
+            resolve(authors);
+          });
         });
     });
     return promise;
