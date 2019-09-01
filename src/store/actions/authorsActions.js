@@ -6,8 +6,17 @@ const getFavoriteAuthors = () => {
       let authors = [];
       db.collection("authors")
         .get()
+        .then(s => {
+          console.log(
+            "aaaa" +
+              s.docs.map(doc => {
+                console.log(doc.data());
+              })
+          );
+        });
+      db.collection("authors")
+        .get()
         .then(snapshot => {
-          console.log(snapshot.docs[0].data());
           snapshot.docs.map(doc => {
             authors.push(doc.data());
           });

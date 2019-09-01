@@ -28,6 +28,7 @@ import AllBooksPage from "../pages/AllBooksPage/index";
 import SignInPage from "../pages/SignInPage/index";
 import SignUpPage from "../pages/SignUpPage/index";
 import SignInOverlay from "../overlays/SignInOverlay";
+import AdminPage from "../pages/AdminPage";
 
 import { ReactComponent as Loading } from "../../images/loading-app.svg";
 
@@ -77,6 +78,7 @@ const App = () => {
                 />
                 <Route path="/login" component={SignInPage} />
                 <Route path="/registration" component={SignUpPage} />
+                <Route path="/admin" component={AdminPage} />
               </Switch>
             </Wrapper>
           </Content>
