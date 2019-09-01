@@ -29,7 +29,7 @@ const BookPage = props => {
       setBookLoaded(true);
     };
     getBook();
-  }, []);
+  }, [props.match.params.id]);
 
   const tabs = ["Popis", "Info", "Recenze"];
 

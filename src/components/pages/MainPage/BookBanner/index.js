@@ -12,7 +12,7 @@ import Author from "./Author";
 import Description from "./Description";
 
 const BookBanner = props => {
-  const book = useSelector(state => state.booksReducer[0]);
+  const book = useSelector(state => state.booksReducer.newBooks[0]);
 
   const renderBook = () => {
     return props.areBooksLoaded ? (
