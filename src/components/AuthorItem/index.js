@@ -7,7 +7,7 @@ import Name from "./Name";
 
 const AuthorItem = () => {
   return (
-    <StyledAuthorItem>
+    <StyledAuthorItem to={`author/${1}`}>
       <Image src="https://images.gr-assets.com/authors/1394044556p5/38550.jpg" />
       <Name>Brandon Sanderson</Name>
     </StyledAuthorItem>
