@@ -1,11 +1,64 @@
-import { db } from "../../firebase";
+import { db, storage } from "../../firebase";
+
+const defaultValues = {
+  avgRating: 0,
+  currentlyReadingCount: 0,
+  favoriteCount: 0,
+  ratingCount: 0,
+  readCount: 0,
+  toReadCount: 0
+};
 
 const addBook = book => {
-  return { type: "ADD_BOOK", book };
+  return (dispatch, getState) => {
+    const createBook = async () => {
+      const author = await db
+        .collection("authors")
+        .where("name", "==", book.author)
+        .get()
+        .then(snapshot => ({
+          ...snapshot.docs[0].data(),
+          id: snapshot.docs[0].id
+        }))
+        .catch(error => {
+          console.log(error);
+        });
+      if (author) {
+        // await storage.ref("images/books").put(book.image);
+
+        const newBook = {
+          author: { id: author.id, name: author.name, image: author.image },
+          coverImage: "",
+          description: book.description,
+          genres: book.genres,
+          originalTitle: book.originalTitle,
+          pages: book.pages,
+          release: {
+            publisher: book.publisher,
+            releaseDate: book.releaseDate
+          },
+          series: { ...book.series, sequence: book.sequence },
+          title: book.title,
+          translator: book.translator,
+          ...defaultValues
+        };
+
+        await db
+          .collection("books")
+          .add(newBook)
+          .catch(error => {
+            console.log(error);
+          });
+        dispatch({ type: "ADD_BOOK", newBook });
+      } else {
+        console.log("Autor neexistuje!!");
+      }
+    };
+    createBook();
+  };
 };
 
 const getBooks = () => {
-  console.log("VOLA BOOS");
   return (dispatch, getState) => {
     let promise = new Promise((resolve, reject) => {
       let books = [];

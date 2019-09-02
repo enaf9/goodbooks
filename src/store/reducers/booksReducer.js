@@ -5,7 +5,6 @@ const booksReducer = (
   switch (action.type) {
     case "ADD_BOOK":
       const newState = { ...state };
-      newState.books.push(action.book);
       return newState;
     case "GET_BOOKS":
       return { ...state, books: [...action.books] };

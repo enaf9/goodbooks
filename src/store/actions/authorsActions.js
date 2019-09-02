@@ -1,7 +1,6 @@
 import { db } from "../../firebase";
 
 const getFavoriteAuthors = () => {
-  console.log("VOLA");
   return (dispatch, getState) => {
     let promise = new Promise((resolve, reject) => {
       let authors = [];
@@ -11,6 +10,11 @@ const getFavoriteAuthors = () => {
         .get()
         .then(snapshot => {
           authors = snapshot.docs.map(doc => {
+            authors.some(author => {
+              console.log(author.authorId.id);
+              console.log(doc.data().author.authorId.id);
+            });
+
             if (
               !authors.some(
                 author => author.authorId.id === doc.data().author.authorId.id
