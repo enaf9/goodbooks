@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getSeries, resetSeries } from "../../../store/actions/seriesActions";
+import { addBook } from "../../../store/actions/booksActions";
 
 import SelectInput from "../../SelectInput";
 
@@ -19,6 +20,7 @@ const AdminPage = () => {
   const [loadSelectOptions, setLoadSelectOptions] = useState(false);
   const [book, setBook] = useState({
     author: "",
+    image: "",
     title: "",
     isbn: "",
     originalTitle: "",
@@ -33,6 +35,7 @@ const AdminPage = () => {
   });
 
   const handleChange = e => {
+    // console.log(e.targetname);
     if (e.target.name === "author") {
       dispatch(resetSeries());
       setLoadSelectOptions(false);
@@ -41,9 +44,7 @@ const AdminPage = () => {
         [e.target.name]: e.target.value,
         series: ""
       });
-      console.log(book);
     }
-    console.log("bb");
 
     setBook({
       ...book,
@@ -52,15 +53,18 @@ const AdminPage = () => {
   };
 
   const handleSelectChange = option => {
-    option &&
-      option.map(value =>
-        setBook({
+    Array.isArray(option)
+      ? option.map(value =>
+          setBook({
+            ...book,
+            [value.name]: [...book[value.name], value.label]
+          })
+        )
+      : setBook({
           ...book,
-          [value.name]: [...[value.name], value.label]
-        })
-      );
+          [option.name]: { id: option.value, title: option.label }
+        });
   };
-  console.log(book);
 
   const handleSelectClick = async () => {
     if (book.author && !loadSelectOptions) {
@@ -69,16 +73,22 @@ const AdminPage = () => {
     }
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(addBook(book));
+  };
+
   return (
     <>
       <h3>Přidat knihu</h3>
-      <Wrapper>
+      <Wrapper onSubmit={handleSubmit}>
         <InputField
           type="text"
           name="author"
           placeholder="Jméno autora"
           value={book.author}
           onChange={handleChange}
+          required
         />
         <InputField
           type="text"
@@ -86,6 +96,7 @@ const AdminPage = () => {
           placeholder="Název knihy"
           value={book.title}
           onChange={handleChange}
+          required
         />
         <InputField
           type="text"
@@ -93,6 +104,7 @@ const AdminPage = () => {
           placeholder="ISBN"
           value={book.isbn}
           onChange={handleChange}
+          required
         />
         <InputField
           type="text"
@@ -100,6 +112,7 @@ const AdminPage = () => {
           placeholder="Originální název"
           value={book.originalTitle}
           onChange={handleChange}
+          required
         />
         <InputField
           type="date"
@@ -107,6 +120,7 @@ const AdminPage = () => {
           placeholder="Datum vydání"
           value={book.releaseDate}
           onChange={handleChange}
+          required
         />
         <InputField
           type="text"
@@ -114,6 +128,7 @@ const AdminPage = () => {
           placeholder="Vydavatelství"
           value={book.publisher}
           onChange={handleChange}
+          required
         />
         <SelectInput
           isMulti
@@ -123,6 +138,7 @@ const AdminPage = () => {
           options={genresOptions}
           value={book.genres}
           setValue={handleSelectChange}
+          required
         />
         <SelectInput
           type="text"
@@ -153,13 +169,16 @@ const AdminPage = () => {
           placeholder="Počet strán"
           value={book.pages}
           onChange={handleChange}
+          required
         />
         <StyledTextArea
           placeholder="Popis knihy"
           name="description"
           value={book.description}
           onChange={handleChange}
+          required
         />
+        <input type="file" onChange={handleChange} name="image" />
         <Button>Přidat</Button>
       </Wrapper>
     </>

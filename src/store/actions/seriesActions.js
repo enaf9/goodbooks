@@ -15,10 +15,10 @@ const getSeries = author => {
               .collection("series")
               .get()
               .then(snapshot => {
-                series = snapshot.docs.map((doc, index) => ({
-                  value: index,
-                  label: doc.data().name,
-                  id: "series"
+                series = snapshot.docs.map(doc => ({
+                  value: doc.id,
+                  label: doc.data().title,
+                  name: "series"
                 }));
                 dispatch({ type: "GET_SERIES", series });
               });

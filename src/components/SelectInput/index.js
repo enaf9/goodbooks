@@ -49,6 +49,7 @@ const SelectInput = props => {
           ClearIndicator: null,
           IndicatorSeparator: null
         }}
+        onChange={props.setValue}
         onMenuOpen={props.loadValues}
       />
     );
