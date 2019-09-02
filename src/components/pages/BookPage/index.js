@@ -38,7 +38,7 @@ const BookPage = props => {
       content = <Description>{book.description}</Description>;
       break;
     case 1:
-      content = <BookInfoBox />;
+      content = <BookInfoBox data={{ ...book, id: props.match.params.id }} />;
       break;
     case 2:
       content = <Reviews />;

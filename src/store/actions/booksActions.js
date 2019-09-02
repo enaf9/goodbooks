@@ -31,10 +31,12 @@ const addBook = book => {
           coverImage: "",
           description: book.description,
           genres: book.genres,
+          isbn: book.isbn,
           originalTitle: book.originalTitle,
           pages: book.pages,
           release: {
             publisher: book.publisher,
+            // releaseDate: db.Timestamp.fromDate(new Date(book.releaseDate))
             releaseDate: book.releaseDate
           },
           series: { ...book.series, sequence: book.sequence },

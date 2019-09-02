@@ -6,14 +6,17 @@ import Wrapper from "./Wrapper";
 import BookInfoItem from "./BookInfoItem/index";
 import ReleasesInfo from "./ReleasesInfo";
 
-const BookInfoBox = () => {
+const BookInfoBox = props => {
   return (
     <Wrapper>
-      <BookInfoItem property="Originální název:" value="They Way of Kings" />
-      <BookInfoItem property="Počet stran:" value="912" />
-      <BookInfoItem property="Překlad:" value="Milena Poláčková" />
-      <BookInfoItem property="ISBN:" value="978-80-7197-427-7" />
-      <ReleasesInfo />
+      <BookInfoItem
+        property="Originální název:"
+        value={props.data.originalTitle}
+      />
+      <BookInfoItem property="Počet stran:" value={props.data.pages} />
+      <BookInfoItem property="Překlad:" value={props.data.translator} />
+      <BookInfoItem property="ISBN:" value={props.data.isbn} />
+      <ReleasesInfo id={props.data.id} />
     </Wrapper>
   );
 };

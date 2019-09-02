@@ -6,7 +6,7 @@ import StyledArrowIcon from "./StyledArrowIcon";
 //components imports
 import ReleasesList from "./ReleasesList/index";
 
-const ReleasesInfo = () => {
+const ReleasesInfo = props => {
   const [releaseListOpen, setReleaseListOpen] = useState(false);
   const handleClick = () => {
     setReleaseListOpen(!releaseListOpen);
@@ -20,7 +20,7 @@ const ReleasesInfo = () => {
         onClick={handleClick}
         isOpen={releaseListOpen}
       />
-      <ReleasesList isOpen={releaseListOpen} />
+      <ReleasesList isOpen={releaseListOpen} id={props.id} />
     </>
   );
 };
