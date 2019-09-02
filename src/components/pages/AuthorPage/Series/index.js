@@ -16,14 +16,14 @@ const Series = props => {
   return (
     <Wrapper>
       <SeriesName>
-        {props.name}
+        {props.title}
         <StyledArrowIcon
           size="16"
           onClick={handleClick}
           isOpen={seriesListOpen}
         />
       </SeriesName>
-      <SeriesList isOpen={seriesListOpen} />
+      <SeriesList isOpen={seriesListOpen} id={props.id} />
     </Wrapper>
   );
 };

@@ -21,7 +21,7 @@ const BookPage = props => {
 
   useEffect(() => {
     const getBook = async () => {
-      let snapshot = await db
+      const snapshot = await db
         .collection("books")
         .doc(props.match.params.id)
         .get();

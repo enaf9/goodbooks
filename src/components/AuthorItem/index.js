@@ -5,11 +5,11 @@ import StyledAuthorItem from "./StyledAuthorItem";
 import Image from "./Image";
 import Name from "./Name";
 
-const AuthorItem = () => {
+const AuthorItem = props => {
   return (
-    <StyledAuthorItem to={`author/${1}`}>
-      <Image src="https://images.gr-assets.com/authors/1394044556p5/38550.jpg" />
-      <Name>Brandon Sanderson</Name>
+    <StyledAuthorItem to={`author/${props.id}`}>
+      <Image src={props.image} />
+      <Name>{props.name}</Name>
     </StyledAuthorItem>
   );
 };

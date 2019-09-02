@@ -34,7 +34,6 @@ const MainPage = () => {
   );
 
   useEffect(() => {
-    console.log("EFFECT");
     const getBooksAndDispatch = async () => {
       const books = [
         dispatch(getNewBooks()),

@@ -1,5 +1,4 @@
 import React from "react";
-import BookImage from "../../images/Books/Cesta_kralu.jpg";
 
 //styled components imports
 import StyledBookCard from "./StyledBookCard";
@@ -15,16 +14,16 @@ import Rating from "../Rating/index";
 const BookCard = props => {
   return (
     <StyledBookCard big={props.big} to="/book/1">
-      <Image src={BookImage} big={props.big} />
+      <Image src={props.coverImage} big={props.big} />
       <Info>
-        <Title>Cesta Králů</Title>
-        <Text>Brandon Sanderson</Text>
-        <Text>2010</Text>
+        <Title>{props.title}</Title>
+        <Text>{props.author}</Text>
+        <Text>{props.releaseDate}</Text>
         <Wrapper>
           {props.big ? (
-            <Rating size="16" big average="5" />
+            <Rating size="16" big average={props.avgRating} />
           ) : (
-            <Rating size="16" small average="5" />
+            <Rating size="16" small average={props.avgRating} />
           )}
         </Wrapper>
       </Info>

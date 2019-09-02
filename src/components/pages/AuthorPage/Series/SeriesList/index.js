@@ -9,7 +9,7 @@ import BookList from "../../../../BookList";
 const SeriesList = props => {
   return (
     <Wrapper isOpen={props.isOpen}>
-      <BookList />
+      <BookList seriesId={props.id} />
     </Wrapper>
   );
 };
