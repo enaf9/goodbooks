@@ -43,7 +43,7 @@ const BookList = props => {
     }
   }, []);
 
-  const renderBooksBySeries = () => {
+  const renderBooks = () => {
     return books.map(book => {
       return (
         <BookCard
@@ -61,9 +61,7 @@ const BookList = props => {
   return (
     <>
       {booksLoaded ? (
-        <StyledBookList big={props.size}>
-          {renderBooksBySeries()}
-        </StyledBookList>
+        <StyledBookList big={props.size}>{renderBooks()}</StyledBookList>
       ) : null}
     </>
   );
