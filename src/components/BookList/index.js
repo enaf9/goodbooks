@@ -24,6 +24,7 @@ const BookList = props => {
       setBooks(data);
       setBooksLoaded(true);
     };
+
     const getBooksBySeries = async () => {
       const snapshot = await db
         .collection("books")
@@ -40,6 +41,10 @@ const BookList = props => {
     }
     if (props.id) {
       getBooksByAuthor();
+    }
+    if (props.books) {
+      setBooks(props.books);
+      setBooksLoaded(true);
     }
   }, []);
 

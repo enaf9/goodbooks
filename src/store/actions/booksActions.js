@@ -88,7 +88,7 @@ const getNewBooks = () => {
       let books = [];
       db.collection("books")
         .orderBy("release.releaseDate", "desc")
-        .limit(10)
+        .limit(14)
         .get()
         .then(snapshot => {
           books = snapshot.docs.map(doc => {
@@ -115,7 +115,7 @@ const getCurrentlyPopularBooks = () => {
         .where("release.releaseDate", ">", date)
         .orderBy("release.releaseDate")
         .orderBy("favoriteCount", "desc")
-        .limit(10)
+        .limit(14)
         .get()
         .then(snapshot => {
           books = snapshot.docs.map(doc => {
