@@ -38,22 +38,20 @@ const BooksPage = props => {
     const snapshot = await queries[selectedOption].limit(12).get();
     setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
     const data = snapshot.docs.map(doc => {
-      return doc.data();
+      return { ...doc.data(), id: doc.id };
     });
     setBooks([...data]);
     setBooksLoaded(true);
   };
 
   const getNextBooks = async () => {
-    console.log(lastDoc);
-    console.log(123);
     const snapshot = await queries[selectedOption]
       .startAfter(lastDoc)
       .limit(12)
       .get();
     setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
     const data = snapshot.docs.map(doc => {
-      return doc.data();
+      return { ...doc.data(), id: doc.id };
     });
     setBooks([...books, ...data]);
     setBooksLoaded(true);
@@ -77,8 +75,11 @@ const BooksPage = props => {
   };
 
   const optionChange = e => {
-    console.log(e.value);
     setSelectedOption(e.value);
+  };
+
+  const showMoreBooks = () => {
+    getNextBooks();
   };
 
   return (
@@ -100,7 +101,9 @@ const BooksPage = props => {
         <>
           <BookList books={books} />
           <ButtonWrapper>
-            <ShowMoreButton>ZOBRAZIT DALŠÍ</ShowMoreButton>
+            <ShowMoreButton onClick={showMoreBooks}>
+              ZOBRAZIT DALŠÍ
+            </ShowMoreButton>
           </ButtonWrapper>
         </>
       ) : (

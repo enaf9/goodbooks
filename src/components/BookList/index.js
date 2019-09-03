@@ -46,7 +46,7 @@ const BookList = props => {
       setBooks(props.books);
       setBooksLoaded(true);
     }
-  }, []);
+  }, [props.books]);
 
   const renderBooks = () => {
     return books.map(book => {
@@ -58,6 +58,7 @@ const BookList = props => {
           avgRating={book.avgRating}
           coverImage={book.coverImage}
           big={props.size}
+          id={book.id}
         />
       );
     });

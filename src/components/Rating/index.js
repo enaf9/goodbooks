@@ -6,7 +6,6 @@ import StyledRating from "./StyledRating";
 import RatingText from "./RatingText";
 
 const Rating = props => {
-  console.log(props.avg);
   return (
     <StyledRating>
       <StarIcon size={props.size} fill={1} />

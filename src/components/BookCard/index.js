@@ -13,7 +13,7 @@ import Rating from "../Rating/index";
 
 const BookCard = props => {
   return (
-    <StyledBookCard big={props.big} to="/book/1">
+    <StyledBookCard big={props.big} to={`/book/${props.id}`}>
       <Image src={props.coverImage} big={props.big} />
       <Info>
         <Title>{props.title}</Title>
