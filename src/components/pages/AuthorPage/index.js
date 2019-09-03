@@ -57,18 +57,14 @@ const AuthorPage = props => {
       content = <Biography>{author.bio}</Biography>;
       break;
     case 1:
-      content = <BookList authorId={authorSnapshot.id} size="big" />;
+      content = <BookList id={authorSnapshot.id} size="big" />;
       break;
     case 2:
       content = (
         <>
           {series.map(item => {
             return (
-              <Series
-                title={item.data().title}
-                id={item.id}
-                key={item.id}
-              ></Series>
+              <Series title={item.data().title} id={item.id} key={item.id} />
             );
           })}
         </>

@@ -16,7 +16,7 @@ const BookList = props => {
     const getBooksByAuthor = async () => {
       const snapshot = await db
         .collection("books")
-        .where("author.authorId", "==", props.authorId)
+        .where("author.id", "==", props.id)
         .get();
       const data = snapshot.docs.map(doc => {
         return doc.data();
@@ -38,7 +38,7 @@ const BookList = props => {
     if (props.seriesId) {
       getBooksBySeries();
     }
-    if (props.authorId) {
+    if (props.id) {
       getBooksByAuthor();
     }
   }, []);
