@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { Star } from "styled-icons/feather/Star";
 
 const StarIcon = styled(Star)`
-  color: ${props => props.theme.colors.complementary.yellow};
-  fill: ${props => props.theme.colors.complementary.yellow};
+  color: transparent;
+  fill: ${props =>
+    props.fill >= 1
+      ? props.theme.colors.complementary.yellow
+      : props.theme.colors.complementary.grey};
 `;
 
 export default StarIcon;

@@ -12,7 +12,7 @@ const BookItem = props => {
   return (
     <StyledBookItem to={`/book/${props.id}`}>
       <Wrapper>
-        <Rating />
+        <Rating rating={props.rating} />
         <Image src={props.coverImage} />
       </Wrapper>
       <Title>{props.title}</Title>

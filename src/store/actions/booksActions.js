@@ -39,7 +39,7 @@ const addBook = book => {
             // releaseDate: db.Timestamp.fromDate(new Date(book.releaseDate))
             releaseDate: book.releaseDate
           },
-          series: { ...book.series, sequence: book.sequence },
+          series: { ...book.series, sequence: Number(book.sequence) },
           title: book.title,
           translator: book.translator,
           ...defaultValues

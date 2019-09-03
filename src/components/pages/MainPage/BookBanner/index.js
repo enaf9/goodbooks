@@ -23,12 +23,8 @@ const BookBanner = props => {
           <div>
             <Title>{book.title}</Title>
             <Author>{book.author.name}</Author>
-            <Description>
-              S Hygge to nekončí. Zapojte se do revolučního tažení za štěstím!
-              Autor světového bestselleru Hygge – Prostě šťastný způsob života
-              přichází s dalšími.
-            </Description>
-            <Rating size="36" average="4.9" large />
+            <Description>{book.bannerDescription}</Description>
+            <Rating size="36" average={book.avgRating} large />
           </div>
         </Container>
       </StyledLink>

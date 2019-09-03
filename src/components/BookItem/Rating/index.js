@@ -4,11 +4,11 @@ import StarIcon from "../../../shared-styled-components/StarIcon";
 //styled components imports
 import StyledRating from "./StyledRating";
 
-const Rating = () => {
+const Rating = props => {
   return (
     <StyledRating>
-      <StarIcon size="16" />
-      <small>4.7</small>
+      <StarIcon size="16" fill={1} />
+      <small>{props.rating}</small>
     </StyledRating>
   );
 };

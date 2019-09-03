@@ -20,6 +20,7 @@ const getSeries = author => {
                   label: doc.data().title,
                   name: "series"
                 }));
+
                 dispatch({ type: "GET_SERIES", series });
               });
           });
