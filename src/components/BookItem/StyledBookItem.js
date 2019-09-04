@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const StyledBookItem = styled(Link)`
-  height: 230px;
+  min-height: 230px;
   width: 150px;
   text-align: center;
   display: inline-block;
