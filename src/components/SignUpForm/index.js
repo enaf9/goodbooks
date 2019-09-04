@@ -38,6 +38,7 @@ const SignUpForm = () => {
         .doc(cred.user.uid)
         .set({
           username: user.username,
+          usernameLowercase: user.username.toLowerCase(),
           image: null,
           favoritesBooks: [],
           toReadBooks: [],

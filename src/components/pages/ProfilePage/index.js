@@ -29,7 +29,6 @@ const ProfilePage = props => {
 
     getUser();
   }, [props.match.params.id]);
-  console.log(user);
 
   const tabs = ["Knihy", "Recenze", "Hodnocení"];
   switch (currentTab) {

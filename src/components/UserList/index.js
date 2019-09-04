@@ -10,8 +10,8 @@ import UserCard from "../UserCard/index";
 const UserList = props => {
   const [users, setUsers] = useState([]);
   const [queries] = useState({
-    asc: db.collection("users").orderBy("username"),
-    desc: db.collection("users").orderBy("username", "desc"),
+    asc: db.collection("users").orderBy("usernameLowercase"),
+    desc: db.collection("users").orderBy("usernameLowercase", "desc"),
     views: db.collection("users")
   });
 
@@ -32,6 +32,7 @@ const UserList = props => {
     <StyledUserList>
       {users.map(user => (
         <UserCard
+          key={user.id}
           name={user.username}
           image={user.image}
           id={user.id}
