@@ -16,6 +16,25 @@ import GreyText from "./GreyText";
 import BookStatusBar from "./BookStatusBar/index";
 
 const BookDetailCard = props => {
+  const renderSeries = () => {
+    if (props.series.title === undefined) {
+      return (
+        <Series>
+          <GreyText></GreyText>
+        </Series>
+      );
+    } else {
+      return (
+        <Series>
+          Série:
+          <GreyText>
+            {` ${props.series.title} (${props.series.sequence}.)`}
+          </GreyText>
+        </Series>
+      );
+    }
+  };
+
   return (
     <Wrapper>
       <BookName>{props.title}</BookName>
@@ -35,12 +54,7 @@ const BookDetailCard = props => {
               }`}
             </GreyText>
           </Released>
-          <Series>
-            Série:
-            <GreyText>
-              {` ${props.series.title} (${props.series.sequence}.)`}{" "}
-            </GreyText>
-          </Series>
+          {renderSeries()}
           <Media query="(min-width: 768px)">
             {matches =>
               matches ? (
