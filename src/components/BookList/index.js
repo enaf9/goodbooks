@@ -46,6 +46,7 @@ const BookList = props => {
       setBooks(props.books);
       setBooksLoaded(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.books]);
 
   const renderBooks = () => {

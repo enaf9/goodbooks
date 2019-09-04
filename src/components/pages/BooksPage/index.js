@@ -60,6 +60,7 @@ const BooksPage = props => {
   useEffect(() => {
     setBooksLoaded(false);
     getBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOption]);
 
   const optionValues = [

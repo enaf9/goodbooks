@@ -35,7 +35,6 @@ const AdminPage = () => {
   });
 
   const handleChange = e => {
-    // console.log(e.targetname);
     if (e.target.name === "author") {
       dispatch(resetSeries());
       setLoadSelectOptions(false);

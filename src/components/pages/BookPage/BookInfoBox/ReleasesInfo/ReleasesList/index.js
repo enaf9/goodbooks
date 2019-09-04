@@ -20,6 +20,7 @@ const ReleasesList = props => {
       setReleases(snapshot.docs.map(doc => doc.data()));
     };
     getReleases();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderReleases = () =>

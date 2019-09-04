@@ -78,7 +78,7 @@ const AuthorPage = props => {
     <>
       {authorLoaded ? (
         <StyledAuthorPage>
-          <UserCard center big img={author.image} name={author.name} />
+          <UserCard center big image={author.image} name={author.name} />
           <Wrapper>
             <Tabs tabs={tabs} />
             {seriesLoaded ? <>{content}</> : null}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //styled components imports
 import StyledAuthorsPage from "./StyledAuthorsPage";
@@ -11,20 +11,27 @@ import SelectInput from "../../SelectInput/index";
 import AuthorList from "../../AuthorList/index";
 
 const AuthorsPage = () => {
+  const [selectedOption, setSelectedOption] = useState("asc");
   const optionValues = [
-    { value: "abc", label: "Abecedy (vzestupně)" },
-    { value: "zyx", label: "Abecedy (sestupně)" },
+    { value: "asc", label: "Abecedy (vzestupně)" },
+    { value: "desc", label: "Abecedy (sestupně)" },
     { value: "views", label: "Počtu zobrazení" }
   ];
+
+  const selectOption = option => setSelectedOption(option.value);
 
   return (
     <StyledAuthorsPage>
       <Title>Autoři</Title>
       <Wrapper>
         <SearchInput />
-        <SelectInput options={optionValues} defaultValue={optionValues[0]} />
+        <SelectInput
+          options={optionValues}
+          defaultValue={optionValues[0]}
+          setValue={selectOption}
+        />
       </Wrapper>
-      <AuthorList />
+      <AuthorList order={selectedOption} />
     </StyledAuthorsPage>
   );
 };
