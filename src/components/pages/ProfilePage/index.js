@@ -16,13 +16,14 @@ import RatingList from "./RatingList";
 const ProfilePage = props => {
   let content;
   const currentTab = useSelector(state => state.tabReducer);
+  const loggedUser = useSelector(state => state.loggedReducer);
   const [user, setUser] = useState({});
 
   useEffect(() => {
     const getUser = async () => {
       const snapshot = await db
         .collection("users")
-        .doc(props.match.params.id)
+        .doc(props.match.params.id ? props.match.params.id : loggedUser.id)
         .get();
       setUser({ ...snapshot.data(), id: snapshot.id });
     };

@@ -1,10 +1,10 @@
 const loggedReducer = (
-  state = { isLogged: false, isLoggedSetup: false },
+  state = { isLogged: false, isLoggedSetup: false, id: null },
   action
 ) => {
   switch (action.type) {
     case "SIGN_IN":
-      return { ...state, isLogged: true };
+      return { ...state, isLogged: true, id: action.id };
     case "SIGN_OUT":
       return { ...state, isLogged: false };
     case "SET_STATUS":

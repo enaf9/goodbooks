@@ -11,8 +11,7 @@ const UserList = props => {
   const [users, setUsers] = useState([]);
   const [queries] = useState({
     asc: db.collection("users").orderBy("usernameLowercase"),
-    desc: db.collection("users").orderBy("usernameLowercase", "desc"),
-    views: db.collection("users")
+    desc: db.collection("users").orderBy("usernameLowercase", "desc")
   });
 
   useEffect(() => {

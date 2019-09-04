@@ -14,8 +14,7 @@ const AuthorsPage = () => {
   const [selectedOption, setSelectedOption] = useState("asc");
   const optionValues = [
     { value: "asc", label: "Abecedy (vzestupně)" },
-    { value: "desc", label: "Abecedy (sestupně)" },
-    { value: "views", label: "Počtu zobrazení" }
+    { value: "desc", label: "Abecedy (sestupně)" }
   ];
 
   const selectOption = option => setSelectedOption(option.value);

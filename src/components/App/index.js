@@ -44,7 +44,7 @@ const App = () => {
 
   auth.onAuthStateChanged(user => {
     if (user) {
-      dispatch(signIn());
+      dispatch(signIn(user.uid));
     } else {
       dispatch(signOut());
     }

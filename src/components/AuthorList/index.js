@@ -11,8 +11,7 @@ const AuthorList = props => {
   const [authors, setAuthors] = useState([]);
   const [queries] = useState({
     asc: db.collection("authors").orderBy("lastName"),
-    desc: db.collection("authors").orderBy("lastName", "desc"),
-    views: db.collection("authors")
+    desc: db.collection("authors").orderBy("lastName", "desc")
   });
 
   useEffect(() => {

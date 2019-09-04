@@ -60,6 +60,7 @@ const BookList = props => {
           coverImage={book.coverImage}
           big={props.size}
           id={book.id}
+          key={book.id}
         />
       );
     });
