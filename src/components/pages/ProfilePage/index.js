@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-
-import AuthorImage from "../../../images/Users/beachboy.jpg";
+import { db } from "../../../firebase";
 
 //styled components imports
 import Wrapper from "./Wrapper";
@@ -14,9 +13,24 @@ import BookSections from "./BookSections";
 import ReviewList from "./ReviewList";
 import RatingList from "./RatingList";
 
-const ProfilePage = () => {
+const ProfilePage = props => {
   let content;
   const currentTab = useSelector(state => state.tabReducer);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const getUser = async () => {
+      const snapshot = await db
+        .collection("users")
+        .doc(props.match.params.id)
+        .get();
+      setUser({ ...snapshot.data(), id: snapshot.id });
+    };
+
+    getUser();
+  }, [props.match.params.id]);
+  console.log(user);
+
   const tabs = ["Knihy", "Recenze", "Hodnocení"];
   switch (currentTab) {
     case 0:
@@ -34,7 +48,7 @@ const ProfilePage = () => {
   }
   return (
     <StyledProfilePage>
-      <UserCard center big img={AuthorImage} name="beachboy32" />
+      <UserCard center big image={user.image} name={user.username} />
       <Wrapper>
         <Tabs tabs={tabs} />
         {content}

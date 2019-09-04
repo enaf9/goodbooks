@@ -10,7 +10,7 @@ const UserCard = props => {
     <StyledUserCard
       center={props.center}
       big={props.big}
-      to={`author/${props.id}`}
+      to={props.type === "users" ? `user/${props.id}` : `author/${props.id}`}
     >
       <Image src={props.image} big={props.big} />
       <Name big={props.big}>{props.name}</Name>

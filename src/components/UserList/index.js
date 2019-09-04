@@ -31,7 +31,12 @@ const UserList = props => {
   return (
     <StyledUserList>
       {users.map(user => (
-        <UserCard name={user.username} image={user.image} />
+        <UserCard
+          name={user.username}
+          image={user.image}
+          id={user.id}
+          type="users"
+        />
       ))}
     </StyledUserList>
   );
