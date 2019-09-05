@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 const big = css`
   grid-template-columns: 1fr;
   justify-items: center;
 `;
 
-const StyledUserCard = styled.div`
+const StyledUserCard = styled(Link)`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-column-gap: 15px;

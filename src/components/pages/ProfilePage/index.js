@@ -50,7 +50,7 @@ const ProfilePage = props => {
   }
   return (
     <StyledProfilePage>
-      <UserCard center big image={user.image} name={user.username} />
+      <UserCard center big image={user.image} name={user.username} profile />
       <Wrapper>
         <Tabs tabs={tabs} />
         {content}
