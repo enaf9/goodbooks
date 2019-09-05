@@ -29,6 +29,8 @@ const ProfilePage = props => {
     };
 
     getUser();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.match.params.id]);
 
   const tabs = ["Knihy", "Recenze", "Hodnocení"];

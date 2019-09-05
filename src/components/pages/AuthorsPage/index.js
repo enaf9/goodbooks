@@ -12,6 +12,8 @@ import AuthorList from "../../AuthorList/index";
 
 const AuthorsPage = () => {
   const [selectedOption, setSelectedOption] = useState("asc");
+  const [filterText, setFilterText] = useState("");
+
   const optionValues = [
     { value: "asc", label: "Abecedy (vzestupně)" },
     { value: "desc", label: "Abecedy (sestupně)" }
@@ -19,18 +21,22 @@ const AuthorsPage = () => {
 
   const selectOption = option => setSelectedOption(option.value);
 
+  const filterResults = e => {
+    setFilterText(e.target.value);
+  };
+
   return (
     <StyledAuthorsPage>
       <Title>Autoři</Title>
       <Wrapper>
-        <SearchInput />
+        <SearchInput filterResults={filterResults} />
         <SelectInput
           options={optionValues}
           defaultValue={optionValues[0]}
           setValue={selectOption}
         />
       </Wrapper>
-      <AuthorList order={selectedOption} />
+      <AuthorList order={selectedOption} filterText={filterText} />
     </StyledAuthorsPage>
   );
 };

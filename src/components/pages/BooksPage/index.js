@@ -33,9 +33,13 @@ const BooksPage = props => {
   const [lastDoc, setLastDoc] = useState(null);
   const [books, setBooks] = useState([]);
   const [booksLoaded, setBooksLoaded] = useState(false);
+  const [filterText, setFilterText] = useState("");
 
   const getBooks = async () => {
-    const snapshot = await queries[selectedOption].limit(12).get();
+    const snapshot = await queries[selectedOption]
+      .where("keywords", "array-contains", filterText.toLowerCase())
+      .limit(12)
+      .get();
     setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
     const data = snapshot.docs.map(doc => {
       return { ...doc.data(), id: doc.id };
@@ -61,7 +65,7 @@ const BooksPage = props => {
     setBooksLoaded(false);
     getBooks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption]);
+  }, [selectedOption, filterText]);
 
   const optionValues = [
     { value: "newest", label: "Nejnovějších" },
@@ -83,11 +87,15 @@ const BooksPage = props => {
     getNextBooks();
   };
 
+  const filterResults = e => {
+    setFilterText(e.target.value);
+  };
+
   return (
     <StyledBooksPage>
       <Title>Knihy</Title>
       <Wrapper>
-        <SearchInput />
+        <SearchInput filterResults={filterResults} />
         <Filter>
           <SelectInput
             options={optionValues}
@@ -100,7 +108,7 @@ const BooksPage = props => {
       </Wrapper>
       {booksLoaded ? (
         <>
-          <BookList books={books} />
+          <BookList books={books} filterText={filterText} />
           <ButtonWrapper>
             <ShowMoreButton onClick={showMoreBooks}>
               ZOBRAZIT DALŠÍ

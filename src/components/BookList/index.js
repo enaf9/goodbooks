@@ -19,7 +19,7 @@ const BookList = props => {
         .where("author.id", "==", props.id)
         .get();
       const data = snapshot.docs.map(doc => {
-        return doc.data();
+        return { ...doc.data(), id: doc.id };
       });
       setBooks(data);
       setBooksLoaded(true);
