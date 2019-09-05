@@ -15,7 +15,7 @@ import NavLinks from "./NavLinks/index";
 import UserDropdown from "./UserDropdown/index";
 
 const Navbar = () => {
-  const isLogged = useSelector(state => state.loggedReducer.isLogged);
+  const user = useSelector(state => state.loggedReducer);
   const isMenuSearchBarReducer = useSelector(
     state => state.menuSearchBarReducer
   );
@@ -24,14 +24,14 @@ const Navbar = () => {
     if (isMenuSearchBarReducer) {
       return null;
     } else {
-      return <NavLinks isLogged={isLogged} />;
+      return <NavLinks isLogged={user.isLogged} />;
     }
   };
 
   const renderUserMenuItem = () => {
     if (isMenuSearchBarReducer) {
       return null;
-    } else if (isLogged) {
+    } else if (user.isLogged) {
       return (
         <Link to="/my-profile">
           <UserMenuItem />
@@ -51,13 +51,13 @@ const Navbar = () => {
   };
 
   const renderUser = () => {
-    if (isLogged) {
+    if (user.isLogged) {
       return (
         <>
           <Link to="/my-profile">
             <UserMenuItem />
           </Link>
-          <UserDropdown username="beachboy96" />
+          <UserDropdown username={user.username} />
         </>
       );
     } else {
@@ -70,7 +70,7 @@ const Navbar = () => {
       {matches =>
         matches ? (
           <StyledNavbar
-            isLogged={isLogged}
+            isLogged={user.isLogged}
             isMenuSearchBarReducer={isMenuSearchBarReducer}
             desktop
           >
@@ -81,7 +81,7 @@ const Navbar = () => {
           </StyledNavbar>
         ) : (
           <StyledNavbar
-            isLogged={isLogged}
+            isLogged={user.isLogged}
             isMenuSearchBarReducer={isMenuSearchBarReducer}
           >
             <Link to="/">{renderLogo()}</Link>

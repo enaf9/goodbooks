@@ -1,7 +1,9 @@
-const signIn = id => {
+const signIn = (id, image, username) => {
   return {
     type: "SIGN_IN",
-    id
+    id,
+    image,
+    username
   };
 };
 

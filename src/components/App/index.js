@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { db } from "../../firebase";
 
 import GlobalStyle from "../../utils-styled-components/global";
 import { ThemeProvider } from "styled-components";
@@ -44,7 +45,18 @@ const App = () => {
 
   auth.onAuthStateChanged(user => {
     if (user) {
-      dispatch(signIn(user.uid));
+      let image;
+      let username;
+      const getImage = async () => {
+        const snapshot = await db
+          .collection("users")
+          .doc(user.uid)
+          .get();
+        image = snapshot.data().image;
+        username = snapshot.data().username;
+        dispatch(signIn(user.uid, image, username));
+      };
+      getImage();
     } else {
       dispatch(signOut());
     }
