@@ -16,9 +16,6 @@ import { db } from "../../../firebase";
 import { ReactComponent as Loading } from "../../../images/loading.svg";
 
 const AllBooksPage = props => {
-<<<<<<< HEAD
-  console.log(props);
-=======
   const [title, setTitle] = useState("Knihy");
   const [user, setUser] = useState({});
   const [userLoaded, setUserLoaded] = useState(false);
@@ -95,7 +92,6 @@ const AllBooksPage = props => {
     }
   }, [userLoaded]);
 
->>>>>>> 6a2ac1738a0e1044f159d43b0c6e923b4bb005d5
   return (
     <StyledBooksPage>
       <Wrapper>
