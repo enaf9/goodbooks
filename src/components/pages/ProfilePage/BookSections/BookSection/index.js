@@ -12,6 +12,7 @@ import BookList from "./BookList";
 import AddBookOverlay from "../../../../overlays/AddBookOverlay";
 
 const BookSection = props => {
+  console.log("A teď tu", props);
   const [addFormOpen, setAddFormOpen] = useState(false);
   const ownProfile = window.location.pathname.includes("my-profile");
 
@@ -24,19 +25,26 @@ const BookSection = props => {
   };
   return (
     <div>
-      <AddBookOverlay
-        isOpen={addFormOpen}
-        section={props.section}
-        closeOverlay={closeOverlay}
-      />
-      <Wrapper>
-        <Container>
-          <SectionName>{props.section}</SectionName>
-          {ownProfile ? <PlusIcon size="20" onClick={handleClick} /> : null}
-        </Container>
-        <Text to={`/all-books/:userId/${props.id}`}>Zobraziť vše</Text>
-      </Wrapper>
-      <BookList section={props.id} />
+      <>
+        <AddBookOverlay
+          isOpen={addFormOpen}
+          section={props.section}
+          closeOverlay={closeOverlay}
+        />
+        <Wrapper>
+          <Container>
+            <SectionName>{props.section}</SectionName>
+
+            {ownProfile ? <PlusIcon size="20" onClick={handleClick} /> : null}
+          </Container>
+          <Text to={`/all-books/:userId/${props.id}`}>Zobraziť vše</Text>
+        </Wrapper>
+        {props.msg ? (
+          <div>{props.msg}</div>
+        ) : (
+          <BookList books={props.books} section={props.id} />
+        )}
+      </>
     </div>
   );
 };

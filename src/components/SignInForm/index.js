@@ -57,6 +57,7 @@ const SignInForm = () => {
 
   const renderMessage = () => {
     if (signInMsg.type === "success") {
+      signInMsg.type = "";
       console.log(signInMsg.type);
       return <Redirect to="/" />;
     } else if (signInMsg.type === "error") {

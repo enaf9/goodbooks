@@ -7,16 +7,37 @@ import StyledBookSections from "./StyledBookSections";
 //components imports
 import BookSection from "./BookSection";
 
-const BookSections = () => {
+const BookSections = props => {
   return (
     <StyledBookSections>
-      <BookSection section="Oblíbené" id="1" />
+      {!props.favoritesBooks.length ? (
+        <BookSection
+          msg="Žádné oblíbené knížky k zobrazení."
+          section="Oblíbené"
+          id="1"
+        />
+      ) : (
+        <>
+          <BookSection books={props.favoritesBooks} section="Oblíbené" id="1" />
+          <Line />
+        </>
+      )}
+      {!props.toReadBooks.length ? (
+        <BookSection
+          msg="Žádné oblíbené knížky k zobrazení."
+          section="Oblíbené"
+          id="1"
+        />
+      ) : (
+        <>
+          <BookSection books={props.toReadBooks} section="Chci číst" id="2" />
+          <Line />
+        </>
+      )}
+
+      <BookSection books={props.favoritesBooks} section="Právě čtu" id="3" />
       <Line />
-      <BookSection section="Chci číst" id="2" />
-      <Line />
-      <BookSection section="Právě čtu" id="3" />
-      <Line />
-      <BookSection section="Přečtené" id="4" />
+      <BookSection books={props.favoritesBooks} section="Přečtené" id="4" />
     </StyledBookSections>
   );
 };
