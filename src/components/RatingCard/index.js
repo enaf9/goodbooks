@@ -30,7 +30,7 @@ const RatingCard = () => {
 
   return (
     <Wrapper>
-      <BookItemBox />
+      <BookItemBox data={{ id: 1 }} />
       <Rating size="16px" />
       {renderDeleteIcon()}
       {showDeleteMessage && <DeletePopUp />}

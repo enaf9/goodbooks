@@ -34,7 +34,7 @@ const Review = () => {
   return (
     <Wrapper>
       <Container>
-        <BookItemBox />
+        <BookItemBox data={{ id: 1 }} />
         <TimeText>před měsícem</TimeText>
       </Container>
       <Rating size="16px" />
