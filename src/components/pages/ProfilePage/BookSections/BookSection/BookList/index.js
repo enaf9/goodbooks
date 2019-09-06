@@ -12,34 +12,17 @@ const BookList = props => {
 
   return (
     <StyledBookList>
-      <div>
-        <BookItem />
-        {ownProfile ? <IconsBar section={props.section} /> : null}
-      </div>
-      <div>
-        <BookItem />
-        {ownProfile ? <IconsBar section={props.section} /> : null}
-      </div>
-      <div>
-        <BookItem />
-        {ownProfile ? <IconsBar section={props.section} /> : null}
-      </div>
-      <div>
-        <BookItem />
-        {ownProfile ? <IconsBar section={props.section} /> : null}
-      </div>
-      <div>
-        <BookItem />
-        {ownProfile ? <IconsBar section={props.section} /> : null}
-      </div>
-      <div>
-        <BookItem />
-        {ownProfile ? <IconsBar section={props.section} /> : null}
-      </div>
-      <div>
-        <BookItem />
-        {ownProfile ? <IconsBar section={props.section} /> : null}
-      </div>
+      {props.books.map(book => {
+        return (
+          <BookItem
+            title={book.title}
+            rating={book.avgRating}
+            coverImage={book.coverImage}
+            author={book.author.name}
+            id={book.id}
+          />
+        );
+      })}
     </StyledBookList>
   );
 };
