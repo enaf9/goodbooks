@@ -8,8 +8,11 @@ import Wrapper from "./Wrapper";
 import Input from "./Input";
 import SearchIcon from "./SearchIcon";
 
+import ResultList from "./ResultList";
+
 const SearchBar = props => {
   const [active, setActive] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const isMenuSearchBarReducer = useSelector(
     state => state.menuSearchBarReducer
   );
@@ -26,12 +29,39 @@ const SearchBar = props => {
     }
   };
 
+  const closeSearchBar = () => {
+    setActive(false);
+    setSearchText("");
+    if (isMenuSearchBarReducer) {
+      setTimeout(() => {
+        dispatch(toggleSearchBar());
+      }, 700);
+    } else {
+      dispatch(toggleSearchBar());
+    }
+  };
+
+  const handleChange = e => {
+    setSearchText(e.target.value);
+  };
+
   return (
     <Wrapper>
       {active ? (
         <>
-          <Input placeholder="Hledej" active />
+          <Input
+            placeholder="Hledej"
+            active
+            onChange={handleChange}
+            value={searchText}
+          />
           <SearchIcon active onClick={handleClick} />
+          {searchText && (
+            <ResultList
+              searchText={searchText}
+              closeSearchBar={closeSearchBar}
+            />
+          )}
         </>
       ) : (
         <>

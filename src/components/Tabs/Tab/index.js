@@ -15,7 +15,6 @@ const Tab = props => {
   const handleClick = e => {
     dispatch(setTabActive(props.id));
   };
-
   return (
     <StyledTab onClick={handleClick}>
       {Number(currentTab) === props.id ? (

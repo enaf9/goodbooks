@@ -7,6 +7,7 @@ import Wrapper from "./Wrapper";
 import BookList from "../../../../BookList";
 
 const SeriesList = props => {
+  console.log(props);
   return (
     <Wrapper isOpen={props.isOpen}>
       <BookList seriesId={props.id} />

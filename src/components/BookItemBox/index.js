@@ -1,5 +1,4 @@
 import React from "react";
-import BookImage from "../../images/Books/Kralovna_Stinu.jpg";
 
 //styled components imports
 import Wrapper from "./Wrapper";
@@ -7,13 +6,13 @@ import Image from "./Image";
 import BookName from "./BookName";
 import AuthorName from "./AuthorName";
 
-const BookItemBox = () => {
+const BookItemBox = props => {
   return (
-    <Wrapper>
-      <Image src={BookImage} />
+    <Wrapper to={"/book/" + props.data.id}>
+      <Image src={props.data.coverImage} />
       <div>
-        <BookName>Královna stínů</BookName>
-        <AuthorName>Sarah J. Maas</AuthorName>
+        <BookName>{props.data.title}</BookName>
+        <AuthorName>{props.data.author.name}</AuthorName>
       </div>
     </Wrapper>
   );

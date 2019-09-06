@@ -31,7 +31,7 @@ const BookList = props => {
         .where("series.id", "==", props.seriesId)
         .get();
       const data = snapshot.docs.map(doc => {
-        return doc.data();
+        return { ...doc.data(), id: doc.id };
       });
       setBooks(data);
       setBooksLoaded(true);
@@ -65,7 +65,7 @@ const BookList = props => {
       );
     });
   };
-
+  console.log(books);
   return (
     <>
       {booksLoaded ? (
