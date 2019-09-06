@@ -5,11 +5,8 @@ import StyledBookList from "./StyledBookList";
 
 //components imports
 import BookItem from "../../../../../BookItem";
-import IconsBar from "./IconsBar";
 
 const BookList = props => {
-  const ownProfile = window.location.pathname.includes("my-profile");
-
   return (
     <StyledBookList>
       {props.books.map(book => {

@@ -60,6 +60,7 @@ const BookPage = props => {
             series={book.series}
             avgRating={book.avgRating}
             ratingCount={book.ratingCount}
+            id={props.match.params.id}
           />
           <Tabs tabs={tabs} />
           {content}

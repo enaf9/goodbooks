@@ -41,7 +41,7 @@ const BookDetailCard = props => {
       <Container>
         <div>
           <Image src={props.image} />
-          <BookStatusBar />
+          <BookStatusBar bookId={props.id} />
         </div>
         <div>
           <AuthorName>{props.author.name}</AuthorName>

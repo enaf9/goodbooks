@@ -11,6 +11,7 @@ import BookList from "../../BookList/index";
 import UserCard from "../../UserCard";
 
 const AllBooksPage = props => {
+  console.log(props);
   return (
     <StyledBooksPage>
       <Wrapper>
