@@ -18,6 +18,8 @@ const BookList = props => {
             title={book.title}
             rating={book.avgRating}
             coverImage={book.coverImage}
+            author={book.author.name}
+            id={book.id}
           />
         );
       })}

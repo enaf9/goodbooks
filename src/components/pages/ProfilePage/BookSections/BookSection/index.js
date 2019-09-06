@@ -6,13 +6,13 @@ import Container from "./Container";
 import SectionName from "./SectionName";
 import Text from "./Text";
 import PlusIcon from "../../../../../shared-styled-components/PlusIcon";
+import MessageWrapper from "./MessageWrapper";
 
 //components imports
 import BookList from "./BookList";
 import AddBookOverlay from "../../../../overlays/AddBookOverlay";
 
 const BookSection = props => {
-  console.log("A teď tu", props);
   const [addFormOpen, setAddFormOpen] = useState(false);
   const ownProfile = window.location.pathname.includes("my-profile");
 
@@ -40,7 +40,7 @@ const BookSection = props => {
           <Text to={`/all-books/:userId/${props.id}`}>Zobraziť vše</Text>
         </Wrapper>
         {props.msg ? (
-          <div>{props.msg}</div>
+          <MessageWrapper>{props.msg}</MessageWrapper>
         ) : (
           <BookList books={props.books} section={props.id} />
         )}

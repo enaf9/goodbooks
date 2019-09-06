@@ -8,10 +8,10 @@ import Reviews from "./Reviews/index";
 
 //styled components imports
 import Description from "./Description";
-import LogoWrapper from "./LogoWrapper";
+import LoadingWrapper from "./LoadingWrapper";
 
 import { db } from "../../../firebase";
-import { ReactComponent as Logo } from "../../../images/loading.svg";
+import { ReactComponent as Loading } from "../../../images/loading.svg";
 
 const BookPage = props => {
   let content;
@@ -65,9 +65,9 @@ const BookPage = props => {
           {content}
         </>
       ) : (
-        <LogoWrapper>
-          <Logo />
-        </LogoWrapper>
+        <LoadingWrapper>
+          <Loading />
+        </LoadingWrapper>
       )}
     </>
   );
