@@ -14,11 +14,17 @@ const BookSections = props => {
         <BookSection
           msg="Žádné oblíbené knížky k zobrazení."
           section="Oblíbené"
-          id="1"
+          id="favorites"
+          userId={props.userId}
         />
       ) : (
         <>
-          <BookSection books={props.favoritesBooks} section="Oblíbené" id="1" />
+          <BookSection
+            books={props.favoritesBooks}
+            section="Oblíbené"
+            id="favorites"
+            userId={props.userId}
+          />
           <Line />
         </>
       )}
@@ -26,11 +32,17 @@ const BookSections = props => {
         <BookSection
           msg="Žádné knížky k přečtení k zobrazení."
           section="Chci číst"
-          id="1"
+          id="to-read"
+          userId={props.userId}
         />
       ) : (
         <>
-          <BookSection books={props.toReadBooks} section="Chci číst" id="2" />
+          <BookSection
+            books={props.toReadBooks}
+            section="Chci číst"
+            id="to-read"
+            userId={props.userId}
+          />
           <Line />
         </>
       )}
@@ -39,14 +51,16 @@ const BookSections = props => {
         <BookSection
           msg="Žádné aktuálně čtené knížky k zobrazení."
           section="Právě čtu"
-          id="1"
+          id="currently-reading"
+          userId={props.userId}
         />
       ) : (
         <>
           <BookSection
             books={props.currentlyReadingBooks}
             section="Právě čtu"
-            id="3"
+            id="currently-reading"
+            userId={props.userId}
           />
           <Line />
         </>
@@ -56,11 +70,17 @@ const BookSections = props => {
         <BookSection
           msg="Žádné přečtené knížky k zobrazení."
           section="Přečtené"
-          id="1"
+          id="read"
+          userId={props.userId}
         />
       ) : (
         <>
-          <BookSection books={props.readBooks} section="Přečtené" id="4" />
+          <BookSection
+            books={props.readBooks}
+            section="Přečtené"
+            id="read"
+            userId={props.userId}
+          />
         </>
       )}
     </StyledBookSections>

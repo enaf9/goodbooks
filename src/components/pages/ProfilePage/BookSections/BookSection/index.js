@@ -37,7 +37,9 @@ const BookSection = props => {
 
             {ownProfile ? <PlusIcon size="20" onClick={handleClick} /> : null}
           </Container>
-          <Text to={`/all-books/:userId/${props.id}`}>Zobraziť vše</Text>
+          <Text to={`/all-books/${props.userId}/${props.id}`}>
+            Zobrazit vše
+          </Text>
         </Wrapper>
         {props.msg ? (
           <MessageWrapper>{props.msg}</MessageWrapper>

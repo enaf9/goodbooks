@@ -151,6 +151,7 @@ const ProfilePage = props => {
           toReadBooks={toReadBooks}
           currentlyReadingBooks={currentlyReadingBooks}
           readBooks={readBooks}
+          userId={user.id}
         />
       );
     } else {
@@ -174,7 +175,7 @@ const ProfilePage = props => {
       content = <RatingList />;
       break;
     default:
-      content = <BookSections />;
+      content = <BookSections userId={user.id} />;
       break;
   }
   return (
