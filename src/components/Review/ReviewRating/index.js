@@ -7,8 +7,8 @@ import ThumbsUpIcon from "./ThumbsUpIcon";
 import ThumbsDownIcon from "./ThumbsDownIcon";
 import IconWrapper from "./IconWrapper";
 
-const ReviewRating = () => {
-  const [value, setValue] = useState(100);
+const ReviewRating = props => {
+  const [value, setValue] = useState(props.likesCount);
   const [iconsCheck, setIconsCheck] = useState({
     thumbsUp: false,
     thumbsDown: false

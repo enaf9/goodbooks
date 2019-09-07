@@ -5,6 +5,7 @@ import Review from "../../../Review/index";
 //styled components imports
 import AddButton from "./AddButton";
 import Wrapper from "./Wrapper";
+import Message from "./Message";
 
 //components imports
 import SelectInput from "../../../SelectInput/index";
@@ -26,7 +27,6 @@ const Reviews = props => {
       const data = snapshot.docs.map(review => {
         return { ...review.data(), id: review.id };
       });
-      console.log(data);
       setReviews(data);
       setReviewsLoaded(true);
     };
@@ -43,13 +43,26 @@ const Reviews = props => {
         <SelectInput />
       </Wrapper>
       <AddReviewForm isOpen={addFormOpen} />
-      {reviewsLoaded
-        ? !reviews.length
-          ? null
-          : reviews.map(review => {
-              return <Review />;
-            })
-        : null}
+      {reviewsLoaded ? (
+        !reviews.length ? (
+          <Message>Žádné recenze k zobrazení.</Message>
+        ) : (
+          reviews.map(review => {
+            return (
+              <Review
+                review
+                title={review.title}
+                text={review.text}
+                date={review.date.toDate()}
+                rating={review.rating}
+                username={review.user.username}
+                image={review.user.image}
+                likesCount={review.likesCount}
+              />
+            );
+          })
+        )
+      ) : null}
     </>
   );
 };
