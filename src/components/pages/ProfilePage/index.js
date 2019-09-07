@@ -37,6 +37,9 @@ const ProfilePage = props => {
   const [readBooksLoaded, setReadBooksLoaded] = useState(false);
 
   useEffect(() => {
+    setUser({ ...loggedUser });
+    setUserLoaded(false);
+
     const getUser = async () => {
       const snapshot = await db
         .collection("users")
@@ -46,13 +49,20 @@ const ProfilePage = props => {
       setUserLoaded(true);
     };
 
-    getUser();
+    if (props.match.params.id) {
+      getUser();
+    } else {
+      if (loggedUser.id) {
+        setUser({ ...loggedUser });
+        setUserLoaded(true);
+      }
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.match.params.id]);
+  }, [props.match.params.id, loggedUser.id]);
 
   useEffect(() => {
-    const getFavoritesBooks = () => {
+    const getFavoritesBooks = user => {
       let promises = user.favoritesBooks.map(book => {
         return db
           .collection("books")
@@ -69,7 +79,7 @@ const ProfilePage = props => {
       });
     };
 
-    const getToReadBooks = () => {
+    const getToReadBooks = user => {
       let promises = user.toReadBooks.map(book => {
         return db
           .collection("books")
@@ -87,7 +97,7 @@ const ProfilePage = props => {
       });
     };
 
-    const getCurrentlyReadingBooks = () => {
+    const getCurrentlyReadingBooks = user => {
       let promises = user.currentlyReadingBooks.map(book => {
         return db
           .collection("books")
@@ -108,7 +118,7 @@ const ProfilePage = props => {
       });
     };
 
-    const getReadBooks = () => {
+    const getReadBooks = user => {
       let promises = user.readBooks.map(book => {
         return db
           .collection("books")
@@ -130,12 +140,12 @@ const ProfilePage = props => {
     };
 
     if (userLoaded) {
-      getFavoritesBooks();
-      getToReadBooks();
-      getCurrentlyReadingBooks();
-      getReadBooks();
+      getFavoritesBooks(props.match.params.id ? user : loggedUser);
+      getToReadBooks(props.match.params.id ? user : loggedUser);
+      getCurrentlyReadingBooks(props.match.params.id ? user : loggedUser);
+      getReadBooks(props.match.params.id ? user : loggedUser);
     }
-  }, [userLoaded]);
+  }, [userLoaded, props.match.params.id]);
 
   const renderBookSections = () => {
     if (
@@ -178,6 +188,7 @@ const ProfilePage = props => {
       content = <BookSections userId={user.id} />;
       break;
   }
+  console.log();
   return (
     <StyledProfilePage>
       <UserCard center big image={user.image} name={user.username} profile />

@@ -44,8 +44,10 @@ const BookStatusBar = props => {
         setBookmarkIcon(true);
       }
     };
-    isBookInFavorites();
-  }, []);
+    if (isLogged.id) {
+      isBookInFavorites();
+    }
+  }, [isLogged.id]);
 
   const addBookToFavorites = async bookId => {
     await db
@@ -66,7 +68,7 @@ const BookStatusBar = props => {
   };
 
   const handleClick = e => {
-    if (isLogged) {
+    if (isLogged.id) {
       if (e.target.id === "heartIcon") {
         !heartIcon
           ? addBookToFavorites(props.bookId)
