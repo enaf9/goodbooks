@@ -13,19 +13,26 @@ import AddReviewForm from "./AddReviewForm/index";
 import { db } from "../../../../firebase";
 const Reviews = props => {
   const [addFormOpen, setAddFormOpen] = useState(false);
+  const [reviews, setReviews] = useState([]);
+  const [reviewsLoaded, setReviewsLoaded] = useState(false);
 
   useEffect(() => {
-    const getBook = async () => {
+    const getReviews = async () => {
       const snapshot = await db
         .collection("books")
         .doc(props.bookId)
-        .collection("BookReviews")
+        .collection("bookReviews")
         .get();
-      console.log(snapshot.docs);
+      const data = snapshot.docs.map(review => {
+        return { ...review.data(), id: review.id };
+      });
+      console.log(data);
+      setReviews(data);
+      setReviewsLoaded(true);
     };
 
-    getBook();
-  });
+    getReviews();
+  }, []);
   const handleClick = () => {
     setAddFormOpen(!addFormOpen);
   };
@@ -36,8 +43,13 @@ const Reviews = props => {
         <SelectInput />
       </Wrapper>
       <AddReviewForm isOpen={addFormOpen} />
-      <Review />
-      <Review />
+      {reviewsLoaded
+        ? !reviews.length
+          ? null
+          : reviews.map(review => {
+              return <Review />;
+            })
+        : null}
     </>
   );
 };
