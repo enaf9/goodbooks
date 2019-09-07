@@ -13,12 +13,15 @@ const Rating = props => {
       <StarIcon size={props.size} fill={props.average - 2} />
       <StarIcon size={props.size} fill={props.average - 3} />
       <StarIcon size={props.size} fill={props.average - 4} />
-      <RatingText
-        size={props.large ? "large" : props.small ? "small" : "medium"}
-        show={props.average}
-      >
-        {props.average}
-      </RatingText>
+      {props.review ? null : (
+        <RatingText
+          size={props.large ? "large" : props.small ? "small" : "medium"}
+          show={props.average}
+        >
+          {props.average}
+        </RatingText>
+      )}
+
       <RatingText
         size={props.large ? "large" : props.small ? "small" : "medium"}
         show={props.count}
