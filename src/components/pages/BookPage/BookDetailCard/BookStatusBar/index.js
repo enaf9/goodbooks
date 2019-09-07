@@ -95,6 +95,7 @@ const BookStatusBar = props => {
               break;
             }
             setBookmarkIcon(false);
+            removeFromBooklist(props.bookId, "toReadBooks");
             break;
           case "bookIcon":
             if (!bookIcon) {
@@ -106,6 +107,7 @@ const BookStatusBar = props => {
               removeFromBooklist(props.bookId, "readBooks");
               break;
             }
+            removeFromBooklist(props.bookId, "currentlyReadingBooks");
             setBookIcon(false);
             break;
           case "checkIcon":
@@ -119,6 +121,7 @@ const BookStatusBar = props => {
               break;
             }
             setCheckIcon(false);
+            removeFromBooklist(props.bookId, "readBooks");
             break;
           default:
             break;
