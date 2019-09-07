@@ -6,12 +6,15 @@ import Review from "../../../Review/index";
 import AddButton from "./AddButton";
 import Wrapper from "./Wrapper";
 import Message from "./Message";
+import LoadingWrapper from "./LoadingWrapper";
 
 //components imports
 import SelectInput from "../../../SelectInput/index";
 import AddReviewForm from "./AddReviewForm/index";
 
 import { db } from "../../../../firebase";
+import { ReactComponent as Loading } from "../../../../images/loading.svg";
+
 const Reviews = props => {
   const [addFormOpen, setAddFormOpen] = useState(false);
   const [reviews, setReviews] = useState([]);
@@ -63,7 +66,11 @@ const Reviews = props => {
             );
           })
         )
-      ) : null}
+      ) : (
+        <LoadingWrapper>
+          <Loading />
+        </LoadingWrapper>
+      )}
     </>
   );
 };
