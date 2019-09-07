@@ -34,6 +34,7 @@ const BooksPage = props => {
   const [books, setBooks] = useState([]);
   const [booksLoaded, setBooksLoaded] = useState(false);
   const [filterText, setFilterText] = useState("");
+  const [nextDocumentsCount, setNextDocumentsCount] = useState(1);
 
   const getBooks = async () => {
     const snapshot = await queries[selectedOption]
@@ -57,6 +58,8 @@ const BooksPage = props => {
     const data = snapshot.docs.map(doc => {
       return { ...doc.data(), id: doc.id };
     });
+    setNextDocumentsCount(snapshot.docs.length);
+    console.log(snapshot.docs.length);
     setBooks([...books, ...data]);
     setBooksLoaded(true);
   };
@@ -110,9 +113,13 @@ const BooksPage = props => {
         <>
           <BookList books={books} filterText={filterText} />
           <ButtonWrapper>
-            <ShowMoreButton onClick={showMoreBooks}>
-              ZOBRAZIT DALŠÍ
-            </ShowMoreButton>
+            {nextDocumentsCount ? (
+              <ShowMoreButton onClick={showMoreBooks}>
+                ZOBRAZIT DALŠÍ
+              </ShowMoreButton>
+            ) : (
+              <span>Žádné další knížky k zobrazení.</span>
+            )}
           </ButtonWrapper>
         </>
       ) : (
