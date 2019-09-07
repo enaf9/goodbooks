@@ -42,19 +42,14 @@ const App = () => {
   const isloggedSetup = useSelector(state => state.loggedReducer.isLoggedSetup);
 
   const isMenuOpen = useSelector(state => state.menuReducer);
-
   auth.onAuthStateChanged(user => {
     if (user) {
-      let image;
-      let username;
       const getImage = async () => {
         const snapshot = await db
           .collection("users")
           .doc(user.uid)
           .get();
-        image = snapshot.data().image;
-        username = snapshot.data().username;
-        dispatch(signIn(user.uid, image, username));
+        dispatch(signIn(user.uid, snapshot.data()));
       };
       getImage();
     } else {

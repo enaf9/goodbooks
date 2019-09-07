@@ -8,8 +8,7 @@ const loggedReducer = (
         ...state,
         isLogged: true,
         id: action.id,
-        image: action.image,
-        username: action.username
+        ...action.data
       };
     case "SIGN_OUT":
       return { ...state, isLogged: false };
