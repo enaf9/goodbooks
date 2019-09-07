@@ -11,7 +11,7 @@ import IconWrapper from "./IconWrapper"; //added to get target id from icon clic
 import Wrapper from "./Wrapper";
 
 //components imports
-import SignMessage from "../../../../pop-ups/SignMessage";
+import InfoMessage from "../../../../pop-ups/InfoMessage/index";
 
 const BookStatusBar = props => {
   const [heartIcon, setHeartIcon] = useState(false);
@@ -94,7 +94,9 @@ const BookStatusBar = props => {
         }
       }
     } else {
-      setMessage(<SignMessage />);
+      setMessage(
+        <InfoMessage msg="Pro přihlášení do oblíbených se musíš přihlásit." />
+      );
     }
   };
 
