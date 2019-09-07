@@ -58,6 +58,7 @@ const Reviews = props => {
                 username={review.user.username}
                 image={review.user.image}
                 likesCount={review.likesCount}
+                userId={review.user.id}
               />
             );
           })

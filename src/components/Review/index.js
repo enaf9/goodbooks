@@ -52,11 +52,11 @@ const Review = props => {
   return (
     <Wrapper>
       <Container>
-        {console.log(daysAgo)}
         <UserItemBox
           data={{
             username: props.username,
-            image: props.image
+            image: props.image,
+            id: props.userId
           }}
         />
         <TimeText>{renderTimeText()}</TimeText>
