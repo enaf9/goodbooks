@@ -145,7 +145,7 @@ const ProfilePage = props => {
       getCurrentlyReadingBooks(props.match.params.id ? user : loggedUser);
       getReadBooks(props.match.params.id ? user : loggedUser);
     }
-  }, [userLoaded, props.match.params.id]);
+  }, [userLoaded, props.match.params.id, loggedUser]);
 
   const renderBookSections = () => {
     if (

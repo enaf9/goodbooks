@@ -5,7 +5,7 @@ const StyledOverlay = styled.div`
   grid-row-gap: 20px;
   padding: 25px;
   width: 325px;
-  height: 250px;
+  height: auto;
   position: fixed;
   background: ${props => props.theme.colors.background.lightGrey};
   top: calc((100vh - 250px) / 2);

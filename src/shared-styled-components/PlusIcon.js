@@ -6,6 +6,8 @@ const PlusIcon = styled(Plus)`
   color: ${props => props.theme.colors.text.darkGrey};
   height: ${props => (props.size ? props.size + "px" : "24px")};
   width: ${props => (props.size ? props.size + "px" : "24px")};
+  pointer-events: ${props =>
+    props.pointerEvents ? props.pointerEvents : "auto"};
 `;
 
 export default PlusIcon;
