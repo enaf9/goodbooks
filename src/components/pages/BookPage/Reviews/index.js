@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Review from "../../../Review/index";
 
@@ -10,8 +10,22 @@ import Wrapper from "./Wrapper";
 import SelectInput from "../../../SelectInput/index";
 import AddReviewForm from "./AddReviewForm/index";
 
-const Reviews = () => {
+import { db } from "../../../../firebase";
+const Reviews = props => {
   const [addFormOpen, setAddFormOpen] = useState(false);
+
+  useEffect(() => {
+    const getBook = async () => {
+      const snapshot = await db
+        .collection("books")
+        .doc(props.bookId)
+        .collection("BookReviews")
+        .get();
+      console.log(snapshot.docs);
+    };
+
+    getBook();
+  });
   const handleClick = () => {
     setAddFormOpen(!addFormOpen);
   };
