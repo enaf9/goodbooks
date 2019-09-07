@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import firebase, { db } from "../../../../../firebase";
+
+import {
+  addBookToList,
+  removeBookFromList
+} from "../../../../../store/actions/loggedActions";
 
 //styled components imports
 import HeartIcon from "../../../../../shared-styled-components/HeartIcon";
@@ -20,9 +25,10 @@ const BookStatusBar = props => {
   const [checkIcon, setCheckIcon] = useState(false);
   const [message, setMessage] = useState(null);
   const isLogged = useSelector(state => state.loggedReducer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const isBookInFavorites = async () => {
+    const checkBookLists = async () => {
       const snapshot = await db
         .collection("users")
         .doc(isLogged.id)
@@ -45,25 +51,27 @@ const BookStatusBar = props => {
       }
     };
     if (isLogged.id) {
-      isBookInFavorites();
+      checkBookLists();
     }
   }, [isLogged.id]);
 
-  const addBookToFavorites = async bookId => {
+  const addToBookList = async (bookId, list) => {
+    dispatch(addBookToList(bookId, list));
     await db
       .collection("users")
       .doc(isLogged.id)
       .update({
-        favoritesBooks: firebase.firestore.FieldValue.arrayUnion(bookId)
+        [list]: firebase.firestore.FieldValue.arrayUnion(bookId)
       });
   };
 
-  const removeBookFromFavorites = async bookId => {
+  const removeFromBooklist = async (bookId, list) => {
+    dispatch(removeBookFromList(bookId, list));
     await db
       .collection("users")
       .doc(isLogged.id)
       .update({
-        favoritesBooks: firebase.firestore.FieldValue.arrayRemove(bookId)
+        [list]: firebase.firestore.FieldValue.arrayRemove(bookId)
       });
   };
 
@@ -71,25 +79,46 @@ const BookStatusBar = props => {
     if (isLogged.id) {
       if (e.target.id === "heartIcon") {
         !heartIcon
-          ? addBookToFavorites(props.bookId)
-          : removeBookFromFavorites(props.bookId);
+          ? addToBookList(props.bookId, "favoritesBooks")
+          : removeFromBooklist(props.bookId, "favoritesBooks");
         setHeartIcon(!heartIcon);
       } else {
         switch (e.target.id) {
           case "bookmarkIcon":
-            setBookmarkIcon(true);
-            setBookIcon(false);
-            setCheckIcon(false);
+            if (!bookmarkIcon) {
+              addToBookList(props.bookId, "toReadBooks");
+              setBookmarkIcon(true);
+              setBookIcon(false);
+              removeFromBooklist(props.bookId, "currentlyReadingBooks");
+              setCheckIcon(false);
+              removeFromBooklist(props.bookId, "readBooks");
+              break;
+            }
+            setBookmarkIcon(false);
             break;
           case "bookIcon":
-            setBookIcon(true);
-            setBookmarkIcon(false);
-            setCheckIcon(false);
+            if (!bookIcon) {
+              setBookIcon(true);
+              addToBookList(props.bookId, "currentlyReadingBooks");
+              setBookmarkIcon(false);
+              removeFromBooklist(props.bookId, "toReadBooks");
+              setCheckIcon(false);
+              removeFromBooklist(props.bookId, "readBooks");
+              break;
+            }
+            setBookIcon(false);
             break;
           case "checkIcon":
-            setCheckIcon(true);
-            setBookmarkIcon(false);
-            setBookIcon(false);
+            if (!checkIcon) {
+              setCheckIcon(true);
+              addToBookList(props.bookId, "readBooks");
+              setBookmarkIcon(false);
+              removeFromBooklist(props.bookId, "toReadBooks");
+              setBookIcon(false);
+              removeFromBooklist(props.bookId, "currentlyReadingBooks");
+              break;
+            }
+            setCheckIcon(false);
             break;
           default:
             break;
