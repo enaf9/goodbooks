@@ -1,13 +1,18 @@
 import styled from "styled-components";
 
 const StyledMessage = styled.div`
+  position: fixed;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  margin: 15px 0 0;
   padding: 15px 0;
   min-width: 315px;
-  background: ${props => props.theme.colors.background.white};
+  background: ${props => props.theme.colors.background.lightGrey};
+  color: ${props => props.theme.colors.text.darkGrey};
+  opacity: 0.7;
   font-size: 14px;
-  grid-column: 1/3;
 `;
 
 export default StyledMessage;

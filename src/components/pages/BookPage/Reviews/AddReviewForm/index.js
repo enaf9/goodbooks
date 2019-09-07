@@ -14,7 +14,7 @@ import InfoMessage from "../../../../pop-ups/InfoMessage/index";
 import { auth } from "../../../../../firebase";
 
 const AddReviewForm = props => {
-  const [review, setReview] = useState({ title: "", body: "" });
+  const [review, setReview] = useState({ title: "", body: "", rating: 5 });
   const [showMessage, setShowMessage] = useState(false);
 
   const handleChange = e => {
@@ -29,7 +29,10 @@ const AddReviewForm = props => {
     if (auth.currentUser) {
       console.log("je přihlášenej");
     } else {
-      console.log("není přihlášenej");
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 2000);
     }
   };
   return (
@@ -42,6 +45,9 @@ const AddReviewForm = props => {
         onChange={handleChange}
       />
       <br />
+      {showMessage ? (
+        <InfoMessage msg="Pro přidání recenze je potřeba být přihlášený." />
+      ) : null}
       <TextArea
         placeholder="Text recenze"
         value={review.body}
