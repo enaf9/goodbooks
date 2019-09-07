@@ -30,6 +30,7 @@ const BookSection = props => {
           isOpen={addFormOpen}
           section={props.section}
           closeOverlay={closeOverlay}
+          id={props.id}
         />
         <Wrapper>
           <Container>
@@ -43,8 +44,10 @@ const BookSection = props => {
         </Wrapper>
         {props.msg ? (
           <MessageWrapper>{props.msg}</MessageWrapper>
-        ) : (
+        ) : props.books ? (
           <BookList books={props.books} section={props.id} />
+        ) : (
+          "loading"
         )}
       </>
     </div>

@@ -9,12 +9,12 @@ import AuthorName from "./AuthorName";
 const BookItemBox = props => {
   return (
     <Wrapper to={"/book/1"}>
-      {/* <Wrapper to={"/book/" + props.data.id }> */}
+      {/* <Wrapper to={"/book/" + props.data.id} bottom={props.bottom}> */}
       <Image src={""} />
       {/* <Image src={props.data ? props.data.coverImage : ""} /> */}
       <div>
         <BookName>Cesta králů</BookName>
-        {/* <BookName>{props.data.title }</BookName> */}
+        {/* <BookName>{props.data.title}</BookName> */}
         <AuthorName>Brandon Sanderson</AuthorName>
         {/* <AuthorName>{props.data.author.name}</AuthorName> */}
       </div>

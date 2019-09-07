@@ -65,7 +65,6 @@ const BookList = props => {
       );
     });
   };
-  console.log(books);
   return (
     <>
       {booksLoaded ? (
