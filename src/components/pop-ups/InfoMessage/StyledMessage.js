@@ -11,7 +11,7 @@ const StyledMessage = styled.div`
   min-width: 315px;
   background: ${props => props.theme.colors.background.lightGrey};
   color: ${props => props.theme.colors.text.darkGrey};
-  opacity: 0.7;
+  opacity: 0.8;
   font-size: 14px;
 `;
 

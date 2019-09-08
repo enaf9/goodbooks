@@ -74,6 +74,8 @@ const Reviews = props => {
                 image={review.user.image}
                 likesCount={review.likesCount}
                 userId={review.user.id}
+                reviewId={review.id}
+                bookId={props.bookId}
               />
             );
           })
