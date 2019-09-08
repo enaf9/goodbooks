@@ -58,7 +58,7 @@ const ReviewRating = props => {
       });
 
     db.collection("books")
-      .doc("A22KcXWnp9Lfb4WTBfyp")
+      .doc(props.bookId)
       .collection("bookReviews")
       .doc(props.reviewId)
       .update({
@@ -86,7 +86,7 @@ const ReviewRating = props => {
       });
 
     db.collection("books")
-      .doc("A22KcXWnp9Lfb4WTBfyp")
+      .doc(props.bookId)
       .collection("bookReviews")
       .doc(props.reviewId)
       .update({

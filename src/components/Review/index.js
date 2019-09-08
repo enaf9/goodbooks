@@ -68,7 +68,11 @@ const Review = props => {
       />
       <Title>{props.title}</Title>
       <Text>{props.text}</Text>
-      <ReviewRating likesCount={props.likesCount} reviewId={props.reviewId} />
+      <ReviewRating
+        likesCount={props.likesCount}
+        reviewId={props.reviewId}
+        bookId={props.bookId}
+      />
       {renderDeleteIcon()}
       {showDeleteMessage && <DeletePopUp />}
     </Wrapper>
