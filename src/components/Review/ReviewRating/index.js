@@ -35,7 +35,9 @@ const ReviewRating = props => {
       }
     };
 
-    checkUserLikes();
+    if (auth.currentUser) {
+      checkUserLikes();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -133,6 +135,7 @@ const ReviewRating = props => {
         }
       }
     } else {
+      console.log(123);
       setShowMessage(true);
       setTimeout(() => {
         setShowMessage(false);
