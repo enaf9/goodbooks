@@ -35,7 +35,9 @@ const ReviewRating = props => {
       }
     };
 
-    checkUserLikes();
+    if (auth.currentUser) {
+      checkUserLikes();
+    }
   }, []);
 
   const addToLikedReviews = () => {
@@ -132,6 +134,7 @@ const ReviewRating = props => {
         }
       }
     } else {
+      console.log(123);
       setShowMessage(true);
       setTimeout(() => {
         setShowMessage(false);
