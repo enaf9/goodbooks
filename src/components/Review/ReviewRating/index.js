@@ -56,6 +56,14 @@ const ReviewRating = props => {
           props.reviewId
         )
       });
+
+    db.collection("books")
+      .doc("A22KcXWnp9Lfb4WTBfyp")
+      .collection("bookReviews")
+      .doc(props.reviewId)
+      .update({
+        ["likesCount"]: firebase.firestore.FieldValue.increment(-1)
+      });
   };
 
   const addToDislikedReviews = () => {
@@ -75,6 +83,14 @@ const ReviewRating = props => {
         ["dislikedReviews"]: firebase.firestore.FieldValue.arrayRemove(
           props.reviewId
         )
+      });
+
+    db.collection("books")
+      .doc("A22KcXWnp9Lfb4WTBfyp")
+      .collection("bookReviews")
+      .doc(props.reviewId)
+      .update({
+        ["likesCount"]: firebase.firestore.FieldValue.increment(1)
       });
   };
 
