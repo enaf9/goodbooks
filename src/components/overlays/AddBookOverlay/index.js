@@ -70,6 +70,7 @@ const AddBookOverlay = props => {
     } else {
       setBooks([]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterText]);
 
   const filterResults = e => {

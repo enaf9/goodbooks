@@ -50,6 +50,7 @@ const AllBooksPage = props => {
     };
 
     getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.match.params.section]);
 
   useEffect(() => {
@@ -90,6 +91,7 @@ const AllBooksPage = props => {
       };
       getBooks();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userLoaded]);
 
   return (

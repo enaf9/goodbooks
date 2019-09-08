@@ -53,6 +53,7 @@ const BookStatusBar = props => {
     if (isLogged.id) {
       checkBookLists();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLogged.id]);
 
   const addToBookList = async (bookId, list) => {

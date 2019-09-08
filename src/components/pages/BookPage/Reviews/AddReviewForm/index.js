@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import firebase, { db } from "../../../../../firebase";
 
@@ -16,8 +16,8 @@ import InfoMessage from "../../../../pop-ups/InfoMessage/index";
 import { auth } from "../../../../../firebase";
 
 const AddReviewForm = props => {
-  const [avgRating, setAvgRating] = useState(props.avgRating);
-  const [ratingCount, setRatingCount] = useState(props.ratingCount);
+  const [avgRating] = useState(props.avgRating);
+  const [ratingCount] = useState(props.ratingCount);
   const [review, setReview] = useState({ title: "", body: "", rating: 0 });
   const [message, setMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);

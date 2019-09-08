@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import BookDetailCard from "./BookDetailCard/index";
 import Tabs from "../../Tabs";
@@ -13,11 +13,19 @@ import LoadingWrapper from "./LoadingWrapper";
 import { db } from "../../../firebase";
 import { ReactComponent as Loading } from "../../../images/loading.svg";
 
+import setTabActive from "../../../store/actions/tabActions";
+
 const BookPage = props => {
   let content;
   const currentTab = useSelector(state => state.tabReducer);
   const [book, setBook] = useState({});
   const [bookLoaded, setBookLoaded] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setTabActive(0));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const getBook = async () => {
@@ -45,7 +53,7 @@ const BookPage = props => {
         <Reviews
           bookId={props.match.params.id}
           title={book.title}
-          author={book.author.name}
+          author={book.author ? book.author.name : ""}
           image={book.coverImage}
           avgRating={book.avgRating}
           ratingCount={book.ratingCount}
@@ -72,7 +80,7 @@ const BookPage = props => {
             id={props.match.params.id}
           />
           <Tabs tabs={tabs} />
-          {content}
+          {book ? content : null}
         </>
       ) : (
         <LoadingWrapper>

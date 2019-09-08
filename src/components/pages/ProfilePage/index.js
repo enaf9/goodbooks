@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { db } from "../../../firebase";
 
 //styled components imports
@@ -15,6 +15,7 @@ import RatingList from "./RatingList";
 import LoadingWrapper from "./LoadingWrapper";
 
 import { ReactComponent as Loading } from "../../../images/loading.svg";
+import setTabActive from "../../../store/actions/tabActions";
 
 const ProfilePage = props => {
   let content;
@@ -22,6 +23,7 @@ const ProfilePage = props => {
   const loggedUser = useSelector(state => state.loggedReducer);
   const [user, setUser] = useState({});
   const [userLoaded, setUserLoaded] = useState(false);
+  const dispatch = useDispatch();
 
   const [favoritesBooks, setFavoritesBooks] = useState([]);
   const [toReadBooks, setToReadBooks] = useState([]);
@@ -37,7 +39,11 @@ const ProfilePage = props => {
   const [readBooksLoaded, setReadBooksLoaded] = useState(false);
 
   useEffect(() => {
-    setUser({ ...loggedUser });
+    dispatch(setTabActive(0));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     setUserLoaded(false);
 
     const getUser = async () => {
@@ -145,6 +151,7 @@ const ProfilePage = props => {
       getCurrentlyReadingBooks(props.match.params.id ? user : loggedUser);
       getReadBooks(props.match.params.id ? user : loggedUser);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userLoaded, props.match.params.id, loggedUser]);
 
   const renderBookSections = () => {
@@ -179,16 +186,15 @@ const ProfilePage = props => {
       content = <>{renderBookSections()}</>;
       break;
     case 1:
-      content = <ReviewList />;
+      content = <ReviewList userId={user.id} />;
       break;
     case 2:
-      content = <RatingList />;
+      content = <RatingList userId={user.id} />;
       break;
     default:
       content = <BookSections userId={user.id} />;
       break;
   }
-  console.log();
   return (
     <StyledProfilePage>
       <UserCard center big image={user.image} name={user.username} profile />

@@ -34,6 +34,7 @@ const Reviews = props => {
     };
 
     getReviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleClick = () => {
     setAddFormOpen(!addFormOpen);

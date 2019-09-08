@@ -7,16 +7,14 @@ import BookName from "./BookName";
 import AuthorName from "./AuthorName";
 
 const BookItemBox = props => {
+  console.log(props.data.id);
+
   return (
-    <Wrapper to={"/book/1"}>
-      {/* <Wrapper to={"/book/" + props.data.id} bottom={props.bottom}> */}
-      <Image src={""} />
-      {/* <Image src={props.data ? props.data.coverImage : ""} /> */}
+    <Wrapper to={"/book/" + props.data.id} bottom={props.bottom}>
+      <Image src={props.data ? props.data.coverImage : ""} />
       <div>
-        <BookName>Cesta králů</BookName>
-        {/* <BookName>{props.data.title}</BookName> */}
-        <AuthorName>Brandon Sanderson</AuthorName>
-        {/* <AuthorName>{props.data.author.name}</AuthorName> */}
+        <BookName>{props.data.title}</BookName>
+        <AuthorName>{props.data.author.name}</AuthorName>
       </div>
     </Wrapper>
   );

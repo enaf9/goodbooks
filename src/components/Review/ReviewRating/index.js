@@ -36,6 +36,7 @@ const ReviewRating = props => {
     };
 
     checkUserLikes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addToLikedReviews = () => {

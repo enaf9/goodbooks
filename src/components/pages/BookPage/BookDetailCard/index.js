@@ -91,9 +91,11 @@ const BookDetailCard = props => {
     db.collection("users")
       .doc(user)
       .collection("ratings")
-      .add({
+      .doc(props.id)
+      .set({
         author: props.author.name,
         bookTitle: props.title,
+        coverImage: props.image,
         rating: rating
       });
 
@@ -137,6 +139,7 @@ const BookDetailCard = props => {
                   count={ratingCount.toString()}
                   sendRating={getRating}
                   medium
+                  rating
                 />
               ) : (
                 <Rating
@@ -145,6 +148,7 @@ const BookDetailCard = props => {
                   count={ratingCount.toString()}
                   sendRating={getRating}
                   small
+                  rating
                 />
               )
             }

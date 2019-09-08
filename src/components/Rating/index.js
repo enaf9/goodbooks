@@ -7,16 +7,26 @@ import RatingText from "./RatingText";
 
 const Rating = props => {
   const [fill, setFill] = useState(null);
-  const [value, setValue] = useState(props.average);
-
-  useEffect(() => setValue(props.average), [props.average]);
+  const [value, setValue] = useState(
+    props.average ? props.average : props.value
+  );
+  useEffect(() => {
+    if (props.average) {
+      setValue(props.average);
+    } else {
+      setValue(props.value);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.average]);
 
   const handleMouseOver = e => {
-    setFill(
-      Math.floor(
-        (e.clientX - e.target.offsetLeft) / (e.target.offsetWidth * 0.2) + 1
-      )
-    );
+    if (props.addForm || props.rating) {
+      setFill(
+        Math.floor(
+          (e.clientX - e.target.offsetLeft) / (e.target.offsetWidth * 0.2) + 1
+        )
+      );
+    }
   };
   const handleMouseOut = e => {
     setFill(null);
@@ -27,9 +37,9 @@ const Rating = props => {
       setValue(fill);
       props.sendRating(fill);
       return;
+    } else if (props.rating) {
+      props.sendRating(fill);
     }
-
-    props.sendRating(fill);
   };
 
   return (

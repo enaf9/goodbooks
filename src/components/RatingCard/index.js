@@ -13,7 +13,7 @@ import DeleteIcon from "../../shared-styled-components/DeleteIcon";
 //components imports
 import DeletePopUp from "../pop-ups/DeletePopUp";
 
-const RatingCard = () => {
+const RatingCard = props => {
   const [showClose] = useState(true);
   const showDeleteMessage = useSelector(state => state.deletePopUpReducer);
   const dispatch = useDispatch();
@@ -27,11 +27,17 @@ const RatingCard = () => {
       return <DeleteIcon onClick={handleClick} />;
     }
   };
-
   return (
     <Wrapper>
-      <BookItemBox data={{ id: 1 }} />
-      <Rating size="16px" />
+      <BookItemBox
+        data={{
+          id: props.id,
+          coverImage: props.image,
+          author: props.author,
+          title: props.title
+        }}
+      />
+      <Rating size="16px" value={props.rating} />
       {renderDeleteIcon()}
       {showDeleteMessage && <DeletePopUp />}
     </Wrapper>

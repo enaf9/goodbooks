@@ -16,7 +16,6 @@ import TimeText from "./TimeText";
 import Title from "./Title";
 import Text from "./Text";
 import DeleteIcon from "../../shared-styled-components/DeleteIcon";
-import { PowerInputDimensions } from "styled-icons/material/PowerInput/PowerInput";
 
 const Review = props => {
   const [showClose] = useState(false);
@@ -27,6 +26,7 @@ const Review = props => {
   useEffect(() => {
     const daysDifference = (new Date() - props.date) / (1000 * 3600 * 24);
     setDaysAgo(Math.round(daysDifference));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderTimeText = () => {
@@ -48,22 +48,32 @@ const Review = props => {
       return <DeleteIcon onClick={handleClick} />;
     }
   };
-
   return (
     <Wrapper>
       <Container>
-        <UserItemBox
-          data={{
-            username: props.username,
-            image: props.image,
-            id: props.userId
-          }}
-        />
+        {props.author ? (
+          <BookItemBox
+            data={{
+              id: props.bookId,
+              coverImage: props.image,
+              author: { name: props.author },
+              title: props.bookTitle
+            }}
+          />
+        ) : (
+          <UserItemBox
+            data={{
+              username: props.username,
+              image: props.image,
+              id: props.userId
+            }}
+          />
+        )}
         <TimeText>{renderTimeText()}</TimeText>
       </Container>
       <Rating
         size="16px"
-        average={props.rating}
+        value={props.rating}
         review={props.review ? true : false}
       />
       <Title>{props.title}</Title>
