@@ -41,7 +41,7 @@ const ProfilePage = props => {
   useEffect(() => {
     dispatch(setTabActive(0));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props.match.params.id]);
 
   useEffect(() => {
     setUserLoaded(false);

@@ -1,6 +1,6 @@
 const deletePopUpReducer = (state = false, action) => {
   if (action.type === "SHOW_POPUP") {
-    return !state;
+    return action.id;
   } else if (action.type === "CLOSE_POPUP") {
     return false;
   } else {

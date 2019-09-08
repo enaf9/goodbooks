@@ -47,6 +47,7 @@ const RatingList = props => {
             author={rating.author}
             title={rating.bookTitle}
             rating={rating.rating}
+            userId={props.userId}
           />
         ))}
       </Content>

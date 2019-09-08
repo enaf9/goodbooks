@@ -52,7 +52,8 @@ const AddReviewForm = props => {
           .collection("books")
           .doc(props.bookId)
           .collection("bookReviews")
-          .add({
+          .doc(user.id)
+          .set({
             date: firebase.firestore.Timestamp.now(),
             likesCount: 0,
             rating: review.rating,
@@ -82,6 +83,7 @@ const AddReviewForm = props => {
           .collection("userReviews")
           .doc(props.bookId)
           .set({
+            date: firebase.firestore.Timestamp.now(),
             author: props.author,
             bookCoverImage: props.image,
             bookTitle: props.title,

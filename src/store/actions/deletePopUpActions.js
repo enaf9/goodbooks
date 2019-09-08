@@ -1,6 +1,7 @@
-export const showPopUp = () => {
+export const showPopUp = id => {
   return {
-    type: "SHOW_POPUP"
+    type: "SHOW_POPUP",
+    id
   };
 };
 

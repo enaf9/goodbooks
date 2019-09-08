@@ -8,11 +8,16 @@ import Wrapper from "./Wrapper";
 import Button from "./Button";
 import Background from "./Background";
 
-const DeletePopUp = () => {
+const DeletePopUp = props => {
   const popUpIsOpen = useSelector(state => state.deletePopUpReducer);
   const dispatch = useDispatch();
 
   const closeDeletePopUp = () => {
+    dispatch(closePopUp());
+  };
+
+  const handleDeleteClick = () => {
+    props.delete(popUpIsOpen);
     dispatch(closePopUp());
   };
 
@@ -23,7 +28,7 @@ const DeletePopUp = () => {
         <p>Opravdu smazat?</p>
         <Wrapper>
           <Button onClick={closeDeletePopUp}>Zrušit</Button>
-          <Button>Smazat</Button>
+          <Button onClick={handleDeleteClick}>Smazat</Button>
         </Wrapper>
       </StyledPopUp>
     </>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { db, auth } from "../../firebase";
 
 import { useSelector, useDispatch } from "react-redux";
 import { showPopUp } from "../../store/actions/deletePopUpActions";
@@ -18,7 +19,7 @@ import Text from "./Text";
 import DeleteIcon from "../../shared-styled-components/DeleteIcon";
 
 const Review = props => {
-  const [showClose] = useState(false);
+  const [showClose] = useState(auth.currentUser.uid === props.userId);
   const [daysAgo, setDaysAgo] = useState(0);
   const showDeleteMessage = useSelector(state => state.deletePopUpReducer);
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const Review = props => {
   };
 
   const handleClick = () => {
-    dispatch(showPopUp());
+    dispatch(showPopUp(props.bookId));
   };
 
   const renderDeleteIcon = () => {
@@ -48,6 +49,44 @@ const Review = props => {
       return <DeleteIcon onClick={handleClick} />;
     }
   };
+
+  const deleteReview = async id => {
+    const book = await db
+      .collection("books")
+      .doc(id)
+      .get();
+
+    const avgRating = book.data().avgRating;
+    const ratingCount = book.data().ratingCount;
+
+    const newRatingCount = ratingCount - 1;
+    const newAvgRating = newRatingCount
+      ? Math.round(
+          ((avgRating * ratingCount - props.rating) / newRatingCount) * 10
+        ) / 10
+      : 0;
+
+    db.collection("users")
+      .doc(props.userId)
+      .collection("userReviews")
+      .doc(id)
+      .delete();
+
+    db.collection("books")
+      .doc(id)
+      .collection("bookReviews")
+      .doc(props.userId)
+      .delete();
+
+    db.collection("books")
+      .doc(id)
+      .update({
+        avgRating: newAvgRating,
+        ratingCount: newRatingCount
+      });
+    console.log("DELETE");
+  };
+
   return (
     <Wrapper>
       <Container>
@@ -84,7 +123,9 @@ const Review = props => {
         bookId={props.bookId}
       />
       {renderDeleteIcon()}
-      {showDeleteMessage && <DeletePopUp />}
+      {showDeleteMessage && (
+        <DeletePopUp delete={deleteReview} id={props.bookId} />
+      )}
     </Wrapper>
   );
 };

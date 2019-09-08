@@ -50,6 +50,7 @@ const ReviewList = props => {
             title={review.title}
             text={review.text}
             likesCount={review.likesCount}
+            userId={props.userId}
           />
         ))}
       </Content>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { db, auth } from "../../firebase";
 
 import { useSelector, useDispatch } from "react-redux";
 import { showPopUp } from "../../store/actions/deletePopUpActions";
@@ -14,12 +15,42 @@ import DeleteIcon from "../../shared-styled-components/DeleteIcon";
 import DeletePopUp from "../pop-ups/DeletePopUp";
 
 const RatingCard = props => {
-  const [showClose] = useState(true);
+  const [showClose] = useState(auth.currentUser.uid === props.userId);
   const showDeleteMessage = useSelector(state => state.deletePopUpReducer);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(showPopUp());
+    dispatch(showPopUp(props.id));
+  };
+
+  const deleteRating = async id => {
+    const book = await db
+      .collection("books")
+      .doc(id)
+      .get();
+
+    const avgRating = book.data().avgRating;
+    const ratingCount = book.data().ratingCount;
+
+    const newRatingCount = ratingCount - 1;
+    const newAvgRating = newRatingCount
+      ? Math.round(
+          ((avgRating * ratingCount - props.rating) / newRatingCount) * 10
+        ) / 10
+      : 0;
+
+    db.collection("users")
+      .doc(props.userId)
+      .collection("ratings")
+      .doc(id)
+      .delete();
+
+    db.collection("books")
+      .doc(id)
+      .update({
+        avgRating: newAvgRating,
+        ratingCount: newRatingCount
+      });
   };
 
   const renderDeleteIcon = () => {
@@ -39,7 +70,7 @@ const RatingCard = props => {
       />
       <Rating size="16px" value={props.rating} />
       {renderDeleteIcon()}
-      {showDeleteMessage && <DeletePopUp />}
+      {showDeleteMessage && <DeletePopUp delete={deleteRating} id={props.id} />}
     </Wrapper>
   );
 };

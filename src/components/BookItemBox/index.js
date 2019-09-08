@@ -7,8 +7,6 @@ import BookName from "./BookName";
 import AuthorName from "./AuthorName";
 
 const BookItemBox = props => {
-  console.log(props.data.id);
-
   return (
     <Wrapper to={"/book/" + props.data.id} bottom={props.bottom}>
       <Image src={props.data ? props.data.coverImage : ""} />
