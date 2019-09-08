@@ -41,7 +41,16 @@ const BookPage = props => {
       content = <BookInfoBox data={{ ...book, id: props.match.params.id }} />;
       break;
     case 2:
-      content = <Reviews bookId={props.match.params.id} />;
+      content = (
+        <Reviews
+          bookId={props.match.params.id}
+          title={book.title}
+          author={book.author.name}
+          image={book.coverImage}
+          avgRating={book.avgRating}
+          ratingCount={book.ratingCount}
+        />
+      );
       break;
     default:
       content = <Description>{book.description}</Description>;

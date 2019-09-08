@@ -7,6 +7,7 @@ const StarIcon = styled(Star)`
     props.fill >= 1
       ? props.theme.colors.complementary.yellow
       : props.theme.colors.complementary.grey};
+  pointer-events: none;
 `;
 
 export default StarIcon;

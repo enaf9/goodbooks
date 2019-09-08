@@ -76,7 +76,7 @@ const AddBookOverlay = props => {
     setFilterText(e.target.value);
   };
 
-  const removeFromBookList = async e => {
+  const removeFromBookList = e => {
     const bookId = e.target.getAttribute("bookId");
     const index = e.target.getAttribute("index");
     let newBooks = books;
@@ -84,8 +84,7 @@ const AddBookOverlay = props => {
     dispatch(removeBookFromList(bookId, sections[props.id].list));
     setBooks([...newBooks]);
 
-    await db
-      .collection("users")
+    db.collection("users")
       .doc(user.id)
       .update({
         [sections[props.id].list]: firebase.firestore.FieldValue.arrayRemove(
@@ -94,7 +93,7 @@ const AddBookOverlay = props => {
       });
   };
 
-  const addToBookList = async e => {
+  const addToBookList = e => {
     const bookId = e.target.getAttribute("bookId");
     const index = e.target.getAttribute("index");
     let newBooks = books;
@@ -104,8 +103,7 @@ const AddBookOverlay = props => {
     dispatch(addBookToList(bookId, sections[props.id].list));
     setBooks([...newBooks]);
 
-    await db
-      .collection("users")
+    db.collection("users")
       .doc(user.id)
       .update({
         [sections[props.id].list]: firebase.firestore.FieldValue.arrayUnion(

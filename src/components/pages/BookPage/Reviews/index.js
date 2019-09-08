@@ -19,7 +19,6 @@ const Reviews = props => {
   const [addFormOpen, setAddFormOpen] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [reviewsLoaded, setReviewsLoaded] = useState(false);
-
   useEffect(() => {
     const getReviews = async () => {
       const snapshot = await db
@@ -39,13 +38,26 @@ const Reviews = props => {
   const handleClick = () => {
     setAddFormOpen(!addFormOpen);
   };
+
+  const closeForm = () => {
+    setAddFormOpen(false);
+  };
   return (
     <>
       <Wrapper>
         <AddButton onClick={handleClick}>PŘIDAT+</AddButton>
         <SelectInput />
       </Wrapper>
-      <AddReviewForm isOpen={addFormOpen} />
+      <AddReviewForm
+        isOpen={addFormOpen}
+        bookId={props.bookId}
+        author={props.author}
+        image={props.image}
+        title={props.title}
+        avgRating={props.avgRating}
+        ratingCount={props.ratingCount}
+        close={closeForm}
+      />
       {reviewsLoaded ? (
         !reviews.length ? (
           <Message>Žádné recenze k zobrazení.</Message>
